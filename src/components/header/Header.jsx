@@ -1,17 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
-import { logo } from "../../assets/index";
-import { allItems } from "../../constants";
+import { useSelector } from "react-redux";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useSelector } from "react-redux";
+import { allItems } from "../../constants";
+import { logo } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
+// import { Link } from "react-router-dom";
 
 const Header = () => {
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
+  useEffect(() => {
+    document.body.addEventListener("click", (e) => {
+      if (e.target.contains(ref.current)) {
+        showAll && setShowAll(false);
+      }
+    });
+  }, [ref, showAll]);
   return (
     <div className="sticky top-0 z-50 bg-black">
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
@@ -99,8 +107,8 @@ const Header = () => {
             Cart
           </p>
           <span className="absolute text-xs top-0 left-6 w-4 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center">
-              0
-            </span>
+            0
+          </span>
         </div>
 
         {/* ===================== Header Cart End here ============================ */}
