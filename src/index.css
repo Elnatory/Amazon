@@ -9,4 +9,9 @@
     .headerHover {
         @apply px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100;
     }
+    .headerHover:hover {
+        border: 2px solid white;
+        /* margin: -1px; */
+        /* padding: 5px; */
+    }
 }

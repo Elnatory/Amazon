@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useSelector } from "react-redux";
 import SideNavContent from "./SideHeader";
+import { bottomHeader } from "../../assets";
 
 export default function HeaderBottom(props) {
     const [sidebar, setSidebar] = useState(false);
@@ -21,6 +22,7 @@ export default function HeaderBottom(props) {
         <>
             <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
                 {/* ======================= List Items Start here ======================== */}
+                <div className="flex items-center gap-2 text-sm tracking-wide flex-grow">
                 <ul className="flex items-center gap-2 text-sm tracking-wide">
                     <li
                         onClick={() => setSidebar(true)}
@@ -30,15 +32,22 @@ export default function HeaderBottom(props) {
                         All
                     </li>
                     <li className="hidden md:inline-flex headerHover">Today's Deals</li>
-                    <li className="hidden md:inline-flex headerHover">Customer Service</li>
-                    <li className="hidden md:inline-flex headerHover">Gift Cards</li>
-                    <li className="hidden md:inline-flex headerHover">Registry</li>
-                    <li className="hidden md:inline-flex headerHover">Sell</li>
-                </ul>
+                    <li className="hidden md:inline-flex headerHover">Prime</li>
+                    <li className="hidden md:inline-flex headerHover">Mobile Phones</li>
+                    <li className="hidden md:inline-flex headerHover">Electronics</li>
+                    <li className="hidden md:inline-flex headerHover">Appliances</li>
+                    <li className="hidden md:inline-flex headerHover">Fashion</li>
+                    <li className="hidden md:inline-flex headerHover">Home</li>
+                    <li className="hidden md:inline-flex headerHover">Video Games</li>
+                    <li className="hidden md:inline-flex headerHover">Grocery</li>
+
+
+                </ul></div>
+                <img className="headerHover" src={bottomHeader} alt="" width="350" />
                 {/* ======================= List Items End here ========================== */}
                 {/* ======================= SideBar Start here =========================== */}
                 {sidebar && (
-                    <div className="w-full h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-50">
+                    <div className="w-full h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-70">
                         <div className="w-full h-full relative">
                             <motion.div
                                 ref={ref}
@@ -46,8 +55,9 @@ export default function HeaderBottom(props) {
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ duration: 0.5 }}
                                 className="w-[290px] md:w-[350px] h-full bg-white border border-black"
+                                style={{ overflowY: "auto", overflowX: "hidden" }}
                             >
-                                <div className="w-[350px] h-full bg-white border border-black">
+                                <div className="w-[350px] h-full bg-white border border-black"  style={{ borderBottom: "none" }}>
                                     <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                                         <AccountCircleIcon />
                                         <h3 className="font-titleFont font-bold text-lg tracking-wide">
@@ -56,13 +66,19 @@ export default function HeaderBottom(props) {
                                     </div>
                                     {/* ============================ Content & Devices Start here ================ */}
                                     <SideNavContent
+                                        title="Trendings"
+                                        one="Best Sellers"
+                                        two="New Releases"
+                                        three="Movers & Shakers"
+                                    />
+                                    <SideNavContent
                                         title="Digital Content & Devices"
                                         one="Amazon Music"
                                         two="Kindle E-readers & Books"
                                         three="Amazon Appstore"
                                     />
                                     <SideNavContent
-                                        title="Shop By Department"
+                                        title="Shop By Category"
                                         one="Electronics"
                                         two="Computers"
                                         three="Smart Home"
@@ -82,9 +98,9 @@ export default function HeaderBottom(props) {
                                     {/* ============================ Content & Devices End here ================ */}
                                     <span
                                         onClick={() => setSidebar(false)}
-                                        className="cursor-pointer absolute top-0 left-[300px] md:left-[360px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300"
+                                        className="cursor-pointer absolute top-2 left-[300px] md:left-[360px] w-10 h-10 text-white flex items-center justify-center hover:bg-red-500 hover:text-white duration-300"
                                     >
-                                        <CloseIcon />
+                                        <CloseIcon style={{ fontSize: '30px' }} />
                                     </span>
                                 </div>
                             </motion.div>
@@ -92,6 +108,7 @@ export default function HeaderBottom(props) {
                     </div>
                 )}
             </div >
+
         </>
     )
 }

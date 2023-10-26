@@ -6,7 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { allItems } from "../../constants";
-import { logo } from "../../assets/index";
+import { logo, egyptFlag } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 // import { Link } from "react-router-dom";
 
@@ -69,7 +69,7 @@ const Header = () => {
 
           <input
             className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
-            type="text"
+            type="text" placeholder="Search Amazon.eg"
           />
           <span className="w-12 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
             <SearchIcon />
@@ -77,6 +77,16 @@ const Header = () => {
         </div>
         {/* ===================== Header Search End here ========================== */}
         {/* ===================== Header Signin Start here ======================== */}
+        <div className="flex flex-col items-start justify-center headerHover">
+          <p></p>
+          <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
+            <img src={egyptFlag} alt="Egypt Flag" width="20px" height="20px" />
+            EN{" "}
+            <span>
+              <ArrowDropDownOutlinedIcon />
+            </span>
+          </p>
+        </div>
         <div className="flex flex-col items-start justify-center headerHover">
           <p className="text-xs text-lightText font-light">
             Hello, sign in
@@ -114,12 +124,12 @@ const Header = () => {
         {/* ===================== Header Cart End here ============================ */}
         {/* ===================== Header Logout Start here ======================== */}
 
-        <div className="flex flex-col justify-center items-center headerHover relative">
+        {/* <div className="flex flex-col justify-center items-center headerHover relative">
           <LogoutIcon />
           <p className="hidden mdl:inline-flex text-xs font-semibold text-whiteText">
             Log out
           </p>
-        </div>
+        </div> */}
       </div>
       <HeaderBottom />
     </div>
