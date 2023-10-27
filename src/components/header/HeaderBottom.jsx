@@ -5,7 +5,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useSelector } from "react-redux";
 import SideNavContent from "./SideHeader";
-import { bottomHeader } from "../../assets";
+import { bottomHeader, bottomHeader2 } from "../../assets";
+import Slider from "react-slick";
 
 export default function HeaderBottom(props) {
     const [sidebar, setSidebar] = useState(false);
@@ -18,32 +19,57 @@ export default function HeaderBottom(props) {
         });
     }, [ref, sidebar]);
 
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        vertical: true,
+        verticalSwiping: true,
+        autoplay: true,
+        arrows: false,
+        autoplaySpeed: 3000,
+        beforeChange: function (currentSlide, nextSlide) {
+            console.log("before change", currentSlide, nextSlide);
+        },
+        afterChange: function (currentSlide) {
+            console.log("after change", currentSlide);
+        }
+    };
+
     return (
         <>
             <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
                 {/* ======================= List Items Start here ======================== */}
                 <div className="flex items-center gap-2 text-sm tracking-wide flex-grow">
-                <ul className="flex items-center gap-2 text-sm tracking-wide">
-                    <li
-                        onClick={() => setSidebar(true)}
-                        className="flex items-center gap-1 headerHover"
-                    >
-                        <MenuIcon />
-                        All
-                    </li>
-                    <li className="hidden md:inline-flex headerHover">Today's Deals</li>
-                    <li className="hidden md:inline-flex headerHover">Prime</li>
-                    <li className="hidden md:inline-flex headerHover">Mobile Phones</li>
-                    <li className="hidden md:inline-flex headerHover">Electronics</li>
-                    <li className="hidden md:inline-flex headerHover">Appliances</li>
-                    <li className="hidden md:inline-flex headerHover">Fashion</li>
-                    <li className="hidden md:inline-flex headerHover">Home</li>
-                    <li className="hidden md:inline-flex headerHover">Video Games</li>
-                    <li className="hidden md:inline-flex headerHover">Grocery</li>
-
-
-                </ul></div>
-                <img className="headerHover" src={bottomHeader} alt="" width="350" />
+                    <ul className="flex items-center gap-2 text-sm tracking-wide">
+                        <li
+                            onClick={() => setSidebar(true)}
+                            className="flex items-center gap-1 headerHover"
+                        >
+                            <MenuIcon />
+                            All
+                        </li>
+                        <li className="hidden md:inline-flex headerHover">Today's Deals</li>
+                        <li className="hidden md:inline-flex headerHover">Prime</li>
+                        <li className="hidden md:inline-flex headerHover">Phones</li>
+                        <li className="hidden md:inline-flex headerHover">Electronics</li>
+                        <li className="hidden md:inline-flex headerHover">Appliances</li>
+                        <li className="hidden md:inline-flex headerHover">Fashion</li>
+                        <li className="hidden md:inline-flex headerHover">Home</li>
+                        <li className="hidden md:inline-flex headerHover">Video Games</li>
+                    </ul>
+                </div>
+                <div style={{ flex: 2, display: 'flex', justifyContent: 'flex-end', alignItems:'center' }}>
+                    <Slider {...settings}>
+                        <div>
+                            <img className="headerHover" src={bottomHeader} alt="" width="400" />
+                        </div>
+                        <div>
+                            <img className="headerHover" src={bottomHeader2} alt="" width="400" />
+                        </div>
+                    </Slider>
+                </div>
                 {/* ======================= List Items End here ========================== */}
                 {/* ======================= SideBar Start here =========================== */}
                 {sidebar && (
@@ -57,7 +83,7 @@ export default function HeaderBottom(props) {
                                 className="w-[290px] md:w-[350px] h-full bg-white border border-black"
                                 style={{ overflowY: "auto", overflowX: "hidden" }}
                             >
-                                <div className="w-[350px] h-full bg-white border border-black"  style={{ borderBottom: "none" }}>
+                                <div className="w-[350px] h-full bg-white border border-black" style={{ borderBottom: "none" }}>
                                     <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                                         <AccountCircleIcon />
                                         <h3 className="font-titleFont font-bold text-lg tracking-wide">
@@ -108,7 +134,6 @@ export default function HeaderBottom(props) {
                     </div>
                 )}
             </div >
-
         </>
     )
 }

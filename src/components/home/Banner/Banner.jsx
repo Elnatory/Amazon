@@ -64,7 +64,6 @@ export default function Banner(props) {
                         <CustomNextArrow onClick={onClickHandler} />
                     )
                 }
-
             >
                 <div>
                     <img src={AmazonEg1} loading='lazy' />
@@ -108,7 +107,6 @@ export default function Banner(props) {
                 <div>
                     <img src={bannerImgFive} loading='lazy' />
                 </div>
-
             </Carousel>
         </div>
     );

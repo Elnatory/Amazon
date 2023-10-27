@@ -5,10 +5,10 @@ import bannerImgTwo from "./banner/bannerImgOne.jpg";
 import bannerImgThree from "./banner/bannerImgThree.jpg";
 import bannerImgFour from "./banner/bannerImgFour.jpg";
 import bannerImgFive from "./banner/bannerImgFive.jpg";
-import bdFlag from "./bdFlag.webp";
 import emptyCart from "./emptyCart.png";
 import egyptFlag from "./egypt.png";
 import bottomHeader from "./bottomHeader.png";
+import bottomHeader2 from "./bottomHeader2.jpg";
 import AmazonEg1 from "./banner/AmazonEg1.jpg";
 import AmazonEg2 from "./banner/AmazonEg2.jpg";
 import AmazonEg3 from "./banner/AmazonEg3.jpg";
@@ -31,10 +31,10 @@ export {
   bannerImgThree,
   bannerImgFour,
   bannerImgFive,
-  bdFlag,
   emptyCart,
   egyptFlag,
   bottomHeader,
+  bottomHeader2,
   AmazonEg1,
   AmazonEg2,
   AmazonEg3,
