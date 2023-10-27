@@ -52,13 +52,13 @@ export default function HeaderBottom(props) {
                         </li>
                         <li className="hidden md:inline-flex headerHover">Today's Deals</li>
                         <li className="hidden md:inline-flex headerHover">Prime</li>
-                        <li className="hidden md:inline-flex headerHover">Phones</li>
+                        <li className="hidden md:inline-flex headerHover">Mobiles</li>
                         <li className="hidden md:inline-flex headerHover">Electronics</li>
-                        <li className="hidden md:inline-flex headerHover">Appliances</li>
+                        <li className="hidden md:inline-flex headerHover">Music</li>
                         <li className="hidden md:inline-flex headerHover">Fashion</li>
                         <li className="hidden md:inline-flex headerHover">Home</li>
-                        <li className="hidden md:inline-flex headerHover">Video Games</li>
-                        <li className="hidden md:inline-flex headerHover">Grocery</li>
+                        <li className="hidden md:inline-flex headerHover">Super Market</li>
+                        <li className="hidden md:inline-flex headerHover">Books</li>
                     </ul>
                 </div>
                 <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
