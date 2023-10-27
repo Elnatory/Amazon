@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react'
 import Header from './components/header/Header'
-import Banner from './components/home/Banner'
+import Banner from './components/home/Banner/Banner'
 
 function App() {
   return (

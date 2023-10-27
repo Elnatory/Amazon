@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/swiper-bundle.css";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./b.css";
+import "./Banner.css";
 
 import {
     bannerImgOne,
@@ -23,7 +23,7 @@ import {
     AmazonEg9,
     right,
     left,
-} from "../../assets/index";
+} from "../../../assets/index";
 
 const CustomPrevArrow = ({ onClick }) => (
     <div
