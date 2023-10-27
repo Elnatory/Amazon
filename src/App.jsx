@@ -12,6 +12,10 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import Home from './pages/Home'
+import Cart from './pages/Cart';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
+import CheckOut from './pages/Checkout';
 
 const Layout = () => {
   return (
@@ -30,7 +34,11 @@ function App() {
       <Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
         </Route>
+        <Route path="/signin" element={<Signin />}></Route>
+        <Route path="/register" element={<Signup />}></Route>
+        <Route path="/checkout" element={<CheckOut />}></Route>
       </Route>
     )
   );

@@ -58,6 +58,7 @@ export default function HeaderBottom(props) {
                         <li className="hidden md:inline-flex headerHover">Fashion</li>
                         <li className="hidden md:inline-flex headerHover">Home</li>
                         <li className="hidden md:inline-flex headerHover">Video Games</li>
+                        <li className="hidden md:inline-flex headerHover">Grocery</li>
                     </ul>
                 </div>
                 <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
