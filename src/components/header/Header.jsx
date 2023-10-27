@@ -6,7 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { allItems } from "../../constants";
-import { logo, egyptFlag } from "../../assets/index";
+import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 // import { Link } from "react-router-dom";
 
@@ -110,16 +110,16 @@ const Header = () => {
 
         {/* ===================== Header Orders End here ========================== */}
         {/* ===================== Header Cart Start here ========================== */}
+        <div className="relative flex items-center headerHover">
+    <img src={CartIcon} alt="cartImg" className="w-auto object-cover h-8" />
+    <span className="absolute text-amazon_yellow text-sm top-0 left-1/3 transform -translate-x-1/2 font-semibold ml-1" style={{ fontSize: "16px" }}
+    >0</span>
+    <p className="text-sm text-white font-bold">Cart</p>
+</div>
 
-        <div className="flex items-start justify-center headerHover relative">
-          <ShoppingCartIcon />
-          <p className="hidden mdl:inline-flex text-xs font-semibold mt-3 text-whiteText">
-            Cart
-          </p>
-          <span className="absolute text-xs top-0 left-6 w-4 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center">
-            0
-          </span>
-        </div>
+
+
+
 
         {/* ===================== Header Cart End here ============================ */}
         {/* ===================== Header Logout Start here ======================== */}

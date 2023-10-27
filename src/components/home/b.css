@@ -1,0 +1,35 @@
+.custom-arrow {
+    position: absolute;
+    top: 30%;
+    z-index: 1;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.custom-arrow.left {
+    left: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.custom-arrow.right {
+    right: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+/* .custom-arrow::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 250px;
+    top: 0;
+    left: 0;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.custom-arrow:hover::before {
+    border-color: rgba(0, 0, 0, 0.5);
+} */
