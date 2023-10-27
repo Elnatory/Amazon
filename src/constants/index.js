@@ -91,6 +91,76 @@ export const middleList = [
     ],
   },
 ];
+
+
+export const footerBottomItem = [
+  {
+    _id: 1001,
+    title: "Amazon Advertising",
+    des: "Find, attract, and engage customers",
+  },
+  {
+    _id: 1002,
+    title: "Sell on Amazon.ae",
+    des: "Sell globally, start with UAE",
+  },
+  {
+    _id: 1003,
+    title: "Sell on Amazon.se",
+    des: "Sell globally, start with Saudia Arabia",
+  },
+  {
+    _id: 1005,
+    title: "AbeBooks",
+    des: "Books, art & collectibles",
+  },
+  {
+    _id: 1006,
+    title: "ACX",
+    des: "Audiobook Publishing Made Easy",
+  },
+  {
+    _id: 1004,
+    title: "Amazon Web Services",
+    des: "Scalable Cloud Computing Services",
+  },
+  {
+    _id: 1007,
+    title: "Goodreads",
+    des: "Book reviews & recommendations",
+  },
+  {
+    _id: 1008,
+    title: "Audible",
+    des: "Download Audio Books",
+  },
+  {
+    _id: 1009,
+    title: "IMDB",
+    des: "Movies, TV & Celebrities",
+  },
+  {
+    _id: 1010,
+    title: "Home Services",
+    des: "Experienced Pros appiness Guarantee",
+  },
+  {
+    _id: 1011,
+    title: "Amazon Ignite",
+    des: "Sell your original Digital Educational Resources",
+  },
+  {
+    _id: 1012,
+    title: "Alexa",
+    des: "Actionable Analytics for the Web",
+  },
+  {
+    _id: 1013,
+    title: "Shopbop",
+    des: "Designer Fashion Brands",
+  },
+];
+
 // export const middleList = [
 //   {
 //     _id: 2221,
@@ -164,73 +234,6 @@ export const middleList = [
 //   },
 // ];
 
-export const footerBottomItem = [
-  {
-    _id: 1001,
-    title: "Amazon Advertising",
-    des: "Find, attract, and engage customers",
-  },
-  {
-    _id: 1002,
-    title: "Sell on Amazon.ae",
-    des: "Sell globally, start with UAE",
-  },
-  {
-    _id: 1003,
-    title: "Sell on Amazon.se",
-    des: "Sell globally, start with Saudia Arabia",
-  },
-  {
-    _id: 1005,
-    title: "AbeBooks",
-    des: "Books, art & collectibles",
-  },
-  {
-    _id: 1006,
-    title: "ACX",
-    des: "Audiobook Publishing Made Easy",
-  },
-  {
-    _id: 1004,
-    title: "Amazon Web Services",
-    des: "Scalable Cloud Computing Services",
-  },
-  {
-    _id: 1007,
-    title: "Goodreads",
-    des: "Book reviews & recommendations",
-  },
-  {
-    _id: 1008,
-    title: "Audible",
-    des: "Download Audio Books",
-  },
-  {
-    _id: 1009,
-    title: "IMDB",
-    des: "Movies, TV & Celebrities",
-  },
-  {
-    _id: 1010,
-    title: "Home Services",
-    des: "Experienced Pros appiness Guarantee",
-  },
-  {
-    _id: 1011,
-    title: "Amazon Ignite",
-    des: "Sell your original Digital Educational Resources",
-  },
-  {
-    _id: 1012,
-    title: "Alexa",
-    des: "Actionable Analytics for the Web",
-  },
-  {
-    _id: 1013,
-    title: "Shopbop",
-    des: "Designer Fashion Brands",
-  },
-];
 
 // export const footerBottomItem = [
 //   {
