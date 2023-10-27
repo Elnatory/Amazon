@@ -60,13 +60,13 @@ export default function HeaderBottom(props) {
                         <li className="hidden md:inline-flex headerHover">Video Games</li>
                     </ul>
                 </div>
-                <div style={{ flex: 2, display: 'flex', justifyContent: 'flex-end', alignItems:'center' }}>
+                <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                     <Slider {...settings}>
                         <div>
-                            <img className="headerHover" src={bottomHeader} alt="" width="400" />
+                            <img className="headerHover" src={bottomHeader} alt="" width="350" />
                         </div>
                         <div>
-                            <img className="headerHover" src={bottomHeader2} alt="" width="400" />
+                            <img className="headerHover" src={bottomHeader2} alt="" width="350" />
                         </div>
                     </Slider>
                 </div>
