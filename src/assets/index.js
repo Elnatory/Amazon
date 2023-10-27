@@ -1,5 +1,5 @@
 import logo from "./logo.png";
-import darkLogo from "./darkLogo.png";
+import darkLogo from "./darkLoglo.png";
 import bannerImgOne from "./banner/bannerImgTwo.jpg";
 import bannerImgTwo from "./banner/bannerImgOne.jpg";
 import bannerImgThree from "./banner/bannerImgThree.jpg";
@@ -21,7 +21,9 @@ import AmazonEg9 from "./banner/AmazonEg9.jpg";
 import CartIcon from "./cartIcon.png"
 import right from "./right.png"
 import left from "./left.png"
-import Egypt from "./Egypt.png"
+import Egypt from "./egypt.png"
+import lightLogo from "./logo1.png"
+import AmazonEgypt from "./AmazonEgypt.png"
 
 export {
   logo,
@@ -48,4 +50,6 @@ export {
   right,
   left,
   Egypt,
+  lightLogo,
+  AmazonEgypt
 };
