@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function Signup(props) {
+export default function Brands(props) {
     
 
     return (
         <>
-            <div>Register Page</div>
+            <div>Brands</div>
         </>
     )
 }

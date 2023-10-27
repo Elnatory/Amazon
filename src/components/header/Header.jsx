@@ -8,6 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { allItems } from "../../constants";
 import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -24,9 +25,11 @@ const Header = () => {
     <div className="sticky top-0 z-50 bg-black">
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
         {/* ===================== Header Image Start here ======================== */}
-        <div className="headerHover">
-          <img className="w-24 mt-2" src={logo} alt="logoImage" />
-        </div>
+        <Link to="/">
+          <div className="headerHover">
+            <img className="w-24 mt-2" src={logo} alt="logoImage" />
+          </div>
+        </Link>
         {/* ===================== Header Image End here ========================== */}
         {/* ===================== Header Deliver Start here ====================== */}
         <div className="hidden md:inline-flex headerHover">
@@ -87,36 +90,38 @@ const Header = () => {
             </span>
           </p>
         </div>
-        <div className="flex flex-col items-start justify-center headerHover">
-          <p className="text-xs text-lightText font-light">
-            Hello, sign in
-          </p>
-
-          <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
-            Accounts & Lists{" "}
-            <span>
-              <ArrowDropDownOutlinedIcon />
-            </span>
-          </p>
-        </div>
+        <Link to="/signin">
+          <div className="flex flex-col items-start justify-center headerHover">
+            <p className="text-xs text-lightText font-light">
+              Hello, sign in
+            </p>
+            <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
+              Accounts & Lists{" "}
+              <span>
+                <ArrowDropDownOutlinedIcon />
+              </span>
+            </p>
+          </div>
+        </Link>
 
         {/* ===================== Header Signin End here ========================== */}
         {/* ===================== Header Orders Start here ======================== */}
-
-        <div className="hidden mdl:flex flex-col items-start justify-center headerHover">
-          <p className="text-xs text-lightText font-light">Returns</p>
-          <p className="text-sm font-semibold -mt-1 text-whiteText">& Orders</p>
-        </div>
-
+        <Link to="/orders">
+          <div className="hidden mdl:flex flex-col items-start justify-center headerHover">
+            <p className="text-xs text-lightText font-light">Returns</p>
+            <p className="text-sm font-semibold -mt-1 text-whiteText">& Orders</p>
+          </div>
+        </Link>
         {/* ===================== Header Orders End here ========================== */}
         {/* ===================== Header Cart Start here ========================== */}
-        <div className="relative flex items-center headerHover">
-    <img src={CartIcon} alt="cartImg" className="w-auto object-cover h-8" />
-    <span className="absolute text-amazon_yellow text-sm top-0 left-1/3 transform -translate-x-1/2 font-semibold ml-1" style={{ fontSize: "16px" }}
-    >0</span>
-    <p className="text-sm text-white font-bold">Cart</p>
-</div>
-
+        <Link to="/cart">
+          <div className="relative flex items-center headerHover">
+            <img src={CartIcon} alt="cartImg" className="w-auto object-cover h-8" />
+            <span className="absolute text-amazon_yellow text-sm top-0 left-1/3 transform -translate-x-1/2 font-semibold ml-1" style={{ fontSize: "16px" }}
+            >0</span>
+            <p className="text-sm text-white font-bold">Cart</p>
+          </div>
+        </Link>
 
 
 

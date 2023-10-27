@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function Signup(props) {
+export default function Category(props) {
     
 
     return (
         <>
-            <div>Register Page</div>
+            <div>Category</div>
         </>
     )
 }
