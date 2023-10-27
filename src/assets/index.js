@@ -21,6 +21,7 @@ import AmazonEg9 from "./banner/AmazonEg9.jpg";
 import CartIcon from "./cartIcon.png"
 import right from "./right.png"
 import left from "./left.png"
+import Egypt from "./Egypt.png"
 
 export {
   logo,
@@ -45,5 +46,6 @@ export {
   AmazonEg9,
   CartIcon,
   right,
-  left
+  left,
+  Egypt,
 };

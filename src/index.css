@@ -9,9 +9,22 @@
     .headerHover {
         @apply px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100;
     }
+
     .headerHover:hover {
         border: 1px solid white;
         margin: -1px;
         /* padding: 5px; */
+    }
+
+    .footerLink {
+        @apply text-sm font-titleFont tracking-wide hover:text-gray-100 cursor-pointer hover:underline duration-150;
+    }
+
+    .footerBottomTitle {
+        @apply w-24 font-semibold text-[12px] group-hover:underline text-[#DDD] leading-3 mb-[2px];
+    }
+
+    .footerBottomText {
+        @apply w-24 tracking-tight text-[12px] text-[#999] group-hover:underline leading-3;
     }
 }
