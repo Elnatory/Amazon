@@ -33,6 +33,13 @@ import beauty from "./boxes/Fuji_Dash_Beauty_1x._SY304_CB432774351_.jpg";
 import electronics from "./boxes/Fuji_Dash_Electronics_1x._SY304_CB432774322_.jpg";
 import creature from "./boxes/71xaKlYdiA.jpg";
 import music from "./boxes/music.jpg";
+import deal1 from "./deals/12.jpg";
+import deal2 from "./deals/13.jpg";
+import deal3 from "./deals/14.jpg";
+import deal4 from "./deals/15.jpg";
+import deal5 from "./deals/16.jpg";
+import deal6 from "./deals/17.jpg";
+import deal7 from "./deals/18.jpg";
 
 
 export {
@@ -71,4 +78,11 @@ export {
   electronics,
   creature,
   music,
+  deal1,
+  deal2,
+  deal3,
+  deal4,
+  deal5,
+  deal6,
+  deal7,
 };

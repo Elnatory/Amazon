@@ -1,6 +1,5 @@
 import React from 'react'
 import CarouselCategory from './CarousalCategory';
-import CarouselProduct from './CarousalProduct';
 import HomePageCard from './HomePageCard';
 import {box1, box2, box3, box4, ad, AmazonEg1, music, creature, electronics, beauty} from "../../../assets/index.js"
 
@@ -51,7 +50,6 @@ export default function Boxes(props) {
                             link={"See more"}
                         />
                     </div>
-                    <CarouselProduct />
                     <CarouselCategory />
                     <div>
                         <img
