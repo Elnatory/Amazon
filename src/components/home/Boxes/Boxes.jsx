@@ -2,7 +2,7 @@ import React from 'react'
 import CarouselCategory from './CarousalCategory';
 import CarouselProduct from './CarousalProduct';
 import HomePageCard from './HomePageCard';
-import {box1, box2, box3, box4} from "../../../assets/index.js"
+import {box1, box2, box3, box4, ad, AmazonEg1} from "../../../assets/index.js"
 
 export default function Boxes(props) {
     return (
@@ -60,11 +60,11 @@ export default function Boxes(props) {
                     </div>
                     <CarouselProduct />
                     <CarouselCategory />
-                    <div className="h-[200px]">
+                    <div>
                         <img
-                            className="h-[100%] m-auto"
-                            src={"../images/banner_image.jpg"}
-                            alt="Banner 1"
+                            className="h-[100%] m-auto p-3 w-full"
+                            src={ad}
+                            alt="Advertisement"
                         />
                     </div>
                 </div>

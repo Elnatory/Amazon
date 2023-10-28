@@ -35,32 +35,6 @@ const Products = () => {
                                 className="w-52 h-64 object-contain"
                             />
                             {/* ================== Product mini drop down Start here ============ */}
-                            <ul className="absolute w-full h-36 bg-gray-100 -bottom-[160px] group-hover:bottom-0 duration-700 flex flex-col justify-center items-end gap-2">
-                                <li className="productLi">
-                                    Compare
-                                    <span>
-                                        <ApiIcon />
-                                    </span>
-                                </li>
-                                <li className="productLi">
-                                    Add to Cart
-                                    <span>
-                                        <ShoppingCartIcon />
-                                    </span>
-                                </li>
-                                <li className="productLi">
-                                    View Details{" "}
-                                    <span>
-                                        <ArrowCircleRightIcon />
-                                    </span>
-                                </li>
-                                <li className="productLi">
-                                    Add to Wish List{" "}
-                                    <span>
-                                        <FavoriteIcon />
-                                    </span>
-                                </li>
-                            </ul>
                         </div>
                         {/* ========== Product Image End here ================ */}
                         {/* ========== Product Info Start here =============== */}
@@ -75,7 +49,7 @@ const Products = () => {
                             </div>
                         </div>
                         <div>
-                            <p className="text-sm">{product.description.substring(0, 100)}</p>
+                            <p className="text-sm p-3">{product.description.substring(0, 100)}</p>
                             <div className="text-yellow-500 flex">
                                 <StarIcon />
                                 <StarIcon />
@@ -87,7 +61,9 @@ const Products = () => {
                         <button className="w-full py-1.5 rounded-md mt-3 font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200">
                             Add to Cart
                         </button>
-                        <p>Brand: {product.brand.name}</p>
+                        <button className="w-full py-1.5 rounded-md font-titleFont font-medium text-base bg-gradient-to-tr from-orange-400 to-orange-200 border border-orange-500 hover:border-yellow-700 hover:from-orange-300 to hover:to-orange-400 active:bg-gradient-to-bl active:from-orange-400 active:to-orange-500 duration-200">
+                            Buy Now
+                        </button>
                     </div>
                 ))
             ) : (
