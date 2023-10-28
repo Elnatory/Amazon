@@ -27,4 +27,8 @@
     .footerBottomText {
         @apply w-24 tracking-tight text-[12px] text-[#999] group-hover:underline leading-3;
     }
+
+    .productLi {
+        @apply text-gray-600 hover:text-black text-sm font-medium border-b-[1px] border-b-gray-400 hover:border-b-gray-700 flex items-center justify-end gap-2 hover:cursor-pointer duration-300 w-full;
+    }
 }

@@ -9,7 +9,6 @@ import { allItems } from "../../constants";
 import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
 
 const Header = () => {
   const ref = useRef();
