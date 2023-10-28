@@ -20,6 +20,9 @@ import Orders from './pages/Orders'
 import Brands from './pages/Brands';
 import Categories from './pages/Category'
 import NotFound from './pages/notFound/NotFound'
+import SubCategory from './pages/Sub-Category'
+import Details from './pages/Details'
+import Help from './pages/Help';
 
 const Layout = () => {
   return (
@@ -38,16 +41,18 @@ function App() {
       <Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
+          <Route path='/details/:id' element={<Details />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/orders" element={<Orders />}></Route>
           <Route path="/categories" element={<Categories />}></Route>
+          <Route path='/subcategory' element={<SubCategory />}></Route> 
           <Route path="/brands" element={<Brands />}></Route>
+          <Route path="/help" element={<Help />}></Route>
         </Route>
-        <Route path="*" element={<NotFound />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
-
+        <Route path="*" element={<NotFound />}></Route>
       </Route>
     )
   );

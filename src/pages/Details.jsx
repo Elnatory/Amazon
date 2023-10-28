@@ -5,7 +5,7 @@ export default function Details(props) {
 
     return (
         <>
-            
+            <div>Details page</div>
         </>
     )
 }
