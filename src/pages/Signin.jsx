@@ -12,7 +12,7 @@ export default function Signin(props) {
                 <div className="w-full bg-white pb-10">
                     <form className="w-[350px] mx-auto flex flex-col items-center">
                         <Link to="/">
-                            <img className="w-32" src={darkLogo} alt="darkLogo" />
+                            <img className="w-32" src={darkLogo} alt="darkLogo"/>
                         </Link>
                         <div className="w-full border border-zinc-200 p-6">
                             <h2 className="font-titleFont text-3xl font-medium mb-4">

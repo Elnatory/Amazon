@@ -19,6 +19,7 @@ import CheckOut from './pages/Checkout';
 import Orders from './pages/Orders'
 import Brands from './pages/Brands';
 import Categories from './pages/Category'
+import NotFound from './pages/notFound/NotFound'
 
 const Layout = () => {
   return (
@@ -41,10 +42,12 @@ function App() {
           <Route path="/orders" element={<Orders />}></Route>
           <Route path="/categories" element={<Categories />}></Route>
           <Route path="/brands" element={<Brands />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
+        
       </Route>
     )
   );
