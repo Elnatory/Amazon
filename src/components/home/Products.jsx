@@ -30,12 +30,13 @@ const Products = () => {
                             <p>Category: {product.category.name}</p>
                         </span>
                         {/* ========== Product Image Start here ============== */}
-                        <div className="w-full h-auto flex items-center justify-center relative group">
+                        <div div className="w-full h-auto flex items-center justify-center relative group rounded-md" >
                             <img src={product.imageCover} alt={product.title}
-                                className="w-52 h-64 object-contain"
+                                className="w-52 h-64 object-contain transition-transform transform scale-100 group-hover:scale-110"
                             />
                             {/* ================== Product mini drop down Start here ============ */}
                         </div>
+
                         {/* ========== Product Image End here ================ */}
                         {/* ========== Product Info Start here =============== */}
                         <div className="px-4 bg-white flex flex-col gap-1 z-10">
@@ -64,12 +65,12 @@ const Products = () => {
                         <button className="w-full py-1.5 rounded-md font-titleFont font-medium text-base bg-gradient-to-tr from-orange-400 to-orange-200 border border-orange-500 hover:border-yellow-700 hover:from-orange-300 to hover:to-orange-400 active:bg-gradient-to-bl active:from-orange-400 active:to-orange-500 duration-200">
                             Buy Now
                         </button>
-                    </div>
+                    </div >
                 ))
             ) : (
                 <h1>No products :(</h1>
             )}
-        </div>
+        </div >
     );
 };
 

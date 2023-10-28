@@ -2,7 +2,7 @@ import React from 'react'
 import CarouselCategory from './CarousalCategory';
 import CarouselProduct from './CarousalProduct';
 import HomePageCard from './HomePageCard';
-import {box1, box2, box3, box4, ad, AmazonEg1} from "../../../assets/index.js"
+import {box1, box2, box3, box4, ad, AmazonEg1, music, creature, electronics, beauty} from "../../../assets/index.js"
 
 export default function Boxes(props) {
     return (
@@ -31,32 +31,25 @@ export default function Boxes(props) {
                             link={"See more"}
                         />
                         <HomePageCard
-                            title={"Shop Pet Supplies"}
-                            img={"../images/home_grid_5.jpg"}
+                            title={"Beauty picks"}
+                            img={beauty}
                             link={"See more"}
                         />
                         <HomePageCard
-                            title={"Spring Sale"}
-                            img={"../images/home_grid_6.jpg"}
+                            title={"Electronics"}
+                            img={electronics}
                             link={"See more"}
                         />
                         <HomePageCard
-                            title={"Echo Buds"}
-                            img={"../images/home_grid_7.jpg"}
+                            title={"Today's Deal"}
+                            img={creature}
                             link={"See more"}
                         />
                         <HomePageCard
-                            title={"Family Plan: 3 months free"}
-                            img={"../images/home_grid_8.jpg"}
+                            title={"Musical Instruments | Wide selection"}
+                            img={music}
                             link={"See more"}
                         />
-                        <div className="m-3 pt-8">
-                            <img
-                                className="xl:hidden"
-                                src={"../images/banner_image_2.jpg"}
-                                alt="Banner 2"
-                            />
-                        </div>
                     </div>
                     <CarouselProduct />
                     <CarouselCategory />

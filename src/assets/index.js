@@ -27,8 +27,12 @@ import AmazonEgypt from "./AmazonEgypt.png";
 import box1 from "./boxes/XCM_Manual_1576074_5615296_379x304_1X._SY304_CB589053789_.jpg";
 import box2 from "./boxes/XCM_Manual_1627823_5867420_379x304_1X._SY304_CB577918761_.jpg";
 import box3 from "./boxes/XCM_Manual_1643902_5927428_379x304_1X._SY304_CB576481351_.jpg";
-import box4 from "./boxes/XCM_Manual_1466738_4981387_379x304_1X._SY304_CB609258982_.jpg"
-import ad from "./advertizement.jpg"
+import box4 from "./boxes/XCM_Manual_1466738_4981387_379x304_1X._SY304_CB609258982_.jpg";
+import ad from "./advertizement.jpg";
+import beauty from "./boxes/Fuji_Dash_Beauty_1x._SY304_CB432774351_.jpg";
+import electronics from "./boxes/Fuji_Dash_Electronics_1x._SY304_CB432774322_.jpg";
+import creature from "./boxes/71xaKlYdiA.jpg";
+import music from "./boxes/music.jpg";
 
 
 export {
@@ -63,4 +67,8 @@ export {
   box3,
   box4,
   ad,
+  beauty,
+  electronics,
+  creature,
+  music,
 };
