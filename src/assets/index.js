@@ -1,5 +1,6 @@
 import logo from "./logo.png";
-import darkLogo from "./darkLoglo.png";
+import darkLogo from "./svgLogo.svg";
+import notFound from "./notFound.gif"
 import bannerImgOne from "./banner/bannerImgTwo.jpg";
 import bannerImgTwo from "./banner/bannerImgOne.jpg";
 import bannerImgThree from "./banner/bannerImgThree.jpg";
@@ -43,6 +44,7 @@ import deal7 from "./deals/18.jpg";
 
 
 export {
+  notFound,
   logo,
   darkLogo,
   bannerImgOne,
