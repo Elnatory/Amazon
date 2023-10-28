@@ -1,23 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import React from "react";
-import { deal1,deal2,deal3,deal4,deal5,deal6,deal7 } from "../../../assets";
+import { deal1, deal2, deal3, deal4, deal5, deal6, deal7 } from "../../../assets";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
 const CarouselCategory = () => {
-    const navigate = useNavigate();
-    const searchCategory = (category) => {
-        navigate({
-            pathname: "search",
-            search: `${createSearchParams({
-                category: `${category}`,
-                searchTerm: ``,
-            })}`,
-        });
-    };
-
     return (
         <div className="bg-white m-3">
             <div className="text-2xl font-semibold p-3">Best Sellers</div>
