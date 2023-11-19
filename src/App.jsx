@@ -21,8 +21,10 @@ import Brands from './pages/Brands';
 import Categories from './pages/Category'
 import NotFound from './pages/notFound/NotFound'
 import SubCategory from './pages/Sub-Category'
-import Details from './pages/Details'
+import Details from './pages/details/Details'
 import Help from './pages/Help';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const Layout = () => {
   return (
@@ -41,11 +43,11 @@ function App() {
       <Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
-          <Route path='/details/:id' element={<Details />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/:catName" element={<Categories />}></Route>
+          <Route path='/:catName/:sub' element={<SubCategory />}></Route>
+          <Route path='/details/:id/:sim?' element={<Details />}></Route>
           <Route path="/orders" element={<Orders />}></Route>
-          <Route path="/categories" element={<Categories />}></Route>
-          <Route path='/subcategory' element={<SubCategory />}></Route> 
           <Route path="/brands" element={<Brands />}></Route>
           <Route path="/help" element={<Help />}></Route>
         </Route>
@@ -58,7 +60,9 @@ function App() {
   );
   return (
     <div className="font-bodyFont bg-gray-100">
-      <RouterProvider router={router}></RouterProvider>
+      <Provider store={store}>
+        <RouterProvider router={router}></RouterProvider>
+      </Provider>
     </div>
   );
 }

@@ -1,0 +1,133 @@
+.prd-body {
+    text-align: center;
+    font-size: 14px;
+    /* margin: 15%; */
+    margin-top: -20px;
+    width: 100%;
+    max-height: 2em;
+    max-lines: 2;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+}
+.prd-name{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-lines: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.prd-name a {
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    color: black;
+}
+
+.curr-price {
+    color: black;
+}
+
+.prev-price {
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+.pct-discount {
+    margin-top: -10px;
+
+    & span {
+        position: relative;
+        top: -20px;
+        left: -10px;
+        font-size: 13px;
+        background-color: white;
+    }
+
+}
+
+.card-border {
+    position: absolute;
+    z-index: 9;
+    background-color: white;
+}
+
+.box {
+    margin: 10px;
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1),
+        2px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    min-width: 250px;
+    height: 300px;
+    /* padding: 0px 10px; */
+    /* margin-right: 10px; */
+    flex-direction: column;
+    transform: translateX(0%);
+    transition: transform 1s;
+    background-color: white;
+}
+
+.todayDeals_product_image {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 15px;
+    
+}
+
+.today_deals_product_item img,
+.img {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+.today_deals_product_item p {
+    justify-self: flex-end;
+}
+
+.discount_Contaienr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.discount_Contaienr span {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: rgb(211, 30, 84);
+    text-decoration: none;
+}
+
+.discount_Contaienr span:first-child {
+    background-color: rgb(211, 30, 84);
+    padding: 5px 10px;
+    color: white;
+    font-weight: 550;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#ends {
+    color: rgb(211, 30, 84);
+    background-color: transparent;
+    font-weight: 550;
+    text-decoration: none;
+    font-size: 12px;
+    align-items: center;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

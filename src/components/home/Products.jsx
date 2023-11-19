@@ -30,15 +30,15 @@ const Products = () => {
                             <p>Category: {product.category.name}</p>
                         </span>
                         {/* ========== Product Image Start here ============== */}
-                        <div div className="w-full h-auto flex items-center justify-center relative group rounded-md" >
+                        <div className="w-full h-auto flex items-center justify-center relative group rounded-md" >
                             <img src={product.imageCover} alt={product.title}
                                 className="w-52 h-64 object-contain transition-transform transform scale-100 group-hover:scale-110"
                             />
                             {/* ================== Product mini drop down Start here ============ */}
                         </div>
 
-                        {/* ========== Product Image End here ================ */}
-                        {/* ========== Product Info Start here =============== */}
+                        {/* ========== Product Image End here ================================ */}
+                        {/* ========== Product Info Start here =============================== */}
                         <div className="px-4 bg-white flex flex-col gap-1 z-10">
                             <div className="flex items-center justify-between">
                                 <h2 className="font-titleFont tracking-wide text-lg text-amazon_blue font-medium">

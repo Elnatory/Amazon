@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getCategoriesData } from '../firebase/getCategory';
 const Categories = () => {
     const [categories, setCategories] = useState([]);

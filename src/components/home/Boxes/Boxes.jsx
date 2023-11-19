@@ -2,6 +2,7 @@ import React from 'react'
 import CarouselCategory from './CarousalCategory';
 import HomePageCard from './HomePageCard';
 import {box1, box2, box3, box4, ad, AmazonEg1, music, creature, electronics, beauty} from "../../../assets/index.js"
+import Slides from '../../slides/slides.jsx';
 
 export default function Boxes(props) {
     return (
@@ -51,6 +52,7 @@ export default function Boxes(props) {
                         />
                     </div>
                     <CarouselCategory />
+                    <Slides />
                     <div>
                         <img
                             className="h-[100%] m-auto p-3 w-full"
