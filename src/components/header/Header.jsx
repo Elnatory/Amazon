@@ -9,8 +9,14 @@ import { allItems } from "../../constants";
 import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getProductsData } from "../../firebase/getProducts";
 
 const Header = () => {
+  const products = useSelector((state) => state.amazonReducer.products);
+  const [loading, setLoading] = useState(true);
+
+  const dispatch = useDispatch();
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
   useEffect(() => {
@@ -43,7 +49,8 @@ const Header = () => {
         {/* ===================== Header Deliver End here ======================== */}
         {/* ===================== Header Search Start here ======================== */}
         <div className="hidden lgl:inline-flex h-10 rounded-md flex-grow relative">
-          <span onClick={() => setShowAll(!showAll)}
+          <span
+            onClick={() => setShowAll(!showAll)}
             className="w-14 h-full bg-gray-200 hover:bg-gray-300 border-2 cursor-pointer duration-300 text-sm text-amazon_blue font-titleFont flex items-center justify-center rounded-tl-md rounded-bl-md"
           >
             All{" "}
@@ -71,7 +78,8 @@ const Header = () => {
 
           <input
             className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
-            type="text" placeholder="Search Amazon.eg"
+            type="text"
+            placeholder="Search Amazon.eg"
           />
           <span className="w-12 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
             <SearchIcon />
@@ -91,9 +99,7 @@ const Header = () => {
         </div>
         <Link to="/signin">
           <div className="flex flex-col items-start justify-center headerHover">
-            <p className="text-xs text-lightText font-light">
-              Hello, sign in
-            </p>
+            <p className="text-xs text-lightText font-light">Hello, sign in</p>
             <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
               Accounts & Lists{" "}
               <span>
@@ -108,22 +114,29 @@ const Header = () => {
         <Link to="/orders">
           <div className="hidden mdl:flex flex-col items-start justify-center headerHover">
             <p className="text-xs text-lightText font-light">Returns</p>
-            <p className="text-sm font-semibold -mt-1 text-whiteText">& Orders</p>
+            <p className="text-sm font-semibold -mt-1 text-whiteText">
+              & Orders
+            </p>
           </div>
         </Link>
         {/* ===================== Header Orders End here ========================== */}
         {/* ===================== Header Cart Start here ========================== */}
         <Link to="/cart">
           <div className="relative flex items-center headerHover">
-            <img src={CartIcon} alt="cartImg" className="w-auto object-cover h-8" />
-            <span className="absolute text-amazon_yellow text-sm top-0 left-1/3 transform -translate-x-1/2 font-semibold ml-1" style={{ fontSize: "16px" }}
-            >0</span>
+            <img
+              src={CartIcon}
+              alt="cartImg"
+              className="w-auto object-cover h-8"
+            />
+            <span
+              className="absolute text-amazon_yellow text-sm top-0 left-1/3 transform -translate-x-1/2 font-semibold ml-1"
+              style={{ fontSize: "16px" }}
+            >
+              {products.length > 0 ? products.length : 0}
+            </span>
             <p className="text-sm text-white font-bold">Cart</p>
           </div>
         </Link>
-
-
-
 
         {/* ===================== Header Cart End here ============================ */}
         {/* ===================== Header Logout Start here ======================== */}

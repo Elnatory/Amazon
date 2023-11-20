@@ -16,7 +16,7 @@ export default function Slides(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(GETallProducts());
+    dispatch(GETallProducts());
   }, []);
 
   const [isActive, setIsActive] = useState(false);
@@ -67,32 +67,42 @@ export default function Slides(props) {
   };
   return (
     <>
+      <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
+        <h1>Shop Today's Deals</h1>
+        <p>
+          <a href="#">See all deals</a>
+        </p>
+      </div>
       <div
-        style={{ backgroundColor: "white" }}
+        
         className="bg-amazonclone-background"
       >
-        <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
-          <h1>Shop Today's Deals</h1>
-          <p>
-            <a href="#">See all deals</a>
-          </p>
-        </div>
-        <div className=" bg-white z-30 m-3">
+        <div className="z-30 m-3">
           <Swiper
             className="swiper swiper2"
             modules={[Virtual, Navigation, Pagination]}
             onSwiper={setSwiperRef}
             slidesPerView={5}
             centeredSlides={true}
-            spaceBetween={10}
+            spaceBetween={5}
             pagination={pagination1}
             navigation={{
               nextEl: ".custom-next",
               prevEl: ".custom-prev",
             }}
             virtual
-            initialSlide={4}
+            initialSlide={5}
             breakpoints={swiperBreakPoints2}
+            renderVirtualSlides={(swiper) => {
+              return allProducts.map((prd, index) => (
+                <SwiperSlide
+                  key={`virtual-slide-${index}`}
+                  virtualIndex={index}
+                >
+                  <Card prd={prd} />
+                </SwiperSlide>
+              ));
+            }}
           >
             {allProducts.map((prd) => (
               <SwiperSlide key={prd.id}>
