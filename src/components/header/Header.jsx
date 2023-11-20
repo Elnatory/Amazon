@@ -16,6 +16,7 @@ import './Search.css';
 const Header = () => {
   const products = useSelector((state) => state.amazonReducer.products);
   const [loading, setLoading] = useState(true);
+  const [prds, setPrds] = useState([]);
   const [input, setInput] = useState("");
   const navgate = useNavigate();
 
@@ -30,6 +31,10 @@ const Header = () => {
       }
     });
   }, [ref, showAll]);
+
+  useEffect(()=>{
+    getProductsData(setPrds,setLoading);
+  })
 
   const onTyping= (val)=>{
     setInput(val);
@@ -111,7 +116,7 @@ const Header = () => {
     </span>
   </div>
   <div className="dropDown w-full">
-    {products
+    {prds
       .filter((val) => {
         const searchTxt = input.toLowerCase();
         const productTitle = val.title.toLowerCase();

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { getProductsData } from '../firebase/getProducts';
 import { getSearchData } from '../firebase/getSearchResults';
 import SearchResultBox from '../components/SearchResultsBox';
+import FilterPanel from '../components/filterPanel/FilterPanel';
 
 
 const SearchResults = () => {
@@ -26,7 +27,7 @@ const SearchResults = () => {
         <div className='container mx-0'>
           <div className='grid grid-cols-12 gap-4'>
             <div className='col-span-4'>
-              <p>kaaaaaaaaak</p>
+              <FilterPanel/>
             </div>
             <div className='flex justify-evenly col-span-8'>
               {searchResults.map((result, index) => (

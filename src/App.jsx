@@ -51,11 +51,11 @@ function App() {
           <Route path="/orders" element={<Orders />}></Route>
           <Route path="/brands" element={<Brands />}></Route>
           <Route path="/help" element={<Help />}></Route>
+        <Route path="/results" element={<SearchResults />}></Route>
         </Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
-        <Route path="/results" element={<SearchResults />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )
