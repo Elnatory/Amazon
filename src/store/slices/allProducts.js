@@ -53,7 +53,7 @@ const allProducts = createSlice({
     extraReducers: (builder) => {
         builder.addCase(GETallProducts.fulfilled, (state, action) => {
             state.allProducts = action.payload;
-            console.log('Fetched products:', state.allProducts);
+            // console.log('Fetched products:', state.allProducts);
         });
     },
 });

@@ -25,6 +25,7 @@ import Details from './pages/details/Details'
 import Help from './pages/Help';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import SearchResults from './pages/SearchResults'
 
 const Layout = () => {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
+        <Route path="/results" element={<SearchResults />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )

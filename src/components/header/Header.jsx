@@ -8,15 +8,19 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { allItems } from "../../constants";
 import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 import { getProductsData } from "../../firebase/getProducts";
+import './Search.css';
 
 const Header = () => {
   const products = useSelector((state) => state.amazonReducer.products);
   const [loading, setLoading] = useState(true);
+  const [input, setInput] = useState("");
+  const navgate = useNavigate();
 
-  const dispatch = useDispatch();
+
+  // const dispatch = useDispatch();
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
   useEffect(() => {
@@ -26,6 +30,23 @@ const Header = () => {
       }
     });
   }, [ref, showAll]);
+
+  const onTyping= (val)=>{
+    setInput(val);
+    console.log(input);
+
+  }
+
+  const handelSearch=(searchTxt)=>{
+    setInput(searchTxt);
+    console.log(input);
+    if(searchTxt==='' || searchTxt===undefined || searchTxt===null)return;
+    navgate(`/results?query=${encodeURIComponent(searchTxt)}`);
+    // console.log(input);
+    searchTxt='';
+    setInput("");
+  }
+
   return (
     <div className="sticky top-0 z-50 bg-black">
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
@@ -76,14 +97,33 @@ const Header = () => {
             </div>
           )}
 
-          <input
-            className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
-            type="text"
-            placeholder="Search Amazon.eg"
-          />
-          <span className="w-12 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
-            <SearchIcon />
-          </span>
+<div className="w-full flex-grow column">
+  <div className="flex w-full flex-grow items-center">
+    <input
+      className="h-10 w-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
+      type="search"
+      placeholder="Search Amazon.eg"
+      value={input}
+      onChange={(e) => onTyping(e.target.value)}
+    />
+    <span className="w-10 h-10 flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
+      <SearchIcon onClick={() => handelSearch(input)} />
+    </span>
+  </div>
+  <div className="dropDown w-full">
+    {products
+      .filter((val) => {
+        const searchTxt = input.toLowerCase();
+        const productTitle = val.title.toLowerCase();
+        return searchTxt && productTitle.startsWith(searchTxt) && productTitle !== searchTxt;
+      }).slice(0, 5)
+      .map((item,index) => (
+        <div className="dropDown-row" key={index} onClick={() => handelSearch(item.title)}>
+          {item.title}
+        </div>
+      ))}
+  </div>
+</div>
         </div>
         {/* ===================== Header Search End here ========================== */}
         {/* ===================== Header Signin Start here ======================== */}
