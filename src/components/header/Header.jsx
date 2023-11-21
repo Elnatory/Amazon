@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useContext } from "react";
 import { useSelector } from "react-redux";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
@@ -11,12 +11,16 @@ import HeaderBottom from "./HeaderBottom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductsData } from "../../firebase/getProducts";
+import { authContext } from "../../Contexts/isAuth";
+import {logout} from "../../firebase/auth"
+import MenuPopupState from '../../utils/Dropdown';
 
 const Header = () => {
   const products = useSelector((state) => state.amazonReducer.products);
   const [loading, setLoading] = useState(true);
-
-  const dispatch = useDispatch();
+const {isLogin,setLogin,displayName }= useContext(authContext)
+// const navigate = useNavigate();
+const dispatch = useDispatch();
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
   useEffect(() => {
@@ -26,6 +30,15 @@ const Header = () => {
       }
     });
   }, [ref, showAll]);
+
+  // const handleLogout = async () => {
+  //   await logout();
+  //   localStorage.removeItem('token');
+  //   setLogin(false); 
+  //   navigate('/signin');
+  // };
+
+
   return (
     <div className="sticky top-0 z-50 bg-black">
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
@@ -97,17 +110,54 @@ const Header = () => {
             </span>
           </p>
         </div>
-        <Link to="/signin">
+                    {(isLogin)?(
+                    // <: onClick={async ()=>{
+                    //  await logout()
+                    //   localStorge.removeItem("token")
+                    //   setLogin(false)
+                    //   // navigate("/signin")
+                    // } }>
           <div className="flex flex-col items-start justify-center headerHover">
-            <p className="text-xs text-lightText font-light">Hello, sign in</p>
+            <p className="text-xs text-lightText font-light"></p>
+             
+            <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
+              
+              <span>
+              <MenuPopupState logout={logout} setLogin={setLogin}/>
+              </span>
+            </p>
+          </div>)
+        :(<Link to="/signin">
+          <div className="flex flex-col items-start justify-center headerHover">
+            <p className="text-xs text-lightText font-light">Hello,sign in </p>
             <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
               Accounts & Lists{" "}
+              
+              <span>
+              </span>
+            </p>
+          </div>
+        </Link> )}
+
+{/* 
+
+        
+
+        <Link to="/signin">
+          <div className="flex flex-col items-start justify-center headerHover">
+            <p className="text-xs text-lightText font-light">Hello,</p>
+            <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
+              
               <span>
                 <ArrowDropDownOutlinedIcon />
               </span>
             </p>
           </div>
-        </Link>
+        </Link> */}
+
+
+
+
 
         {/* ===================== Header Signin End here ========================== */}
         {/* ===================== Header Orders Start here ======================== */}

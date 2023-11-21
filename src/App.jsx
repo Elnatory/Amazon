@@ -3,6 +3,8 @@ import React from 'react'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Products from './components/home/Products'
+import  { useState } from 'react'
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -25,6 +27,10 @@ import Details from './pages/details/Details'
 import Help from './pages/Help';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import { AuthProvider } from "./Contexts/isAuth";
+import { useEffect } from 'react'
+import { SquareLoader } from 'react-spinners'
+
 
 const Layout = () => {
   return (
@@ -38,6 +44,30 @@ const Layout = () => {
 };
 
 function App() {
+
+  const[loading ,setLoading]=useState(false);
+
+   const override = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '80vh',
+  };
+
+useEffect(() =>{
+  setLoading(true);
+  setTimeout(()=>{
+    setLoading(false);
+  },3000);
+},[])
+
+
+
+
+  const[isLogin,setLogin]=useState((localStorage.getItem('token'))?true:false)
+  // const [user, setUser] = useState();
+  const [displayName, setDisplayName] = useState("");
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
@@ -59,10 +89,34 @@ function App() {
     )
   );
   return (
-    <div className="font-bodyFont bg-gray-100">
-      <Provider store={store}>
+
+    <div >
+      {
+        loading ?
+
+        <div style={override}>
+
+        <SquareLoader  
+        color={"#ffcf00"}
+        loading={loading}
+        // css={override} 
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        
+      />
+
+
+      </div>
+        :(
+        <AuthProvider value={{isLogin,setLogin,displayName, setDisplayName}}>
+        <Provider store={store}>
         <RouterProvider router={router}></RouterProvider>
-      </Provider>
+        </Provider>
+        </AuthProvider>
+        )
+      }
+      
     </div>
   );
 }
