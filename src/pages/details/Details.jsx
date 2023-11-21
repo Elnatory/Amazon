@@ -101,21 +101,26 @@ export default function Details(props) {
     "Pink",
   ];
 
-  useEffect(() => {
-    const imageContainer = document.querySelector(".image-container");
+  const imageContainerRef = useRef(null);
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    imageContainerRef.current.style.top = `${Math.min(scrollY, 300)}px`;
+  };
 
-      imageContainer.style.top = `${Math.min(scrollY, 300)}px`;
-    };
+  const imageContainer = document.querySelector(".image-container");
+  imageContainerRef.current = imageContainer;
 
+  if (imageContainer) {
     window.addEventListener("scroll", handleScroll);
+  }
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
 
   const [swiperRef, setSwiperRef] = useState(null);
   const appendNumber = useRef(500);
