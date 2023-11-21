@@ -71,6 +71,7 @@
     transform: translateX(0%);
     transition: transform 1s;
     background-color: white;
+    border-radius: 10px;
 }
 
 .todayDeals_product_image {
