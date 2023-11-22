@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getProductsData } from '../firebase/getProducts';
 import { getSearchData } from '../firebase/getSearchResults';
-import SearchResultBox from '../components/SearchResultsBox';
+import SearchResultBox from '../components/serachResultsBox/SearchResultsBox';
 import FilterPanel from '../components/filterPanel/FilterPanel';
 
 
@@ -14,6 +13,8 @@ const SearchResults = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getSearchData(searchQuery, setSearchResults, setLoading);
+    console.log('searchResults', searchResults);
+    console.log('loading');
   }, [searchQuery])
 
   return (
@@ -25,13 +26,13 @@ const SearchResults = () => {
       ) : (
 
         <div className='container mx-0'>
-          <div className='grid grid-cols-12 gap-4'>
+          <div className='grid grid-cols-12 gap-6'>
             <div className='col-span-4'>
               <FilterPanel/>
             </div>
             <div className='flex justify-evenly col-span-8'>
               {searchResults.map((result, index) => (
-                <SearchResultBox key={index} result={result} className='' />
+                <SearchResultBox key={index} result={result}/>
                 // Customize this based on your actual data structure
               ))}
             </div>

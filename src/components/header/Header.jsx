@@ -104,9 +104,11 @@ const Header = () => {
 
 <div className="w-full flex-grow column">
   <div className="flex w-full flex-grow items-center">
-    <input
+    <input autoComplete="off"
       className="h-10 w-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
       type="search"
+      name="search"
+      id="search"
       placeholder="Search Amazon.eg"
       value={input}
       onChange={(e) => onTyping(e.target.value)}
