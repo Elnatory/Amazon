@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import SideNavContent from "./SideHeader";
-import { bottomHeader, bottomHeader2 } from "../../assets";
-import Slider from "react-slick";
+// import { bottomHeader, bottomHeader2 } from "../../assets";
+// import Slider from "react-slick";
 
 export default function HeaderBottom(props) {
     const [sidebar, setSidebar] = useState(false);
@@ -61,7 +61,7 @@ export default function HeaderBottom(props) {
                         <li className="hidden md:inline-flex headerHover">Books</li>
                     </ul>
                 </div>
-                <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                {/* <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                     <Slider {...settings}>
                         <div>
                             <img className="headerHover" src={bottomHeader} alt="" width="350" />
@@ -70,7 +70,7 @@ export default function HeaderBottom(props) {
                             <img className="headerHover" src={bottomHeader2} alt="" width="350" />
                         </div>
                     </Slider>
-                </div>
+                </div> */}
                 {/* ======================= List Items End here ========================== */}
                 {/* ======================= SideBar Start here =========================== */}
                 {sidebar && (

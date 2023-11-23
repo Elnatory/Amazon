@@ -41,9 +41,11 @@ import deal4 from "./deals/15.jpg";
 import deal5 from "./deals/16.jpg";
 import deal6 from "./deals/17.jpg";
 import deal7 from "./deals/18.jpg";
+import amazon from'./amazon-ar21.svg';
 
 
 export {
+  amazon,
   notFound,
   logo,
   darkLogo,
