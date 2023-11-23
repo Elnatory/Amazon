@@ -10,7 +10,6 @@ export default function Home(props) {
       <Banner />
       <div className="w-full bg-gray-100 -mt-16 lgl:-mt-24 xl:-mt-36 py-20 lg:py-0">
         <Boxes />
-        <Slides />
         <Products />
       </div>
     </>

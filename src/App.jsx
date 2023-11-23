@@ -3,6 +3,8 @@ import React from 'react'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Products from './components/home/Products'
+import  { useState } from 'react'
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -30,6 +32,12 @@ import AddressForm from './components/financialForm/AddressForm'
 import PaymentForm from './components/financialForm/PaymentForm'
 
 
+import { AuthProvider } from "./Contexts/isAuth";
+import { useEffect } from 'react'
+import { SquareLoader } from 'react-spinners'
+
+import BrandsDetails from "./pages/BrandsDetails";
+
 const Layout = () => {
   return (
     <div>
@@ -42,17 +50,45 @@ const Layout = () => {
 };
 
 function App() {
+
+  const[loading ,setLoading]=useState(false);
+
+   const override = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '80vh',
+  };
+
+useEffect(() =>{
+  setLoading(true);
+  setTimeout(()=>{
+    setLoading(false);
+  },3000);
+},[])
+
+
+
+
+  const[isLogin,setLogin]=useState((localStorage.getItem('token'))?true:false)
+  // const [user, setUser] = useState();
+  const [displayName, setDisplayName] = useState("");
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/:catName" element={<Categories />}></Route>
-          <Route path='/:catName/:sub' element={<SubCategory />}></Route>
-          <Route path='/details/:id/:sim?' element={<Details />}></Route>
+          <Route path="/categories" element={<Categories />}></Route>
+          <Route
+            path="categories/:catName/:sub"
+            element={<SubCategory />}
+          ></Route>
+          <Route path="/details/:id/:sim?" element={<Details />}></Route>
           <Route path="/orders" element={<Orders />}></Route>
           <Route path="/brands" element={<Brands />}></Route>
+          <Route path="/brands/:brandSlug" element={<BrandsDetails />}></Route>
           <Route path="/help" element={<Help />}></Route>
         <Route path="/results" element={<SearchResults />}></Route>
         </Route>
@@ -66,13 +102,36 @@ function App() {
     )
   );
   return (
-    <div className="font-bodyFont bg-gray-100">
-      <Provider store={store}>
+
+    <div >
+      {
+        loading ?
+
+        <div style={override}>
+
+        <SquareLoader  
+        color={"#ffcf00"}
+        loading={loading}
+        // css={override} 
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        
+      />
+
+
+      </div>
+        :(
+        <AuthProvider value={{isLogin,setLogin,displayName, setDisplayName}}>
+        <Provider store={store}>
         <RouterProvider router={router}></RouterProvider>
-      </Provider>
+        </Provider>
+        </AuthProvider>
+        )
+      }
+      
     </div>
   );
 }
 
-export default App
-
+export default App;

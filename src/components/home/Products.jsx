@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { getProductsData } from "../../firebase/getProducts";
 import StarIcon from "@mui/icons-material/Star";
 import ApiIcon from "@mui/icons-material/Api";
@@ -7,11 +7,14 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { addToCart } from "../../store/slices/amazonSlice";
 import { useDispatch } from "react-redux";
+import { authContext } from "../../Contexts/isAuth";
+import { Link } from "react-router-dom";
 
 const Products = () => {
+  const { isLogin, setLogin } = useContext(authContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  // const navigate=useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     getProductsData(setProducts, setLoading);
@@ -67,7 +70,30 @@ const Products = () => {
                 <StarIcon />
               </div>
             </div>
-            <button
+
+            {isLogin ? 
+              <button
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      id: product._id,
+                      title: product.title,
+                      description: product.description,
+                      price: product.price,
+                      category: product.category,
+                      image: product.imageCover,
+                      quantity: 1,
+                    })
+                  )
+                }
+                className="w-full py-1.5 rounded-md mt-3 font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
+              >
+                Add to Cart
+              </button>
+             : <Link to="/Signin">
+              <button  className="w-full py-1.5 rounded-md mt-3 font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200">addtocart</button>
+              </Link> }
+            {/* <button
               onClick={() =>
                 dispatch(
                   addToCart({
@@ -84,7 +110,7 @@ const Products = () => {
               className="w-full py-1.5 rounded-md mt-3 font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
             >
               Add to Cart
-            </button>
+            </button> */}
             <button className="w-full py-1.5 rounded-md font-titleFont font-medium text-base bg-gradient-to-tr from-orange-400 to-orange-200 border border-orange-500 hover:border-yellow-700 hover:from-orange-300 to hover:to-orange-400 active:bg-gradient-to-bl active:from-orange-400 active:to-orange-500 duration-200">
               Buy Now
             </button>

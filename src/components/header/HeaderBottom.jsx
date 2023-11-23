@@ -1,14 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useContext } from "react";
 import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-// import { useSelector } from "react-redux";
 import SideNavContent from "./SideHeader";
-// import { bottomHeader, bottomHeader2 } from "../../assets";
-// import Slider from "react-slick";
+import { authContext } from "../../Contexts/isAuth";
+
 
 export default function HeaderBottom(props) {
+
+    const {displayName }= useContext(authContext)
+
     const [sidebar, setSidebar] = useState(false);
     const ref = useRef();
     useEffect(() => {
@@ -88,7 +90,7 @@ export default function HeaderBottom(props) {
                                     <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                                         <AccountCircleIcon />
                                         <h3 className="font-titleFont font-bold text-lg tracking-wide">
-                                            Hello, Sign In
+                                            Hello, {displayName}
                                         </h3>
                                     </div>
                                     {/* ============================ Content & Devices Start here ================ */}

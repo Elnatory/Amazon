@@ -10,7 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { emptyCart } from "../assets";
 import { Link } from "react-router-dom";
-import Slides from '../components/slides/slides'
+import Slides from "../components/slides/slides";
 
 const Cart = () => {
   const products = useSelector((state) => state.amazonReducer.products);
@@ -36,6 +36,9 @@ const Cart = () => {
                 <h6 className="text-xl self-end">Price</h6>
               </div>
               <p className="text-sm text-gray-500 border-b-[1px]  border-b-gray-400">Deselected items</p>
+              <p className="text-sm text-gray-500 border-b-[1px]  border-b-gray-400">
+                Deselected items
+              </p>
               {/* ====================== Cart title End here ========================= */}
               {/* ====================== Products Start here ========================= */}
               <div>
@@ -59,6 +62,9 @@ const Cart = () => {
                         <p className="text-base">
                           Unit Price:{" "}
                           <span className="font-semibold">EGP {item.price}.00</span>
+                          <span className="font-semibold">
+                            EGP {item.price}.00
+                          </span>
                         </p>
                         <div className="bg-[#F0F2F2] flex justify-center items-center gap-2 w-36 py-1 text-center drop-shadow-lg rounded-md">
                           <p className="text-base font-normal">Qty:</p>
@@ -102,29 +108,47 @@ const Cart = () => {
               </div>
               {/* ====================== Products End here =========================== */}
               <div onClick={() => dispatch(resetCart())} className="w-full py-4">
-                <button className="px-10 py-2 bg-red-500 hover:bg-red-600 active:bg-red-500 text-white rounded-lg font-titleFont font-semibold text-lg tracking-wide">
-                  Clear Cart
-                </button>
+                <div
+                  onClick={() => dispatch(resetCart())}
+                  className="w-full py-4"
+                >
+                  <button className="px-10 py-2 bg-red-500 hover:bg-red-600 active:bg-red-500 text-white rounded-lg font-titleFont font-semibold text-lg tracking-wide">
+                    Clear Cart
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="col-span-5 md:col-span-3 lg:col-span-2 xl:col-span-1 mx-auto bg-white h-52 flex items-center p-4">
-              <div>
-                <p className="flex gap-2 items-start text-sm">
-                  <span>
-                    <CheckCircleIcon className="bg-white text-green-500 rounded-full" />
-                  </span>
-                  Your order qualifies for FREE Shipping Choose this option at checkout. See details....
+              <div className="col-span-5 md:col-span-3 lg:col-span-2 xl:col-span-1 mx-auto bg-white h-52 flex items-center p-4">
+                <div>
+                  <p className="flex gap-2 items-start text-sm">
+                    <span>
+                      <CheckCircleIcon className="bg-white text-green-500 rounded-full" />
+                    </span>
+                    Your order qualifies for FREE Shipping Choose this option at checkout. See details....
+                  </p>
+                  <div>
+                    <p className="font-semibold px-6 py-1 flex items-center justify-between">
+                      Subtotal: <span className="text-lg font-bold">EGP {totalAmt}</span>
+                    </p>
+                  </div>
+                  <Link to="/checkout">
+                    <button disabled={products.length === 0} className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+                      Proceed to Buy
+                    </button>
+                  </Link>
+                  <p>
+                  Your order qualifies for FREE Shipping Choose this option at
+                  checkout. See details....
                 </p>
+                </div>
                 <div>
                   <p className="font-semibold px-6 py-1 flex items-center justify-between">
-                    Subtotal: <span className="text-lg font-bold">EGP {totalAmt}</span>
+                    Subtotal:{" "}
+                    <span className="text-lg font-bold">EGP {totalAmt}</span>
                   </p>
                 </div>
-                <Link to="/checkout">
-                  <button disabled={products.length==0} className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
-                    Proceed to Buy
-                  </button>
-                </Link>
+                <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+                  Proceed to Buy
+                </button>
               </div>
             </div>
           </div>
