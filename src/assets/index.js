@@ -42,6 +42,8 @@ import deal5 from "./deals/16.jpg";
 import deal6 from "./deals/17.jpg";
 import deal7 from "./deals/18.jpg";
 import amazon from'./amazon-ar21.svg';
+import adds from "./adds.jpg";
+
 
 
 export {
@@ -89,4 +91,5 @@ export {
   deal5,
   deal6,
   deal7,
+  adds,
 };

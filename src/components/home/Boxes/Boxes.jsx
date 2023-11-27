@@ -1,8 +1,9 @@
 import React from 'react'
 import CarouselCategory from './CarousalCategory';
 import HomePageCard from './HomePageCard';
-import {box1, box2, box3, box4, ad, AmazonEg1, music, creature, electronics, beauty} from "../../../assets/index.js"
+import {box1, box2, box3, box4, ad, AmazonEg1, music, creature, electronics, beauty, adds} from "../../../assets/index.js"
 import Slides from '../../slides/slides.jsx';
+import FadeIn from '../../../utils/fade.jsx';
 
 export default function Boxes(props) {
     return (
@@ -53,13 +54,15 @@ export default function Boxes(props) {
                     </div>
                     <CarouselCategory />
                     <Slides />
-                    <div>
+                    <FadeIn>
                         <img
                             className="h-[100%] m-auto p-3 w-full"
                             src={ad}
                             alt="Advertisement"
                         />
+                    </FadeIn>
                     </div>
+                    <div>
                 </div>
             </div>
         </>

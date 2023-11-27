@@ -61,12 +61,12 @@ function App() {
     minHeight: '80vh',
   };
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, [])
+useEffect(() =>{
+  setLoading(true);
+  setTimeout(()=>{
+    setLoading(false);
+  },2000);
+},[])
 
 
 
@@ -107,18 +107,15 @@ function App() {
     <div >
       {
         loading ?
-
-          <div style={override}>
-
-            <SquareLoader
-              color={"#ffcf00"}
-              loading={loading}
-              // css={override} 
-              size={50}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-
-            />
+        <div style={override}>
+        <SquareLoader  
+        color={"#ffcf00"}
+        loading={loading}
+        // css={override} 
+        size={100}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
 
 
           </div>
