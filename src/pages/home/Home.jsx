@@ -1,4 +1,3 @@
-// Home.js
 import React, { lazy, Suspense, useEffect, useState, useRef } from "react";
 import FadeIn from '../../utils/fade';
 
