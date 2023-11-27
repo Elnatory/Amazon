@@ -2,7 +2,8 @@ import './App.css'
 import React from 'react'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import { useState } from 'react'
+// import Products from './components/home/Products'
+import  { useState,useContext } from 'react'
 
 import {
   createBrowserRouter,
@@ -31,13 +32,15 @@ import AddressForm from './components/financialForm/AddressForm'
 import PaymentForm from './components/financialForm/PaymentForm'
 
 
-import { AuthProvider } from "./Contexts/isAuth";
+import { AuthProvider,authContext } from "./Contexts/isAuth";
 import { useEffect } from 'react'
 import { SquareLoader } from 'react-spinners'
 
 import BrandsDetails from "./pages/BrandsDetails";
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
+import DashboardHeader from './pages/userDashbourd/userDashbourd'
+// import {authContext} from '../Contexts/isAuth'
 const Layout = () => {
   return (
     <div>
@@ -50,16 +53,20 @@ const Layout = () => {
 };
 
 function App() {
-
-  const [loading, setLoading] = useState(false);
-
-  const override = {
+  const[loading ,setLoading]=useState(false);
+   const override = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '80vh',
+    backgroundColor: 'transparent',
+    // backgroundColor: 'transparent',
+    backgroundImage: `url('./assets/favicon.ico')`, // Replace 'your_image_url_here' with the actual image URL
+    backgroundSize: 'cover', // Adjust as needed
+    backgroundRepeat: 'no-repeat', // Adjust as needed
   };
 
+  
 useEffect(() =>{
   setLoading(true);
   setTimeout(()=>{
@@ -72,7 +79,9 @@ useEffect(() =>{
 
   const [isLogin, setLogin] = useState((localStorage.getItem('token')) ? true : false)
   // const [user, setUser] = useState();
-  const [displayName, setDisplayName] = useState("");
+  // const {displayName }= useContext(authContext)
+  const [displayName] = useState();
+  // const [setDisplayRes, DisplayRes] = useState();
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -97,12 +106,13 @@ useEffect(() =>{
         <Route path="/checkout" element={<CheckOut />}></Route>
         <Route path="/settingAddress" element={<AddressForm />}></Route>
         <Route path="/payment" element={<PaymentForm />} />
+        <Route path="/dashuser" element={<DashboardHeader />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )
   );
   return (
-
+<AuthProvider value={{isLogin,setLogin,displayName}}>
     <div >
       {
         loading ?
@@ -115,21 +125,24 @@ useEffect(() =>{
         aria-label="Loading Spinner"
         data-testid="loader"
       />
+      
 
 
-          </div>
-          : (
-            <AuthProvider value={{ isLogin, setLogin, displayName, setDisplayName }}>
-                <PayPalScriptProvider options={{ "client-id": "AfEFhh3MtAYTVKI5gXs0FYKuJo6KGrWzjBO_mjOL4ohBQyXmMbUYwRp5gshlf83LMSkkD1A_xsYIqwbn" }}>
-                <Provider store={store}>
-                  <RouterProvider router={router}></RouterProvider>
-                </Provider>
-            </PayPalScriptProvider>
-              </AuthProvider>
-          )
+      </div>
+        :(
+        
+        <Provider store={store}>
+        <PayPalScriptProvider options={{"client-id": "AQ51ZXZVZ-Y0RhVYf57t5N4jb5Y2HQWV5o7vrZ1Wjz22v0w_-108945400"}}>
+          <RouterProvider router={router}></RouterProvider>
+          </PayPalScriptProvider>
+        
+        </Provider>
+        )
       }
 
     </div>
+    </AuthProvider>
+
   );
 }
 

@@ -16,6 +16,7 @@ import {logout} from "../../firebase/auth"
 import MenuPopupState from '../../utils/Dropdown';
 
 const Header = () => {
+
   const products = useSelector((state) => state.amazonReducer.products);
   const [loading, setLoading] = useState(true);
   const [prds, setPrds] = useState([]);
@@ -157,12 +158,7 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
           </p>
         </div>
                     {(isLogin)?(
-                    // <: onClick={async ()=>{
-                    //  await logout()
-                    //   localStorge.removeItem("token")
-                    //   setLogin(false)
-                    //   // navigate("/signin")
-                    // } }>
+                   
           <div className="flex flex-col items-start justify-center headerHover">
             <p className="text-xs text-lightText font-light"></p>
              
@@ -172,6 +168,8 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
               <MenuPopupState logout={logout} setLogin={setLogin}/>
               </span>
             </p>
+           
+
           </div>)
         :(<Link to="/signin">
           <div className="flex flex-col items-start justify-center headerHover">
@@ -187,19 +185,7 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
 
 {/* 
 
-        
-
-        <Link to="/signin">
-          <div className="flex flex-col items-start justify-center headerHover">
-            <p className="text-xs text-lightText font-light">Hello,</p>
-            <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
-              
-              <span>
-                <ArrowDropDownOutlinedIcon />
-              </span>
-            </p>
-          </div>
-        </Link> */}
+      
 
 
 
