@@ -14,7 +14,8 @@ import { authContext } from "../Contexts/isAuth";
 export default function Signin(props) {
 
 
-    const {isLogin,setLogin }=useContext(authContext)
+    // const {setLogin,setDisplayName }=useContext(authContext)
+    const {setLogin,setDisplayRes }=useContext(authContext)
     const navigate = useNavigate();
     const [user, setUser] = useState({
       email: "",
@@ -65,12 +66,15 @@ export default function Signin(props) {
       }else{
         const res= await login(user.email,user.password)
         console.log(res)
-        const name = res
-        localStorage.setItem('token',res.user.accessToken)
-        // DisplayName=res.user.displayName
-        // console.log(DisplayName)
+        localStorage.setItem('token',res.user.accessToken) 
+        localStorage.setItem('displayName', res.user.displayName);
+        localStorage.setItem('email', res.user.email);
+        localStorage.setItem('creatAt', res.user.metadata.creationTime);
+
+
+
+
         setLogin(true)
-        // updateUser(name);
          navigate("/")
   
       }

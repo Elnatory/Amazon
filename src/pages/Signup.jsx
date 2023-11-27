@@ -7,10 +7,12 @@ import { useNavigate } from "react-router-dom";
 import * as EmailValidator from "email-validator";
 import passwordRegexp from "password-regexp";
 import toast,{ Toaster } from 'react-hot-toast';
-import { authContext } from "../Contexts/isAuth";
+// import { authContext } from "../Contexts/isAuth";
+// import { addDoc, collection } from "firebase/firestore";
+// import { db } from "../firebase/firebasse";
 
 export default function Signup(props) {
-  const { setDisplayName } = useContext(authContext); // Access setDisplayName function from context
+  // const { setDisplayRes } = useContext(authContext); // Access setDisplayName function from context
   const navigate = useNavigate();
   const [user, setUser] = useState({
     displayName: "",
@@ -78,17 +80,16 @@ export default function Signup(props) {
       ) {
         toast.error("write a Valid Email or password");
       } else {
-        const res = await register(user.email, user.password);
+         const res = await register(user.email, user.password,user.displayName);
+        
         console.log(res);
-        setDisplayName(user.displayName);
-         navigate("/signin");
+        navigate("/signin");
       }
     } catch (err) {
       toast.error(" some thing is wrong ");
     }
   };
 
-  // console.log(user.name)
   return (
     <>
       <div className="w-full" onSubmit={(event)=> {handleSubmit(event)}}>

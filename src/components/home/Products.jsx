@@ -93,24 +93,7 @@ const Products = () => {
              : <Link to="/Signin">
               <button  className="w-full py-1.5 rounded-md mt-3 font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200">addtocart</button>
               </Link> }
-            {/* <button
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: product._id,
-                    title: product.title,
-                    description: product.description,
-                    price: product.price,
-                    category: product.category,
-                    image: product.imageCover,
-                    quantity: 1,
-                  })
-                )
-              }
-              className="w-full py-1.5 rounded-md mt-3 font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
-            >
-              Add to Cart
-            </button> */}
+            
             <button className="w-full py-1.5 rounded-md font-titleFont font-medium text-base bg-gradient-to-tr from-orange-400 to-orange-200 border border-orange-500 hover:border-yellow-700 hover:from-orange-300 to hover:to-orange-400 active:bg-gradient-to-bl active:from-orange-400 active:to-orange-500 duration-200">
               Buy Now
             </button>
