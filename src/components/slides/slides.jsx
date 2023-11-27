@@ -11,6 +11,8 @@ import { Virtual, Navigation, Pagination } from "swiper/modules";
 import { right, left } from "../../assets/index";
 import { getCategoriesData } from "../../firebase/getCategory";
 import { getBrandsData } from "../../firebase/getBrands";
+import { adds} from "../../assets/index";
+import FadeIn from '../../utils/fade.jsx';
 import "./slides.css";
 
 import "swiper/css";
@@ -79,7 +81,6 @@ export default function Slides(props) {
     getCategoriesData(setCategories, setLoading);
     getBrandsData(setBrands, setLoading);
   }, []);
-
 
   return (
     <>
@@ -156,6 +157,14 @@ export default function Slides(props) {
         </div>
       </div>
 
+      <FadeIn>
+        <img
+          className="h-[100%] m-auto p-3 w-full"
+          src={adds}
+          alt="Advertisement"
+        />
+      </FadeIn>
+
       <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
         <h1>Shop by Category</h1>
         <p>
@@ -188,14 +197,13 @@ export default function Slides(props) {
             </SwiperSlide>
           ))}
           <div className="custom-next" onClick={() => toggleActive(this)}>
-              <img className="to" src={right} alt="" />
-            </div>
-            <div className="custom-prev" onClick={() => toggleActive(this)}>
-              <img className="to" src={left} alt="" />
-            </div>
+            <img className="to" src={right} alt="" />
+          </div>
+          <div className="custom-prev" onClick={() => toggleActive(this)}>
+            <img className="to" src={left} alt="" />
+          </div>
         </Swiper>
       </div>
-
 
       <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
         <h1>Shop by Brands</h1>
@@ -229,11 +237,11 @@ export default function Slides(props) {
             </SwiperSlide>
           ))}
           <div className="custom-next" onClick={() => toggleActive(this)}>
-              <img className="to" src={right} alt="" />
-            </div>
-            <div className="custom-prev" onClick={() => toggleActive(this)}>
-              <img className="to" src={left} alt="" />
-            </div>
+            <img className="to" src={right} alt="" />
+          </div>
+          <div className="custom-prev" onClick={() => toggleActive(this)}>
+            <img className="to" src={left} alt="" />
+          </div>
         </Swiper>
       </div>
     </>

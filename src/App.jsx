@@ -18,7 +18,7 @@ import { AuthProvider } from "./Contexts/isAuth";
 import { useEffect } from 'react'
 import { SquareLoader } from 'react-spinners'
 
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Cart from "./pages/Cart";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -60,7 +60,7 @@ useEffect(() =>{
   setLoading(true);
   setTimeout(()=>{
     setLoading(false);
-  },2500);
+  },2000);
 },[])
 
 
