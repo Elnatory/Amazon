@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { useLocation, useParams, Link } from "react-router-dom";
 import ImageZoom from "react-image-zooom";
 import ReactImageZoom from "react-image-zoom";
@@ -7,6 +7,7 @@ import ReactImageMagnify from "react-image-magnify";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../../firebase/getProducts";
+import { addToCart } from "../../store/slices/amazonSlice";
 import { GETallProducts } from "../../store/slices/allProducts";
 import { collection, getDocs } from "firebase/firestore";
 import Grid from "@mui/material/Grid";
@@ -20,6 +21,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { GoShare } from "react-icons/go";
 import Slides from "../../components/slides/slides";
+import { authContext } from "../../Contexts/isAuth";
 
 export default function Details(props) {
   const { id } = useParams();
@@ -29,6 +31,7 @@ export default function Details(props) {
   let allProducts = useSelector((state) => state.allProducts.allProducts);
   const dispatch = useDispatch();
   const location = useLocation();
+  const { isLogin, setLogin } = useContext(authContext);
 
   useEffect(() => {
     if (allProducts.length) {
@@ -51,8 +54,6 @@ export default function Details(props) {
     setTimeout(() => setBounceAnime(false), 1000);
   };
 
-
-
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   function handleSwiperNav(num) {
@@ -62,7 +63,6 @@ export default function Details(props) {
       disabledClass: `.swiper${num}-button-disabled`,
     };
   }
-
 
   const [previewImage, setPreviewImage] = useState(prd?.images[0] || "");
   const handleImageHover = (image) => {
@@ -103,24 +103,23 @@ export default function Details(props) {
 
   const imageContainerRef = useRef(null);
 
-useEffect(() => {
-  const handleScroll = () => {
-    const scrollY = window.scrollY || window.pageYOffset;
-    imageContainerRef.current.style.top = `${Math.min(scrollY, 300)}px`;
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      imageContainerRef.current.style.top = `${Math.min(scrollY, 300)}px`;
+    };
 
-  const imageContainer = document.querySelector(".image-container");
-  imageContainerRef.current = imageContainer;
+    const imageContainer = document.querySelector(".image-container");
+    imageContainerRef.current = imageContainer;
 
-  if (imageContainer) {
-    window.addEventListener("scroll", handleScroll);
-  }
+    if (imageContainer) {
+      window.addEventListener("scroll", handleScroll);
+    }
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
-
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const [swiperRef, setSwiperRef] = useState(null);
   const appendNumber = useRef(500);
@@ -255,7 +254,7 @@ useEffect(() => {
                     {prd.ratingsAverage}
                     <Rating
                       name="read-only"
-                      value="4"
+                      value={prd.ratingsAverage}
                       readOnly
                       style={{ fontSize: "18px" }}
                     />
@@ -270,7 +269,13 @@ useEffect(() => {
                       <span className="pricetag">
                         {prd.priceAfterDiscount > 0 ? (
                           <>
-                            <span style={{ textDecoration: "line-through", color:'grey', fontWeight:'400' }}>
+                            <span
+                              style={{
+                                textDecoration: "line-through",
+                                color: "grey",
+                                fontWeight: "400",
+                              }}
+                            >
                               EGP {prd.price}.00
                             </span>{" "}
                             EGP {prd.priceAfterDiscount}.00
@@ -285,7 +290,10 @@ useEffect(() => {
                     <div className="">
                       Buy with installments and pay EGP 203.71 for 60 months
                       with select banks.
-                      <span className="visit" style={{cursor:'pointer'}}> Learn more</span>
+                      <span className="visit" style={{ cursor: "pointer" }}>
+                        {" "}
+                        Learn more
+                      </span>
                     </div>
                     <div className="">
                       FREE delivery: <strong>{getCurrentDate()}</strong>
@@ -465,14 +473,38 @@ useEffect(() => {
                       </label>
                     </div>
                     <div>
-                      <button
-                        className={`placeorder__button addtocart ${
-                          prd.quantity ? "animated" : ""
-                        }`}
-                        onClick={addTOCart}
-                      >
-                        Add to Cart
-                      </button>
+                      {isLogin ? (
+                        <button
+                          className={`placeorder__button addtocart ${
+                            prd.quantity ? "animated" : ""
+                          }`}
+                          onClick={() =>
+                            dispatch(
+                              addToCart({
+                                id: prd.id,
+                                title: prd.title,
+                                description: prd.description,
+                                price: prd.price,
+                                category: prd.category,
+                                image: prd.imageCover,
+                                quantity: 1,
+                              })
+                            )
+                          }
+                        >
+                          Add to Cart
+                        </button>
+                      ) : (
+                        <Link to="/Signin">
+                          <button
+                            className={`placeorder__button addtocart ${
+                              prd.quantity ? "animated" : ""
+                            }`}
+                          >
+                            Add To Cart
+                          </button>
+                        </Link>
+                      )}
 
                       <Link to="/checkout">
                         <button className="placeorder__button buynow">
@@ -525,7 +557,7 @@ useEffect(() => {
               </Grid>
             </Grid>
             {/* ========================================================================================= Fourth        */}
-            <Slides/>
+            <Slides />
           </>
         )}
       </div>
