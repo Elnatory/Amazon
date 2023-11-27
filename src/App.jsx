@@ -18,7 +18,7 @@ import { AuthProvider,authContext } from "./Contexts/isAuth";
 import { useEffect } from 'react'
 import { SquareLoader } from 'react-spinners'
 
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Cart from "./pages/Cart";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -65,7 +65,7 @@ useEffect(() =>{
   setLoading(true);
   setTimeout(()=>{
     setLoading(false);
-  },1500);
+  },2000);
 },[])
 
 
@@ -107,17 +107,14 @@ useEffect(() =>{
     <div >
       {
         loading ?
-
         <div style={override}>
-
         <SquareLoader  
         color={"#ffcf00"}
         loading={loading}
         // css={override} 
-        size={50}
+        size={100}
         aria-label="Loading Spinner"
         data-testid="loader"
-        
       />
       
 

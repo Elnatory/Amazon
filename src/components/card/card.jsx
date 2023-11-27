@@ -39,7 +39,7 @@ const Card = ({ prd }) => {
   const [discountEndTime, setDiscountEndTime] = useState(null);
 
   useEffect(() => {
-    const randomTime = Math.floor(Math.random() * (24 * 60 * 60 * 1000)); 
+    const randomTime = Math.floor(Math.random() * (24 * 60 * 60 * 1000));
     const currentTime = new Date().getTime();
     const endTime = currentTime + randomTime;
 
@@ -81,12 +81,20 @@ const Card = ({ prd }) => {
                 onClick={() => navigate(`/details/${prd.id}`)}
                 className="img-lnk"
               >
-                <img src={ximg || prd.images[0]} className="w-100 img" />
+                <img
+                  src={ximg || prd.images[0]}
+                  className="w-100 img"
+                  onMouseEnter={(e) =>
+                    prd.images[2] && (e.target.src = prd.images[2])
+                  }
+                  onMouseLeave={(e) =>
+                    prd.images[2] && (e.target.src = prd.images[0])
+                  }
+                />
               </a>
             </div>
             <div className="pct-discount text-end discount_Contaienr">
               <span className="discount_Contaienr">Up to {discount}% off</span>
-              
             </div>
           </picture>
 
