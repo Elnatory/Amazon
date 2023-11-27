@@ -19,7 +19,7 @@ const CheckOut = () => {
     const city = localStorage.getItem('city');
     const country = localStorage.getItem('country');
     const phone = localStorage.getItem('phone');
-    const cardInfo=localStorage.getItem('cardInfo');
+    const cardInfo = localStorage.getItem('cardInfo');
 
     useEffect(() => {
         let price = 0;
@@ -35,12 +35,12 @@ const CheckOut = () => {
         const address = localStorage.getItem('address');
         const city = localStorage.getItem('city');
         const country = localStorage.getItem('country');
-    
+
         if (!userName || !userEmail) {
-          // If user credentials do not exist, navigate to the payment component
-          navigate('/payment');
+            // If user credentials do not exist, navigate to the payment component
+            navigate('/payment');
         }
-      }, [navigate]);
+    }, [navigate]);
 
     return (
         <>
@@ -82,7 +82,7 @@ const CheckOut = () => {
                                         Unit Price:{" "}
                                         <span className="font-semibold">EGP {item.price}.00</span>
                                     </p>
-    
+
                                     <button
                                         onClick={() => dispatch(deleteItem(item.id))}
                                         className="bg-red-500 w-36 py-1 rounded-lg text-white mt-2 hover:bg-red-700 active:bg-red-900 duration-300"
@@ -104,24 +104,28 @@ const CheckOut = () => {
                         <div className='col-span-10'>
                             <h1 className=' my-5'>Your credit Card number</h1>
                             <div className="">
-                       
-                            <label className="text-sm text-gray-600 label-inline" htmlFor="card_details">Card Number</label>
-                            <input
-                            value={cardInfo}
-                                className="w-full px-2 py-2 text-gray-700 bg-gray-300 rounded" id="card_details" 
-                                name="card_details" type="text" 
-                                readOnly 
-                                placeholder="Card Number MM/YY CVC" 
-                                aria-label="Card Details" />
-                       
-                    </div>
+
+                                <label className="text-sm text-gray-600 label-inline" htmlFor="card_details">Card Number</label>
+                                <input
+                                    value={cardInfo}
+                                    className="w-full px-2 py-2 text-gray-700 bg-gray-300 rounded" id="card_details"
+                                    name="card_details" type="text"
+                                    readOnly
+                                    placeholder="Card Number MM/YY CVC"
+                                    aria-label="Card Details" />
+
+                            </div>
                             <div className='bg-white p-5'>
                                 <p className="font-semibold px-6 py-1 flex items-center">
                                     Subtotal:&nbsp; <span className="text-lg font-bold">EGP {totalAmt}</span>
                                 </p>
-                                <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+                                {/* <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
                                     Buy now
+                                </button> */}
+                                <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+                                    <PaypalButton product={products} />
                                 </button>
+
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Products from './components/home/Products'
-import  { useState } from 'react'
+import { useState } from 'react'
 
 import {
   createBrowserRouter,
@@ -37,6 +37,7 @@ import { useEffect } from 'react'
 import { SquareLoader } from 'react-spinners'
 
 import BrandsDetails from "./pages/BrandsDetails";
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 const Layout = () => {
   return (
@@ -51,26 +52,26 @@ const Layout = () => {
 
 function App() {
 
-  const[loading ,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
-   const override = {
+  const override = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '80vh',
   };
 
-useEffect(() =>{
-  setLoading(true);
-  setTimeout(()=>{
-    setLoading(false);
-  },3000);
-},[])
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, [])
 
 
 
 
-  const[isLogin,setLogin]=useState((localStorage.getItem('token'))?true:false)
+  const [isLogin, setLogin] = useState((localStorage.getItem('token')) ? true : false)
   // const [user, setUser] = useState();
   const [displayName, setDisplayName] = useState("");
 
@@ -90,13 +91,13 @@ useEffect(() =>{
           <Route path="/brands" element={<Brands />}></Route>
           <Route path="/brands/:brandSlug" element={<BrandsDetails />}></Route>
           <Route path="/help" element={<Help />}></Route>
-        <Route path="/results" element={<SearchResults />}></Route>
+          <Route path="/results" element={<SearchResults />}></Route>
         </Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
         <Route path="/settingAddress" element={<AddressForm />}></Route>
-        <Route path="/payment" element={<PaymentForm/>}/>
+        <Route path="/payment" element={<PaymentForm />} />
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )
@@ -107,29 +108,31 @@ useEffect(() =>{
       {
         loading ?
 
-        <div style={override}>
+          <div style={override}>
 
-        <SquareLoader  
-        color={"#ffcf00"}
-        loading={loading}
-        // css={override} 
-        size={50}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        
-      />
+            <SquareLoader
+              color={"#ffcf00"}
+              loading={loading}
+              // css={override} 
+              size={50}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+
+            />
 
 
-      </div>
-        :(
-        <AuthProvider value={{isLogin,setLogin,displayName, setDisplayName}}>
-        <Provider store={store}>
-        <RouterProvider router={router}></RouterProvider>
-        </Provider>
-        </AuthProvider>
-        )
+          </div>
+          : (
+            <AuthProvider value={{ isLogin, setLogin, displayName, setDisplayName }}>
+                <PayPalScriptProvider options={{ "client-id": "AfEFhh3MtAYTVKI5gXs0FYKuJo6KGrWzjBO_mjOL4ohBQyXmMbUYwRp5gshlf83LMSkkD1A_xsYIqwbn" }}>
+                <Provider store={store}>
+                  <RouterProvider router={router}></RouterProvider>
+                </Provider>
+            </PayPalScriptProvider>
+              </AuthProvider>
+          )
       }
-      
+
     </div>
   );
 }

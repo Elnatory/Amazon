@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState,useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -9,7 +9,6 @@ import { allItems } from "../../constants";
 import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 import { Link, useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
 import { getProductsData } from "../../firebase/getProducts";
 import './Search.css';
 import { authContext } from "../../Contexts/isAuth";
@@ -22,12 +21,12 @@ const Header = () => {
   const [prds, setPrds] = useState([]);
   const [input, setInput] = useState("");
   const navgate = useNavigate();
+  const dispatch = useDispatch();
 
 
   // const dispatch = useDispatch();
 const {isLogin,setLogin,displayName }= useContext(authContext)
 // const navigate = useNavigate();
-const dispatch = dispatch();
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
   useEffect(() => {
