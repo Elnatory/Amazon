@@ -99,17 +99,14 @@ useEffect(() =>{
     <div >
       {
         loading ?
-
         <div style={override}>
-
         <SquareLoader  
         color={"#ffcf00"}
         loading={loading}
         // css={override} 
-        size={50}
+        size={100}
         aria-label="Loading Spinner"
         data-testid="loader"
-        
       />
 
 
