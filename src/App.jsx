@@ -2,7 +2,6 @@ import './App.css'
 import React from 'react'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import Products from './components/home/Products'
 import { useState } from 'react'
 
 import {
@@ -13,7 +12,7 @@ import {
   RouterProvider,
   ScrollRestoration,
 } from "react-router-dom";
-import Home from './pages/Home'
+import Home from './pages/home/Home'
 import Cart from './pages/Cart';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
