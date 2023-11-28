@@ -11,11 +11,15 @@ import { motion } from "framer-motion";
 import { emptyCart } from "../assets";
 import { Link } from "react-router-dom";
 import Slides from "../components/slides/slides";
+import { useNavigate } from "react-router-dom";
+import { prime1, prime2, primesvg } from "../assets/index";
+
 
 const Cart = () => {
   const products = useSelector((state) => state.amazonReducer.products);
   const dispatch = useDispatch();
   const [totalAmt, setTotalAmt] = useState("");
+  const navigate=useNavigate();
   useEffect(() => {
     let price = 0;
     products.map((item) => {
@@ -49,11 +53,16 @@ const Cart = () => {
                     <div className="w-full flex flex-col md:flex-row items-center gap-6">
                       {/* ====================== Left Start here ============================ */}
                       <div className="w-full md:w-2/5 xl:w-1/5">
-                        <img
-                          className="w-full h-44 object-contain"
-                          src={item.image}
-                          alt="productImg"
-                        />
+                        <a
+                          onClick={() => navigate(`/details/${item.id}`)}
+                          className="img-lnk"
+                        >
+                          <img
+                            className="w-full h-44 object-contain"
+                            src={item.image}
+                            alt="productImg"
+                          />
+                        </a>
                       </div>
                       <div className="w-full flex flex-col gap-2 xl:gap-1">
                         <h2 className="font-semibold text-lg">{item.title}</h2>
@@ -114,7 +123,7 @@ const Cart = () => {
                 </button>
               </div>
             </div>
-            <div className="col-span-5 md:col-span-3 lg:col-span-2 xl:col-span-1 mx-auto bg-white h-52 flex items-center p-4">
+            <div className="col-span-5 md:col-span-3 lg:col-span-2 xl:col-span-1 mx-auto bg-white h-52 flex flex-col items-center p-4">
               <div>
                 <p className="flex gap-2 items-start text-sm">
                   <span>
@@ -133,6 +142,15 @@ const Cart = () => {
                   Proceed to Buy
                 </button>
               </div>
+              <div className=" h-5 items-center mt-16">
+                <p className="flex mt-12 gap-2 items-start text-sm font-light">
+                Customers who shopped for our website amazon's ® Standard Fit Short S... also shopped for :
+                </p>
+                <div className="flex mt-12 gap-2 items-start text-sm">
+                    <img src={primesvg} alt="" />
+                  </div>
+              </div>
+              
             </div>
           </div>
           <Slides />
