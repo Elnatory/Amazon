@@ -3,12 +3,12 @@
 }
 
 .placeorder__image {
-    margin-top: 20px;
+    margin-top: 5px;
     margin-right: 20px;
 }
 
 .placeholder__description {
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .textgap {
@@ -29,7 +29,7 @@
 }
 
 .placeorder__order1 {
-    margin-top: 20px;
+    margin-top: 5px;
     width: 230px;
     margin-left: 35px;
 }
@@ -45,6 +45,9 @@
 
 .buynow {
     background-color: #FFD712;
+}
+.back {
+    background-color: #eee;
 }
 
 .addtocart {
@@ -201,4 +204,17 @@
 .custom-prev:active,
 .custom-next:active {
     border: 2px solid rgb(39, 114, 107);
+}
+
+
+.friday {
+    background-color: rgb(211, 30, 84);
+    width: 120px;
+    /* height: 30px; */
+    padding: 5px 10px;
+    color: white;
+    font-weight: 550;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
 }
