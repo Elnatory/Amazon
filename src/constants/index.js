@@ -37,9 +37,9 @@ export const middleList = [
       {
         _id: "001",
         listData: [
-          "About Amazon",
+          { text: "About Amazon", link: "/about" },
           "Careers",
-          "Amazon Science",
+          { text: "Amazon Science", link: "https://www.amazon.science/" },
         ],
       },
     ],
@@ -66,11 +66,10 @@ export const middleList = [
       {
         _id: "002",
         listData: [
-          "Protect and build your brand",
-          "Advertise your brand",
-          "Sell on Amazon",
-          "Sell apps on Amazon",
-          "Fullfillment by Amazon",
+          { text: "Protect and build your brand", link: "https://brandservices.amazon.eg/?ref=AOEGABRLGNRFOOT&ld=AOEGABRLGNRFOOT" },
+          { text: "Advertise your brand", link: "https://advertising.amazon.com/?ref=footer_advtsing_eg" },
+          { text: "Sell on Amazon", link: "https://sell.amazon.eg/beginners-guide?ld=AZEGSOA_footer_sell_EN&ref_=AZEGSOA_footer_sell_EN" },
+          { text: "Fullfillment by Amazon", link: "https://sell.amazon.eg/fulfillment-by-amazon?ld=AZEGSOA_footer_FBA_EN&ref_=AZEGSOA_footer_FBA_EN" },
         ],
       },
     ],
@@ -85,7 +84,7 @@ export const middleList = [
           "Help",
           "Shipping & Delivery",
           "Returns & Replacements",
-          "Amazon App Download",
+          { text: "Amazon App Download", link: "https://www.amazon.eg/-/en/b?node=22624924031" },
         ],
       },
     ],

@@ -142,7 +142,7 @@ const Cart = () => {
                   Proceed to Buy
                 </button>
               </div>
-              <div className=" h-5 items-center mt-16">
+              <div className=" h-5 items-center mt-8">
                 <p className="flex mt-12 gap-2 items-start text-sm font-light">
                 Customers who shopped for our website amazon's ® Standard Fit Short S... also shopped for :
                 </p>

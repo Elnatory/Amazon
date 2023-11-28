@@ -46,6 +46,8 @@ import sadd from "./smallAdd.jpg";
 import primesvg from "./prime-logo.svg";
 import prime1 from "./hasPrime.png";
 import prime2 from "./amazonprime_hybridMidnightBlue_SA._CB646594257_.png";
+import about from "./Letter_Desktop_en_2x_v3.jpg";
+
 
 
 
@@ -98,4 +100,5 @@ export {
   primesvg,
   prime1,
   prime2,
+  about,
 };

@@ -14,7 +14,7 @@ import { authContext } from "../../Contexts/isAuth";
 
 export default function HeaderBottom(props) {
   const displayName = localStorage.getItem("displayName");
-  const {isLogin}= useContext(authContext)
+  const { isLogin } = useContext(authContext);
 
   // const {displayName }= useContext(authContext)
 
@@ -71,11 +71,13 @@ export default function HeaderBottom(props) {
           </ul>
         </div>
         <div
+        className="omg"
           style={{
             flex: 1,
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
+            
           }}
         >
           <Slider {...settings}>
@@ -96,12 +98,7 @@ export default function HeaderBottom(props) {
               />
             </div>
             <div>
-              <img
-                className="headerHover"
-                src={sadd}
-                alt=""
-                width="350"
-              />
+              <img className="headerHover" src={sadd} alt="" width="350" />
             </div>
           </Slider>
         </div>

@@ -34,6 +34,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import BrandsDetails from "./pages/BrandsDetails";
 import DashboardHeader from './pages/userDashbourd/userDashbourd'
+import About from './pages/About'
 // import {authContext} from '../Contexts/isAuth'
 const Layout = () => {
   return (
@@ -93,6 +94,7 @@ useEffect(() =>{
           <Route path="/brands" element={<Brands />}></Route>
           <Route path="/brands/:brandSlug" element={<BrandsDetails />}></Route>
           <Route path="/help" element={<Help />}></Route>
+          <Route path="/about" element={<About />}></Route>
         </Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
