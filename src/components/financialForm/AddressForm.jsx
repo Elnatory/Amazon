@@ -8,13 +8,6 @@ const AddressForm = () => {
   const [city, setCity] = useState('');
   const [phone, setPhone] = useState('');
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   localStorage.setItem('street', street);
-  //   localStorage.setItem('city', city);
-  //   localStorage.setItem('phone', phone);
-  //   navigate('/Payment');
-  // };
 
   return (
     <>

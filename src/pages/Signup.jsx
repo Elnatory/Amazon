@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { darkLogo } from "../assets/index";
@@ -6,7 +6,7 @@ import { register } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import * as EmailValidator from "email-validator";
 import passwordRegexp from "password-regexp";
-import toast,{ Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 // import { authContext } from "../Contexts/isAuth";
 // import { addDoc, collection } from "firebase/firestore";
 // import { db } from "../firebase/firebasse";
@@ -39,8 +39,8 @@ export default function Signup(props) {
           value.length === 0
             ? "Email is required"
             : EmailValidator.validate(value)
-            ? ""
-            : "Please Enter a Valid Email",
+              ? ""
+              : "Please Enter a Valid Email",
       });
     } else if (name === "password") {
       setUser({ ...user, password: value });
@@ -50,8 +50,8 @@ export default function Signup(props) {
           value.length === 0
             ? "Password is Required"
             : passwordRegexp().test(value)
-            ? ""
-            : "Password must be at least 3 characters and contain letters and numbers",
+              ? ""
+              : "Password must be at least 3 characters and contain letters and numbers",
       });
     } else if (name === "confirmPassword") {
       setUser({ ...user, confirmPassword: value });
@@ -60,7 +60,7 @@ export default function Signup(props) {
         confirmPasswordError:
           value !== user.password ? "Passwords do not match" : "",
       });
-    }  else if (name === "displayName") {
+    } else if (name === "displayName") {
       setUser({ ...user, displayName: value });
       setErrors({
         ...errors,
@@ -73,14 +73,14 @@ export default function Signup(props) {
     e.preventDefault();
     try {
       if (
-        errors.displayNameError||
+        errors.displayNameError ||
         errors.emailError ||
         errors.passwordError ||
         errors.confirmPasswordError
       ) {
         toast.error("write a Valid Email or password");
       } else {
-         const res = await register(user.email, user.password,user.displayName);
+        const res = await register(user.email, user.password, user.displayName);
         console.log(res);
         // localStorage.setItem('userId', res.user.uid);
 
@@ -93,7 +93,7 @@ export default function Signup(props) {
 
   return (
     <>
-      <div className="w-full" onSubmit={(event)=> {handleSubmit(event)}}>
+      <div className="w-full" onSubmit={(event) => { handleSubmit(event) }}>
         <div className="w-full bg-white pb-10">
           <form className="w-[370px] mx-auto flex flex-col items-center">
             <Link to="/">
@@ -142,14 +142,14 @@ export default function Signup(props) {
                         password
                       </label>
                       <input
-                      name="password"
-                      value={user.password}
-                      onChange={handleForm}
+                        name="password"
+                        value={user.password}
+                        onChange={handleForm}
                         type="password"
                         id="password"
                         className="w-full py-1 border border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] focus-within:shadow-amazonInput duration-100"
                       />
-                        <p style={{ color: "red" }}>{errors.passwordError}</p>
+                      <p style={{ color: "red" }}>{errors.passwordError}</p>
 
                     </div>
                   </div>
@@ -162,14 +162,14 @@ export default function Signup(props) {
                         Re-enter password
                       </label>
                       <input
-                         name="confirmPassword"
-                         value={user.confirmPassword}
-                         onChange={handleForm}
+                        name="confirmPassword"
+                        value={user.confirmPassword}
+                        onChange={handleForm}
                         type="password"
                         id="re-enterPassword`"
                         className="w-full py-1 border border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] focus-within:shadow-amazonInput duration-100"
                       />
-                     <p style={{ color: "red" }}>{errors.confirmPasswordError}</p>
+                      <p style={{ color: "red" }}>{errors.confirmPasswordError}</p>
 
                     </div>
                   </div>
@@ -224,7 +224,7 @@ export default function Signup(props) {
           </p>
         </div>
       </div>
-      <Toaster  position ="top-center" /> 
+      <Toaster position="top-center" />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/header/Header';
 import { useDispatch, useSelector } from "react-redux";
 import {
     deleteItem,
@@ -7,24 +6,17 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { amazon } from '../assets';
 import { PayPalButtons } from '@paypal/react-paypal-js';
-import { getUsersData } from '../firebase/getUsers';
+import { getUserAddressData } from '../firebase/getUsersAddress';
 
 
 const CheckOut = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const dispatch = useDispatch();
     const products = useSelector((state) => state.amazonReducer.products);
     const navigate = useNavigate();
     const [totalAmt, setTotalAmt] = useState("");
-    // const userName = localStorage.getItem('userName');
-    // const userEmail = localStorage.getItem('email');
-    // const address = localStorage.getItem('address');
-    // const city = localStorage.getItem('city');
-    // const country = localStorage.getItem('country');
-    // const phone = localStorage.getItem('phone');
-    // const cardInfo = localStorage.getItem('cardInfo');
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
         let price = 0;
@@ -36,14 +28,16 @@ const CheckOut = () => {
     }, [products]);
 
     useEffect(() => {
-        getUsersData(setData, setLoading);
-        console.log(data);
-        console.log("kak");
-        if (!data) {
-            // If user credentials do not exist, navigate to the payment component
+        const fetchData = async () => {
+            await getUserAddressData(user, setData, setLoading);
+        };
+        if (!user) {
             navigate('/payment');
         }
-    }, [])
+
+        fetchData();
+    }, [user, navigate, data]);
+    // console.log(data);
 
     // useEffect(() => {
     //     const userName = localStorage.getItem('userName');
@@ -52,7 +46,7 @@ const CheckOut = () => {
     //     const city = localStorage.getItem('city');
     //     const country = localStorage.getItem('country');
 
-        
+
     // }, [navigate]);
 
     return (
@@ -62,24 +56,32 @@ const CheckOut = () => {
                 {/* the address */}
                 <div className='grid grid-cols-12'>
                     <div className='col-span-2'>
-                        <h1 className='text-xl font-bold'>Delivery Adress</h1>
+                        <h1 className='text-xl font-bold'>Delivery Address</h1>
                     </div>
                     <div className='col-span-10 pr-5 pt-5'>
                         {data.map((elem) => (
-                            <div className='flex justify-between' key={elem.id}>
-                                <div>
-                                    <h1 className='text-lg font-bold'>{elem.street}</h1>
-                                    <h1 className='text-lg font-bold'>{elem.city}</h1>
-                                    <h1 className='text-lg font-bold'>{elem.governorate}</h1>
-                                    <h1 className='text-lg font-bold'>{elem.postCode}</h1>
+                            <div className='flex justify-between' key={user}>
+                                <div className='grid grid-cols-12'>
+                                    <div className='col-span-6'>
+                                        <h1 className='text-lg font-bold'><i>Street  :</i> </h1>
+                                        <h1 className='text-lg font-bold'><i>City  :</i> </h1>
+                                        <h1 className='text-lg font-bold'><i>Governorate  :</i></h1>
+                                        <h1 className='text-lg font-bold'><i>PostCode  :</i></h1>
+                                    </div>
+                                    <div className='col-span-6'>
+                                        <h1 className='text-lg font-bold'>{elem.street}</h1>
+                                        <h1 className='text-lg font-bold'>{elem.city}</h1>
+                                        <h1 className='text-lg font-bold'>{elem.governorate}</h1>
+                                        <h1 className='text-lg font-bold'>{elem.postCode}</h1>
+                                    </div>
                                 </div>
                                 <div>
-                                    <button className='bg-blue-500 text-white px-5 py-2 rounded-lg'>Edit</button>
-                                </div>
+                                    <Link to={"/payment"}>
+                                        <button className='bg-blue-500 text-white px-5 py-2 rounded-lg'>Edit</button>
+                                    </Link>                                </div>
                             </div>
                         ))}
                     </div>
-
                 </div>
                 {/* the cart items */}
                 <div className='grid grid-cols-12'>
@@ -129,14 +131,19 @@ const CheckOut = () => {
                             <h1 className=' my-5'>Your credit Card number</h1>
                             <div className="">
 
-                                <label className="text-sm text-gray-600 label-inline" htmlFor="card_details">Card Number</label>
-                                <input
-                                    value='cardInfo'
-                                    className="w-full px-2 py-2 text-gray-700 bg-gray-300 rounded" id="card_details"
-                                    name="card_details" type="text"
-                                    readOnly
-                                    placeholder="Card Number MM/YY CVC"
-                                    aria-label="Card Details" />
+                                {data.map((elem) => (
+                                    <div key={elem.id}>
+                                        <label className="text-sm text-gray-600 label-inline" htmlFor="card_details">Card Number</label>
+                                        <input
+                                            value={elem.cardInfo}
+                                            className="w-full px-2 py-2 text-gray-700 bg-gray-300 rounded" id="card_details"
+                                            name="card_details" type="text"
+                                            readOnly
+                                            placeholder="Card Number MM/YY CVC"
+                                            aria-label="Card Details"
+                                        />
+                                    </div>
+                                ))}
 
                             </div>
                             <div className='bg-white p-5'>
