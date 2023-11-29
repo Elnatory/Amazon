@@ -132,7 +132,8 @@ useEffect(() =>{
         :(
         
         <Provider store={store}>
-        <PayPalScriptProvider options={{"client-id": "AQ51ZXZVZ-Y0RhVYf57t5N4jb5Y2HQWV5o7vrZ1Wjz22v0w_-108945400"}}>
+          {/* bassBooster paypal account client id */}
+        <PayPalScriptProvider options={{"client-id": "AeZfRlbmQtc8Z57hOW7gb-sPUJgnhNfJd3QCnf4OpnZbpAFTCY1ceBnElh_siV0mDNn70pbAKjK2ss1T"}}>
           <RouterProvider router={router}></RouterProvider>
           </PayPalScriptProvider>
         

@@ -6,20 +6,25 @@ import {
 } from "../store/slices/amazonSlice";
 import { Link, useNavigate } from 'react-router-dom';
 import { amazon } from '../assets';
+import { PayPalButtons } from '@paypal/react-paypal-js';
+import { getUsersData } from '../firebase/getUsers';
 
 
 const CheckOut = () => {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     const dispatch = useDispatch();
     const products = useSelector((state) => state.amazonReducer.products);
     const navigate = useNavigate();
     const [totalAmt, setTotalAmt] = useState("");
-    const userName = localStorage.getItem('userName');
-    const userEmail = localStorage.getItem('email');
-    const address = localStorage.getItem('address');
-    const city = localStorage.getItem('city');
-    const country = localStorage.getItem('country');
-    const phone = localStorage.getItem('phone');
-    const cardInfo = localStorage.getItem('cardInfo');
+    // const userName = localStorage.getItem('userName');
+    // const userEmail = localStorage.getItem('email');
+    // const address = localStorage.getItem('address');
+    // const city = localStorage.getItem('city');
+    // const country = localStorage.getItem('country');
+    // const phone = localStorage.getItem('phone');
+    // const cardInfo = localStorage.getItem('cardInfo');
 
     useEffect(() => {
         let price = 0;
@@ -27,20 +32,28 @@ const CheckOut = () => {
             price += item.price * item.quantity;
         });
         setTotalAmt(price.toFixed(2));
+        console.log(products);
     }, [products]);
 
     useEffect(() => {
-        const userName = localStorage.getItem('userName');
-        const userEmail = localStorage.getItem('email');
-        const address = localStorage.getItem('address');
-        const city = localStorage.getItem('city');
-        const country = localStorage.getItem('country');
-
-        if (!userName || !userEmail) {
+        getUsersData(setData, setLoading);
+        console.log(data);
+        console.log("kak");
+        if (!data) {
             // If user credentials do not exist, navigate to the payment component
             navigate('/payment');
         }
-    }, [navigate]);
+    }, [])
+
+    // useEffect(() => {
+    //     const userName = localStorage.getItem('userName');
+    //     const userEmail = localStorage.getItem('email');
+    //     const address = localStorage.getItem('address');
+    //     const city = localStorage.getItem('city');
+    //     const country = localStorage.getItem('country');
+
+        
+    // }, [navigate]);
 
     return (
         <>
@@ -52,10 +65,21 @@ const CheckOut = () => {
                         <h1 className='text-xl font-bold'>Delivery Adress</h1>
                     </div>
                     <div className='col-span-10 pr-5 pt-5'>
-                        <h className='text-lg block my-2 ml-6'>{userName}</h>
-                        <h className='text-lg block my-2 ml-6'>{address}</h>
-                        <h className='text-lg block my-2 ml-6'>{city}</h>
+                        {data.map((elem) => (
+                            <div className='flex justify-between' key={elem.id}>
+                                <div>
+                                    <h1 className='text-lg font-bold'>{elem.street}</h1>
+                                    <h1 className='text-lg font-bold'>{elem.city}</h1>
+                                    <h1 className='text-lg font-bold'>{elem.governorate}</h1>
+                                    <h1 className='text-lg font-bold'>{elem.postCode}</h1>
+                                </div>
+                                <div>
+                                    <button className='bg-blue-500 text-white px-5 py-2 rounded-lg'>Edit</button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
+
                 </div>
                 {/* the cart items */}
                 <div className='grid grid-cols-12'>
@@ -107,7 +131,7 @@ const CheckOut = () => {
 
                                 <label className="text-sm text-gray-600 label-inline" htmlFor="card_details">Card Number</label>
                                 <input
-                                    value={cardInfo}
+                                    value='cardInfo'
                                     className="w-full px-2 py-2 text-gray-700 bg-gray-300 rounded" id="card_details"
                                     name="card_details" type="text"
                                     readOnly
@@ -122,9 +146,9 @@ const CheckOut = () => {
                                 {/* <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
                                     Buy now
                                 </button> */}
-                                <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
-                                    <PaypalButton product={products} />
-                                </button>
+                                {/* <button className='bg-blue'> */}
+                                <PayPalButtons product={products} />
+                                {/* </button> */}
 
                             </div>
                         </div>

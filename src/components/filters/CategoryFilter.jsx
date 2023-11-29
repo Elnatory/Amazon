@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCategory } from '../../store/slices/categoriesSlice';
+import { removeCategory } from '../../store/slices/categoriesSlice';
 
-const CategoriesFilter = ({ categories, products,}) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+const CategoriesFilter = ({ categories, products }) => {
+  const selectedCategories = useSelector((state) => state.categories); // Access selectedCategories from Redux store
+  const dispatch = useDispatch();
+
   const [filteredResultsState, setFilteredResultsState] = useState([]);
   const [x, setX] = useState(5);
   const [showMore, setShowMore] = useState(true);
 
   useEffect(() => {
-    const filteredResults = products.filter(product => {
+    const filteredResults = products.filter((product) => {
       if (selectedCategories.length === 0) {
         return true; // Include all products if no categories are selected
       } else {
-        console.log("Selected Categories:", selectedCategories);
-  // console.log("Products:", products);
+        console.log('Selected Categories:', selectedCategories);
         return selectedCategories.includes(product.category); // Filter products based on selected categories
       }
     });
-    // console.log("Filtered Results:", filteredResults);
-    if (JSON.stringify(filteredResults) !== JSON.stringify(filteredResultsState)) {
+
+    if (
+      JSON.stringify(filteredResults) !==
+      JSON.stringify(filteredResultsState)
+    ) {
       setFilteredResultsState(filteredResults);
     }
   }, [selectedCategories, products]);
 
-  const handleCategoryChange = category => {
-    // Toggle selected category
-    setSelectedCategories(prevSelectedCategories => {
-      // console.log('====================================');
-    // console.log("Category:", category);
-    // console.log('====================================');
-      if (prevSelectedCategories.includes(category)) {
-        return prevSelectedCategories.filter(selectedCategory => selectedCategory !== category);
-      } else {
-        return [...prevSelectedCategories, category];
-      }
-    });
+  const handleCategoryChange = (category) => {
+    if (selectedCategories.includes(category)) {
+      dispatch(removeCategory(category));
+    } else {
+      dispatch(addCategory(category));
+    }
   };
 
   const changeX = () => {
@@ -49,18 +50,18 @@ const CategoriesFilter = ({ categories, products,}) => {
   return (
     <div className='p-4'>
       {/* Categories checkboxes */}
-      <p className="text-lg font-bold">Select Category:</p>
-      <div className="flex flex-col">
+      <p className='text-lg font-bold'>Select Category:</p>
+      <div className='flex flex-col'>
         {categories.slice(0, x).map((category) => (
-          <div key={category._id} className="mr-4 mb-2">
+          <div key={category._id} className='mr-4 mb-2'>
             <input
-              type="checkbox"
+              type='checkbox'
               id={category._id}
               value={category.name}
-              checked={selectedCategories.includes(category.name)}
+              // checked={selectedCategories.includes(category.name)}
               onChange={() => handleCategoryChange(category.name)}
             />
-            <label htmlFor={category._id} className="ml-2">
+            <label htmlFor={category._id} className='ml-2'>
               {category.name}
             </label>
           </div>
@@ -74,6 +75,6 @@ const CategoriesFilter = ({ categories, products,}) => {
       </div>
     </div>
   );
-}
+};
 
 export default CategoriesFilter;

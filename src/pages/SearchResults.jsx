@@ -13,8 +13,8 @@ const SearchResults = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getSearchData(searchQuery, setSearchResults, setLoading);
-    console.log('searchResults', searchResults);
-    console.log('loading');
+    // console.log('searchResults', searchResults);
+    // console.log('loading');
   }, [searchQuery])
 
   return (

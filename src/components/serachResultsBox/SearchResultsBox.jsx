@@ -1,6 +1,7 @@
 import React from 'react';
 import RatingsAverage from '../ratings/RatingsAverage';
 
+
 const SearchResultBox = ({ result }) => {
   const { title, imageCover, price, quantity, ratingsAverage, ratingsQuantity, priceAfterDiscount } = result;
 

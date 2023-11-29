@@ -44,7 +44,7 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
 
   const onTyping= (val)=>{
     setInput(val);
-    console.log(input);
+    // console.log(input);
 
   }
 
