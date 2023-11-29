@@ -40,6 +40,7 @@ import BrandsDetails from "./pages/BrandsDetails";
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 import DashboardHeader from './pages/userDashbourd/userDashbourd'
+import YourAccount from './pages/userDashbourd/YourAccount'
 // import {authContext} from '../Contexts/isAuth'
 const Layout = () => {
   return (
@@ -107,6 +108,7 @@ useEffect(() =>{
         <Route path="/settingAddress" element={<AddressForm />}></Route>
         <Route path="/payment" element={<PaymentForm />} />
         <Route path="/dashuser" element={<DashboardHeader />}></Route>
+        <Route path="/account" element={<YourAccount />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )

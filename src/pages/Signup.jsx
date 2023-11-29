@@ -81,8 +81,9 @@ export default function Signup(props) {
         toast.error("write a Valid Email or password");
       } else {
          const res = await register(user.email, user.password,user.displayName);
-        
         console.log(res);
+        // localStorage.setItem('userId', res.user.uid);
+
         navigate("/signin");
       }
     } catch (err) {

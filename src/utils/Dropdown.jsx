@@ -21,10 +21,11 @@ export default function MenuPopupState({ logout, setLogin }) {
     localStorage.removeItem("cart");
     localStorage.removeItem('email');
     localStorage.removeItem('creatAt');
+    localStorage.removeItem('user');
 
     setLogin(false);
     popupState.close(); // Close the menu after logout
-    navigate('/');
+    navigate('/signin');
   };
 
   const handleCheckout = (popupState) => {
