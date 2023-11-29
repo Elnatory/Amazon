@@ -34,6 +34,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import BrandsDetails from "./pages/BrandsDetails";
 import DashboardHeader from './pages/userDashbourd/userDashbourd'
+import YourAccount from './pages/userDashbourd/YourAccount'
 // import {authContext} from '../Contexts/isAuth'
 const Layout = () => {
   return (
@@ -98,6 +99,7 @@ useEffect(() =>{
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
         <Route path="/dashuser" element={<DashboardHeader />}></Route>
+        <Route path="/account" element={<YourAccount />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )

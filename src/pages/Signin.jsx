@@ -70,6 +70,7 @@ export default function Signin(props) {
         localStorage.setItem('displayName', res.user.displayName);
         localStorage.setItem('email', res.user.email);
         localStorage.setItem('creatAt', res.user.metadata.creationTime);
+        localStorage.setItem('user', res.user.uid);
 
 
 
