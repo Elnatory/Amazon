@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 import {login} from "../firebase/auth"
 import toast,{ Toaster } from 'react-hot-toast';
 import { authContext } from "../Contexts/isAuth";
-
+// import { useDispatch } from "react-redux";
+// import { addUser } from "../store/slices/users";
 
 
 export default function Signin(props) {
+    // const dispatch = useDispatch();
 
-
-    // const {setLogin,setDisplayName }=useContext(authContext)
     const {setLogin,setDisplayRes }=useContext(authContext)
     const navigate = useNavigate();
     const [user, setUser] = useState({
@@ -55,7 +55,7 @@ export default function Signin(props) {
         });
       }
     };
-  
+    
     const signinhandle = async (e) => {
       e.preventDefault();
       try{
@@ -64,13 +64,15 @@ export default function Signin(props) {
         toast.error("write a Valid Email or password")
   
       }else{
-        const res= await login(user.email,user.password)
-        console.log(res)
-        localStorage.setItem('token',res.user.accessToken) 
-        localStorage.setItem('displayName', res.user.displayName);
-        localStorage.setItem('email', res.user.email);
-        localStorage.setItem('creatAt', res.user.metadata.creationTime);
-        localStorage.setItem('user', res.user.uid);
+        const retrievedData= await login(user.email,user.password)
+        // dispatch(addUser(retrievedData));
+        // localStorage.setItem('currentUser')
+        console.log(retrievedData)
+        localStorage.setItem('token',retrievedData.user.accessToken) 
+        localStorage.setItem('displayName', retrievedData.user.displayName);
+        localStorage.setItem('email', retrievedData.user.email);
+        localStorage.setItem('creatAt', retrievedData.user.metadata.creationTime);
+        localStorage.setItem('uid', retrievedData.user.uid);
 
 
 

@@ -13,7 +13,7 @@
     .headerHover:hover {
         border: 1px solid white;
         margin: -1px;
-        /* padding: 5px; */
+    
     }
 
     .footerLink {

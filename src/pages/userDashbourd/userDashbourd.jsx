@@ -12,38 +12,16 @@ import cartImage from '../../assets/new.png';
 import { userData } from '../../firebase/getUser';
 
 const DashboardHeader = ({ userName }) => {
-	const [user, setUser] = useState();
-	const [loading, setLoading] = useState(true);
-	const { isLogin } = useContext(authContext);
 
-
-	useEffect(() => {
-		const fetchData = async () => {
-		try {
-			const data = await userData(setUser,setLoading); // Retrieve all users
-			console.log(data);
-console.log(data);
-			const loggedInUser = data.find((u) => u.uid == localStorage.getItem("userId"));
-			setUser(loggedInUser); // Set the logged-in user to state
-			// setLoading(false);
-		} catch (error) {
-			console.error("Error fetching user data:", error);
-			// setLoading(false);
-		}
-		};
-	
-		if (isLogin) {
-		fetchData();
-		}
-	}, [isLogin])
-	console.log(localStorage.getItem("user"));
-
-
-	//   var table=document.getElementById("tableDesi");
+	const {isLogin,}=useContext(authContext)
+	const name= localStorage.getItem('displayName')
+	const id= localStorage.getItem('uid')
+	const email= localStorage.getItem('email')
+	const creatAt= localStorage.getItem('creatAt')
 return (
 	<>
 	<Header />
-	{isLogin && user ? (
+	{isLogin ? (
 		// Display user details if logged in and user exists
 		<div className="category">
 		<div style={{ marginLeft: "25%", marginTop: "5%" }}>
@@ -66,12 +44,12 @@ return (
 				<h3>
 					<strong>ID:</strong>
 				</h3>
-				{user.uid}
+				{id}
 				</pre>
 				<hr />
 			</td>
 			<td className="tdStyling ">
-				<button className="butts">Add</button>
+				{/* <button className="butts">Add</button> */}
 			</td>
 			</tr>
 
@@ -81,12 +59,12 @@ return (
 				<h3>
 					<strong>Name:</strong>
 				</h3>
-				{user.displayName}
+				{name}
 				</pre>
 				<hr />
 			</td>
 			<td className="tdStyling ">
-				<button className="butts">Add</button>
+				{/* <button className="butts">Add</button> */}
 			</td>
 			</tr>
 
@@ -96,7 +74,7 @@ return (
 				<h3>
 					<strong>Email:</strong>
 				</h3>
-				{user.email}
+				{email}
 				</pre>
 				<hr />
 			</td>
@@ -141,11 +119,11 @@ return (
 				<h3>
 					<strong>creation Date</strong>
 				</h3>
-				{user.createdAt}
+				{creatAt}
 				</pre>
 			</td>
 			<td className="tdStyling">
-				<button className="butts">Edit</button>
+				{/* <button className="butts">Edit</button> */}
 			</td>
 			</tr>
 			</tbody>
