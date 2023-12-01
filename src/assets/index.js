@@ -42,6 +42,12 @@ import deal5 from "./deals/16.jpg";
 import deal6 from "./deals/17.jpg";
 import deal7 from "./deals/18.jpg";
 import adds from "./adds.jpg";
+import sadd from "./smallAdd.jpg";
+import primesvg from "./prime-logo.svg";
+import prime1 from "./hasPrime.png";
+import prime2 from "./amazonprime_hybridMidnightBlue_SA._CB646594257_.png";
+import about from "./Letter_Desktop_en_2x_v3.jpg";
+
 
 
 
@@ -90,4 +96,9 @@ export {
   deal6,
   deal7,
   adds,
+  sadd,
+  primesvg,
+  prime1,
+  prime2,
+  about,
 };

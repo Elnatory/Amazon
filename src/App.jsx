@@ -35,6 +35,7 @@ import store from "./store/store";
 import BrandsDetails from "./pages/BrandsDetails";
 import DashboardHeader from './pages/userDashbourd/userDashbourd'
 import YourAccount from './pages/userDashbourd/YourAccount'
+import About from './pages/About'
 // import {authContext} from '../Contexts/isAuth'
 import spinnerImage from './assets/Amazon-Logo.jpg'; // Import the spinner image
 
@@ -111,6 +112,7 @@ useEffect(() =>{
           <Route path="/brands" element={<Brands />}></Route>
           <Route path="/brands/:brandSlug" element={<BrandsDetails />}></Route>
           <Route path="/help" element={<Help />}></Route>
+          <Route path="/about" element={<About />}></Route>
         </Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>

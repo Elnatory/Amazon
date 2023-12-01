@@ -6,15 +6,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // import { useSelector } from "react-redux";
 import SideNavContent from "./SideHeader";
-import { bottomHeader, bottomHeader2 } from "../../assets";
+import { bottomHeader, bottomHeader2, sadd } from "../../assets";
 import Slider from "react-slick";
 import { useContext } from "react";
 import { authContext } from "../../Contexts/isAuth";
 // import { authContext } from "../../Contexts/isAuth";
 
 export default function HeaderBottom(props) {
-  const displayName = localStorage.getItem("displayName"); // Retrieve the stored user name
-  const {isLogin}= useContext(authContext)
+  const displayName = localStorage.getItem("displayName");
+  const { isLogin } = useContext(authContext);
 
   // const {displayName }= useContext(authContext)
 
@@ -71,11 +71,13 @@ export default function HeaderBottom(props) {
           </ul>
         </div>
         <div
+        className="omg"
           style={{
             flex: 1,
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
+            
           }}
         >
           <Slider {...settings}>
@@ -94,6 +96,9 @@ export default function HeaderBottom(props) {
                 alt=""
                 width="350"
               />
+            </div>
+            <div>
+              <img className="headerHover" src={sadd} alt="" width="350" />
             </div>
           </Slider>
         </div>
