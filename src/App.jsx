@@ -38,6 +38,7 @@ import YourAccount from './pages/userDashbourd/YourAccount'
 import About from './pages/About'
 // import {authContext} from '../Contexts/isAuth'
 import spinnerImage from './assets/Amazon-Logo.jpg'; // Import the spinner image
+import ForgetPass from './utils/forgetPassword'
 
 const Layout = () => {
   return (
@@ -113,7 +114,9 @@ useEffect(() =>{
           <Route path="/brands/:brandSlug" element={<BrandsDetails />}></Route>
           <Route path="/help" element={<Help />}></Route>
           <Route path="/about" element={<About />}></Route>
+
         </Route>
+          <Route path="/reset" element={<ForgetPass/>}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/register" element={<Signup />}></Route>
         <Route path="/checkout" element={<CheckOut />}></Route>
