@@ -47,7 +47,12 @@ import primesvg from "./prime-logo.svg";
 import prime1 from "./hasPrime.png";
 import prime2 from "./amazonprime_hybridMidnightBlue_SA._CB646594257_.png";
 import about from "./Letter_Desktop_en_2x_v3.jpg";
-
+import abdu from './Abdu/XCM_CUTTLE_1559944_3028589_120x120_2X_en_EG.gif'
+import abdu2 from './Abdu/0_installments_banners_-EN.jpeg'
+import abdu3 from './Abdu/XCM_Manual_1619719_5830432_1500x150_2X.jpg'
+import abdu4 from './Abdu/XCM_Manual_1673656_6040669_1500x250_2X.jpg'
+import abdu5 from './Abdu/4.jpg'
+import abdu6 from './Abdu/brand.jpg'
 
 
 
@@ -101,4 +106,10 @@ export {
   prime1,
   prime2,
   about,
+  abdu,
+  abdu2,
+  abdu3,
+  abdu4,
+  abdu5,
+  abdu6,
 };

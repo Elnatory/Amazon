@@ -64,7 +64,7 @@ const Cart = () => {
                           />
                         </a>
                       </div>
-                      <div className="w-full flex flex-col gap-2 xl:gap-1">
+                      <div className="w-full flex flex-col gap-2 xl:gap-1 deleteitemc ">
                         <h2 className="font-semibold text-lg">{item.title}</h2>
                         <p className="xl:pr-10 text-sm">{item.description}</p>
                         <p className="text-base">
@@ -95,7 +95,7 @@ const Cart = () => {
                         </div>
                         <button
                           onClick={() => dispatch(deleteItem(item.id))}
-                          className="bg-red-500 w-36 py-1 rounded-lg text-white mt-2 hover:bg-red-700 active:bg-red-900 duration-300"
+                          className=" bg-red-500 w-36 py-1 rounded-lg text-white mt-2 hover:bg-red-700 active:bg-red-900 duration-300"
                         >
                           Delete Item
                         </button>
@@ -103,7 +103,7 @@ const Cart = () => {
                       {/* ====================== Left End here ============================== */}
                       {/* ====================== Right Start here =========================== */}
 
-                      <div className="w-full md:w-24">
+                      <div className="w-full md:w-24  deleteitemc ">
                         <p className="text-lg xl:w-24 font-titleFont font-semibold">
                           EGP {item.price * item.quantity}
                         </p>
@@ -116,7 +116,7 @@ const Cart = () => {
               {/* ====================== Products End here =========================== */}
               <div
                 onClick={() => dispatch(resetCart())}
-                className="w-full py-4"
+                className="w-full py-4  deleteitemc"
               >
                 <button className="px-10 py-2 bg-red-500 hover:bg-red-600 active:bg-red-500 text-white rounded-lg font-titleFont font-semibold text-lg tracking-wide">
                   Clear Cart

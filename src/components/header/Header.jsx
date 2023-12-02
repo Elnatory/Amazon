@@ -14,8 +14,11 @@ import { getProductsData } from "../../firebase/getProducts";
 import { authContext } from "../../Contexts/isAuth";
 import {logout} from "../../firebase/auth"
 import MenuPopupState from '../../utils/Dropdown';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
 
   const products = useSelector((state) => state.amazonReducer.products);
   const [loading, setLoading] = useState(true);
@@ -72,23 +75,56 @@ const dispatch = useDispatch();
               <ArrowDropDownOutlinedIcon />
             </span>
           </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           {showAll && (
-            <div>
-              <ul
-                ref={ref}
-                className="absolute w-56 h-80 top-10 left-0 overflow-y-scroll overflow-x-hidden bg-white border-[1px] border-amazon_blue text-black p-2 flex flex-col gap-1 z-50"
-              >
-                {allItems.map((item) => (
-                  <li
-                    className="text-sm tracking-wide font-titleFont border-b-[1px] border-b-transparent hover:border-b-amazon_blue cursor-pointer duration-200"
-                    key={item._id}
-                  >
-                    {item.title}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+  <div>
+    <ul
+      ref={ref}
+      className="absolute w-56 h-80 top-10 left-0 overflow-y-scroll overflow-x-hidden bg-white border-[1px] border-amazon_blue text-black p-2 flex flex-col gap-1 z-50"
+    >
+      {allItems.map((item) => (
+        <li
+          className="text-sm tracking-wide font-titleFont border-b-[1px] border-b-transparent hover:border-b-amazon_blue cursor-pointer duration-200"
+          key={item._id}
+          onClick={() => item.title && navigate(`/catgory/${item.title.toLocaleLowerCase()}`)}
+          // Ensure item.category is defined before navigating
+        >
+          {item.title}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
           <input
             className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"

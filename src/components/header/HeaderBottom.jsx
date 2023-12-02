@@ -11,6 +11,8 @@ import Slider from "react-slick";
 import { useContext } from "react";
 import { authContext } from "../../Contexts/isAuth";
 // import { authContext } from "../../Contexts/isAuth";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function HeaderBottom(props) {
   const displayName = localStorage.getItem("displayName");
@@ -50,8 +52,8 @@ export default function HeaderBottom(props) {
     <>
       <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
         {/* ======================= List Items Start here ======================== */}
-        <div className="flex items-center gap-2 text-sm tracking-wide flex-grow">
-          <ul className="flex items-center gap-2 text-sm tracking-wide">
+        <div className="flex items-center gap-2 text-sm tracking-wide flex-grow ">
+          <ul className="flex items-center gap-2 text-sm tracking-wide ">
             <li
               onClick={() => setSidebar(true)}
               className="flex items-center gap-1 headerHover"
@@ -59,15 +61,16 @@ export default function HeaderBottom(props) {
               <MenuIcon />
               All
             </li>
-            <li className="hidden md:inline-flex headerHover">Today's Deals</li>
-            <li className="hidden md:inline-flex headerHover">Prime</li>
-            <li className="hidden md:inline-flex headerHover">Mobiles</li>
-            <li className="hidden md:inline-flex headerHover">Electronics</li>
-            <li className="hidden md:inline-flex headerHover">Music</li>
-            <li className="hidden md:inline-flex headerHover">Fashion</li>
-            <li className="hidden md:inline-flex headerHover">Home</li>
-            <li className="hidden md:inline-flex headerHover">Super Market</li>
-            <li className="hidden md:inline-flex headerHover">Books</li>
+            <div className="hederul d-flex">
+            <li className="hidden md:inline-flex headerHover"><Link to="/">Home</Link></li>
+                        <li className="hidden md:inline-flex headerHover"><Link to="/todaysdeals">Today's Deals</Link></li>
+                        <li className="hidden md:inline-flex headerHover"> <Link to="/catgory/mobiles">Mobiles</Link></li>
+                        <li className="hidden md:inline-flex headerHover"><Link to="/catgory/electronics">Electronics</Link></li>
+                        <li className="hidden md:inline-flex headerHover"><Link to="/catgory/music">Music</Link></li>
+                        <li className="hidden md:inline-flex headerHover"><Link to="/catgory/men's-fashion">Men's Fashion</Link></li>
+                        <li className="hidden md:inline-flex headerHover"><Link to="/catgory/women's-fashion">Women's Fashion</Link></li>
+                        <li className="hidden md:inline-flex headerHover"> <Link to="/catgory/books">Books</Link></li>
+                        <li className="hidden md:inline-flex headerHover"><Link to="/brands">Brands</Link></li></div>
           </ul>
         </div>
         <div
@@ -80,13 +83,13 @@ export default function HeaderBottom(props) {
             
           }}
         >
-          <Slider {...settings}>
+          <Slider className=" w-75" {...settings}>
             <div>
               <img
                 className="headerHover"
                 src={bottomHeader}
                 alt=""
-                width="350"
+                width="300"
               />
             </div>
             <div>
@@ -94,7 +97,7 @@ export default function HeaderBottom(props) {
                 className="headerHover"
                 src={bottomHeader2}
                 alt=""
-                width="350"
+                width="300"
               />
             </div>
             <div>
@@ -138,35 +141,33 @@ export default function HeaderBottom(props) {
                   )}
                   {/* ============================ Content & Devices Start here ================ */}
                   <SideNavContent
-                    title="Trendings"
-                    one="Best Sellers"
-                    two="New Releases"
-                    three="Movers & Shakers"
-                  />
-                  <SideNavContent
-                    title="Digital Content & Devices"
-                    one="Amazon Music"
-                    two="Kindle E-readers & Books"
-                    three="Amazon Appstore"
-                  />
-                  <SideNavContent
-                    title="Shop By Category"
-                    one="Electronics"
-                    two="Computers"
-                    three="Smart Home"
-                  />
-                  <SideNavContent
-                    title="Programs & Features"
-                    one="Gift Cards"
-                    two="Amazon live"
-                    three="International Shopping"
-                  />
-                  <SideNavContent
-                    title="Help & Settings"
-                    one="Your Account"
-                    two="Customer Service"
-                    three="Contact us"
-                  />
+                                        title="Trendings"
+                                        one={<Link to="/bestsellers"> Best Sellers</Link>}
+
+                                        two={<Link to="/newreleases"> New Releases</Link>}
+                                        three={<Link to="/Movers & Shakers"> Movers & Shakers</Link>}
+
+                                    />
+                                    <SideNavContent
+                                        title="Digital Content & Devices"
+                                        one={<Link to="/catgory/music">Amazon Music</Link>}
+                                        two={<Link to="/catgory/books">Kindle E-readers & Books</Link>}
+                                        three={<Link to="/brands">Amazon Brands</Link>}
+                                    />
+                                    <SideNavContent
+                                        title="Shop By Category"
+                                       
+                                        one={<Link to="/catgory/electronics">Electronics</Link>}
+                                        two={<Link to="/catgory/mobiles">Mobile</Link>}
+                                        three={<Link to="/catgory/men's-fashion">Men's Fashion</Link>}
+                                    />
+                            
+                                    <SideNavContent
+                                        title="Help & Settings"
+                                        one={<Link to="/youraccount">Your Account</Link>}
+                                        two={<Link to="/help">Help</Link>}
+                                        three={<Link to="/about">About Us</Link>}
+                                    />
                   {/* ============================ Content & Devices End here ================ */}
                   <span
                     onClick={() => setSidebar(false)}

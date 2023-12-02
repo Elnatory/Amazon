@@ -29,12 +29,12 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { grey } from "@mui/material/colors";
-
+ 
 function handleClick(event) {
   event.preventDefault();
   console.info("You clicked a breadcrumb.");
 }
-
+ 
 export default function Details(props) {
   const { id } = useParams();
   const { sim } = useParams();
@@ -48,11 +48,11 @@ export default function Details(props) {
     style: "currency",
     currency: "EGP",
   });
-
+ 
   useEffect(() => {
     if (allProducts.length) {
       const productById = allProducts.find((product) => product.id === id);
-
+ 
       if (productById) {
         setPrd(productById.similars?.[sim] || productById);
         scrollToTop();
@@ -64,14 +64,14 @@ export default function Details(props) {
       dispatch(GETallProducts());
     }
   }, [allProducts, location, id, sim]);
-
+ 
   const addTOCart = function () {
     setBounceAnime(!prd.quantity);
     setTimeout(() => setBounceAnime(false), 1000);
   };
-
+ 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
+ 
   function handleSwiperNav(num) {
     return {
       nextEl: `.swiper${num}-btn-next`,
@@ -79,12 +79,12 @@ export default function Details(props) {
       disabledClass: `.swiper${num}-button-disabled`,
     };
   }
-
+ 
   const [previewImage, setPreviewImage] = useState(prd?.images[0] || "");
   const handleImageHover = (image) => {
     setPreviewImage(image);
   };
-
+ 
   const [showFullDescription, setShowFullDescription] = useState(false);
   function truncateDescription(description, limit) {
     if (description.length > limit) {
@@ -92,12 +92,12 @@ export default function Details(props) {
     }
     return description;
   }
-
+ 
   async function handleGetDoc(coll) {
     const res = await getDocs(collection(db, coll));
     return res.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
   }
-
+ 
   const STORAGE_KEY = "selectedAlignment";
   const initialAlignment = localStorage.getItem(STORAGE_KEY) || "web";
   const [alignment, setAlignment] = React.useState(initialAlignment);
@@ -106,7 +106,7 @@ export default function Details(props) {
     localStorage.setItem(STORAGE_KEY, newAlignment);
     window.location.reload();
   };
-
+ 
   const colorNames = [
     "Black",
     "Red",
@@ -116,34 +116,34 @@ export default function Details(props) {
     "Purple",
     "Pink",
   ];
-
+ 
   const imageContainerRef = useRef(null);
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset;
       imageContainerRef.current.style.top = `${Math.min(scrollY, 300)}px`;
     };
-
+ 
     const imageContainer = document.querySelector(".image-container");
     imageContainerRef.current = imageContainer;
-
+ 
     if (imageContainer) {
       window.addEventListener("scroll", handleScroll);
     }
-
+ 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+ 
   const [swiperRef, setSwiperRef] = useState(null);
   const appendNumber = useRef(500);
   const prependNumber = useRef(1);
   const [slides, setSlides] = useState(
     Array.from({ length: 500 }).map((_, index) => `Slide ${index + 1}`)
   );
-
+ 
   const prepend = () => {
     setSlides([
       `Slide ${prependNumber.current - 2}`,
@@ -153,15 +153,15 @@ export default function Details(props) {
     prependNumber.current = prependNumber.current - 2;
     swiperRef.slideTo(swiperRef.activeIndex + 2, 0);
   };
-
+ 
   const append = () => {
     setSlides([...slides, "Slide " + ++appendNumber.current]);
   };
-
+ 
   const slideTo = (index) => {
     swiperRef.slideTo(index - 1, 0);
   };
-
+ 
   const getCurrentDate = () => {
     const currentDate = new Date();
     const options = {
@@ -172,12 +172,12 @@ export default function Details(props) {
     };
     return currentDate.toLocaleDateString("en-US", options);
   };
-
+ 
   const [isActive, setIsActive] = useState(false);
   const toggleActive = () => {
     setIsActive(!isActive);
   };
-
+ 
   const breadcrumbs = [
     <Link
       underline="hover"
@@ -217,42 +217,42 @@ export default function Details(props) {
       {allProducts.map((product) => (product.id === id ? product.title : ""))}
     </Typography>,
   ];
-
+ 
   const [discountEndTime, setDiscountEndTime] = useState(null);
-
+ 
   useEffect(() => {
     const randomTime = Math.floor(Math.random() * (24 * 60 * 60 * 1000));
     const currentTime = new Date().getTime();
     const endTime = currentTime + randomTime;
-
+ 
     setDiscountEndTime(endTime);
-
+ 
     return () => {
       setDiscountEndTime(null);
     };
   }, []);
-
+ 
   const calculateTimeRemaining = () => {
     if (!discountEndTime) return "";
-
+ 
     const now = new Date().getTime();
     const timeRemaining = discountEndTime - now;
-
+ 
     const hours = Math.floor(timeRemaining / (60 * 60 * 1000));
     const minutes = Math.floor(
       (timeRemaining % (60 * 60 * 1000)) / (60 * 1000)
     );
     const seconds = Math.floor((timeRemaining % (60 * 1000)) / 1000);
-
+ 
     return `${hours}h ${minutes}m ${seconds}s`;
   };
-
+ 
   return (
     <>
       <div
-        className=" ml-8"
+        className="  ml-8"
         style={{
-          display: "flex",
+          display: "flex ",
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -276,13 +276,36 @@ export default function Details(props) {
           </svg>
         </div>
       </div>
-      <div className="main" role="main">
+
+      <div className="main " role="main">
         {prd && (
           <>
             {/* ========================================================================================= First        */}
-            <Grid container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <Grid spacing={{ xs: 4, md: 3 }} columns={{ xs: 7, sm: 7, md: 12 }} className=" contdetailes " container>
+
+
               <Grid item xs={1}>
-                <div className="image-row d-flex pe-2 image-container">
+                <div className="image-row  imgslide pe-2 image-container">
                   {prd.images.map((image, index) => (
                     <img
                       key={index}
@@ -302,7 +325,10 @@ export default function Details(props) {
                   ))}
                 </div>
               </Grid>
-              <Grid item xs={4}>
+
+
+
+              <Grid item  xs={4}>
                 {/* <img
                   className="placeorder__image"
                   src={previewImage || prd.images[0]}
@@ -316,7 +342,7 @@ export default function Details(props) {
                     }}
                   />
                 </div> */}
-                <div className="placeorder__image image-container  image-container2">
+                <div className="placeorder__image image-container imagedetails image-container2">
                   <ReactImageMagnify
                     {...{
                       smallImage: {
@@ -349,8 +375,10 @@ export default function Details(props) {
                             </Swiper> */}
               </Grid>
               {/* ========================================================================================= Second        */}
+
+
               <Grid item xs={4}>
-                <div className="placeholder__description">
+                <div className="placeholder__description  detailssmall">
                   <div
                     style={{
                       fontSize: "24px",
@@ -443,7 +471,7 @@ export default function Details(props) {
                         }  Available Colors :`}
                       </span>
                     </div>
-
+ 
                     <ToggleButtonGroup
                       color="primary"
                       value={alignment}
@@ -473,13 +501,13 @@ export default function Details(props) {
                         </ToggleButton>
                       ))}
                     </ToggleButtonGroup>
-
+ 
                     {Math.random() > 0.5 ? (
                       <div className="available-text">Available</div>
                     ) : (
                       <div className="not-available-text">Not Available</div>
                     )}
-
+ 
                     <div style={{ fontSize: "24px" }} className="">
                       About this item
                     </div>
@@ -542,7 +570,15 @@ export default function Details(props) {
                 </div>
               </Grid>
               {/* ========================================================================================= Third        */}
-              <Grid item xs={3} className="too">
+
+
+
+              <Grid item   container
+  direction="row"
+  justifyContent="center"
+  alignItems="center"
+    xs={3} className="too">
+
                 <Paper variant="outlined" className="placeorder__order1">
                   <div style={{ backgroundColor: "#cccccc" }}>
                     <label
@@ -565,7 +601,7 @@ export default function Details(props) {
                     </label>
                   </div>
                 </Paper>
-
+ 
                 <Paper variant="outlined" className="placeorder__order">
                   <div>
                     <div>
@@ -611,7 +647,7 @@ export default function Details(props) {
                     <div>
                       {isLogin ? (
                         <button
-                          className={`placeorder__button addtocart ${
+                          className={`placeorder__button addtocart buttomcart ${
                             prd.quantity ? "animated" : ""
                           }`}
                           onClick={() =>
@@ -641,10 +677,10 @@ export default function Details(props) {
                           </button>
                         </Link>
                       )}
-
+ 
                       <Link to="/checkout">
                         <button
-                          className={`placeorder__button buynow ${
+                          className={`placeorder__button buynow buttomcart ${
                             prd.quantity ? "animated" : ""
                           }`}
                         >
@@ -654,7 +690,11 @@ export default function Details(props) {
                     </div>
                   </div>
                 </Paper>
-                <Paper variant="outlined" className="placeorder__order">
+
+
+
+
+                <Paper variant="outlined" className="placeorder__order paperdispay">
                   <div>
                     <div>
                       <strong>With Shipping +50EGP</strong>
@@ -663,7 +703,7 @@ export default function Details(props) {
                     <div>
                       <Link to="/">
                         <button
-                          className={`placeorder__button back ${
+                          className={`placeorder__button back buttomcart ${
                             prd.quantity ? "animated" : ""
                           }`}
                         >
@@ -685,18 +725,22 @@ export default function Details(props) {
                         Plan for EGP 1,113.00
                       </label>
                     </div>
-
+ 
                     <div>
                     <img src={primesvg} alt="" />
                   </div>
-                    
-
+                   
+ 
                     <div>
                       <span className="visit">Add to List</span>
                       <span className="visit">Share</span>
                     </div>
                   </div>
                 </Paper>
+
+
+
+
               </Grid>
             </Grid>
             {/* ========================================================================================= Fourth        */}

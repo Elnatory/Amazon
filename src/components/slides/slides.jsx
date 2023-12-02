@@ -17,7 +17,7 @@ import "./slides.css";
 
 import "swiper/css";
 import "swiper/css/navigation";
-
+import { useNavigate } from 'react-router-dom';
 export default function Slides(props) {
   // const [prd, setPrd] = useState();
   let allProducts = useSelector((state) => state.allProducts.allProducts);
@@ -82,10 +82,39 @@ export default function Slides(props) {
     getBrandsData(setBrands, setLoading);
   }, []);
 
+
+  const navigate = useNavigate();
+
+  const searchCategory = (brandName) => {
+    // Navigate to 'brandsdetails' with brand name as a parameter
+    navigate(`/brandsdetails/${brandName}`);
+  };
+
+
+
+  const searchCategory2 = (categoryName) => {
+    // Navigate to 'brandsdetails' with category name as a parameter
+    navigate(`/catgory/${categoryName}`);
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <FadeIn>
-        <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
+        <div className="today_deals_heading m-auto">
           <h1>Shop Today's Deals</h1>
           <p>
             <a href="#">See all deals</a>
@@ -160,7 +189,7 @@ export default function Slides(props) {
       </FadeIn>
 
       <FadeIn>
-        <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
+        <div className="today_deals_heading  m-auto">
           <h1>Shop by Category</h1>
           <p>
             <a href="/categories">See all Categories</a>
@@ -178,18 +207,18 @@ export default function Slides(props) {
             }}
             modules={[Navigation]}
           >
-            {categories.map((category, index) => (
-              <SwiperSlide
-                key={index}
-                onClick={() => searchCategory(category.name)}
-                className="cursor-pointer"
-              >
-                <img
-                  id="imgCat"
-                  src={category.image}
-                  alt={`${category.name} category`}
-                />
-              </SwiperSlide>
+             {categories.map((category, index) => (
+        <SwiperSlide
+          key={index}
+          onClick={() => searchCategory2(category.slug)}
+          className="cursor-pointer"
+        >
+          <img
+            id="imgCat"
+            src={category.image}
+            alt={`${category.name} category`}
+          />
+        </SwiperSlide>
             ))}
             <div className="custom-next" onClick={() => toggleActive(this)}>
               <img className="to" src={right} alt="" />
@@ -202,7 +231,7 @@ export default function Slides(props) {
       </FadeIn>
 
       <FadeIn>
-        <div className="today_deals_heading min-w-[1000px] max-w-[1500px] m-auto">
+        <div className="today_deals_heading  m-auto">
           <h1>Shop by Brands</h1>
           <p>
             <a href="/brands">See all Brands</a>
@@ -220,18 +249,14 @@ export default function Slides(props) {
             }}
             modules={[Navigation]}
           >
-            {brands.map((brand, index) => (
-              <SwiperSlide
-                key={index}
-                onClick={() => searchCategory(brand.name)}
-                className="cursor-pointer"
-              >
-                <img
-                  id="imgCat"
-                  src={brand.image}
-                  alt={`${brand.name} category`}
-                />
-              </SwiperSlide>
+               {brands.map((brand, index) => (
+        <SwiperSlide
+          key={index}
+          onClick={() => searchCategory(brand.name)}
+          className="cursor-pointer"
+        >
+          <img id="imgCat" src={brand.image} alt={`${brand.name} category`} />
+        </SwiperSlide>
             ))}
             <div className="custom-next" onClick={() => toggleActive(this)}>
               <img className="to" src={right} alt="" />
