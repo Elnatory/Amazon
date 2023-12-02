@@ -180,7 +180,7 @@ const ProductsByCategory = () => {
 
 
           <div className='col col-lg-10 col-md-12'>
-            <div className=''>
+            <div className='conimg'>
               <p className='phcategory'>Enjoy FREE delivery, exclusive deals, <span className='text-black'>{category.toLocaleUpperCase()}</span> and more Join today. Cancel anytime.</p>
               <img className='mb-2' src={abdu} alt="" />
               <img src={abdu4} alt="" />
