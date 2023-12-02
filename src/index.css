@@ -13,7 +13,7 @@
     .headerHover:hover {
         border: 1px solid white;
         margin: -1px;
-        /* padding: 5px; */
+    
     }
 
     .footerLink {
@@ -127,6 +127,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 body{
     margin:0 !important;
     padding:0 !important;
@@ -155,6 +165,55 @@ body{
  
  
 
+ @media screen and (min-width: 769px) and (max-width: 991px) {
+ 
+    .box {
+       
+        margin-top: -100px !important;
+    }
+ 
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+ 
+    .sliderTop  {
+       
+        display: none;
+        width: 130px;
+    }
+ 
+    .costumHeightText {
+        height: 50px;
+        font-size: 16px;
+     }
+   
+ 
+}
+ 
+@media screen and (max-width: 768px) {
+ 
+    .box {
+       
+        margin-top: -100px !important;
+    }
+ 
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+ 
+    .sliderTop  {
+       
+        display: none;
+        width: 130px;
+    }
+ 
+    .costumHeightText {
+        height: 50px;
+        font-size: 16px;
+     }
+}
  
  
  
@@ -246,6 +305,7 @@ body{
 
 
 
+ 
   @media screen and (min-width: 769px) and (max-width: 991px) {
  
   .account {
@@ -286,6 +346,9 @@ display:none !important;
 
 
 
+ 
+
+ 
 @media screen and (max-width: 768px) {
     .account {
         flex-direction: column ;
@@ -436,3 +499,14 @@ display:none !important;
     }
 
 
+
+
+
+
+
+
+
+
+
+
+ 

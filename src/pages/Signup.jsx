@@ -10,8 +10,12 @@ import toast,{ Toaster } from 'react-hot-toast';
 // import { authContext } from "../Contexts/isAuth";
 // import { addDoc, collection } from "firebase/firestore";
 // import { db } from "../firebase/firebasse";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/slices/users";
 
 export default function Signup(props) {
+  const dispatch = useDispatch();
+
   // const { setDisplayRes } = useContext(authContext); // Access setDisplayName function from context
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -81,8 +85,10 @@ export default function Signup(props) {
         toast.error("write a Valid Email or password");
       } else {
          const res = await register(user.email, user.password,user.displayName);
-        
         console.log(res);
+        // localStorage.setItem('currentUser')
+
+        // dispatch(addUser(res));
         navigate("/signin");
       }
     } catch (err) {
@@ -90,6 +96,7 @@ export default function Signup(props) {
     }
   };
 
+  // console.log(user)
   return (
     <>
       <div className="w-full" onSubmit={(event)=> {handleSubmit(event)}}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './userDash.css';
 import Header from '../../components/header/Header';
@@ -9,100 +9,134 @@ import { useContext } from 'react';
 import { authContext } from '../../Contexts/isAuth';
 import cartImage from '../../assets/new.png';
 
+import { userData } from '../../firebase/getUser';
 
 const DashboardHeader = ({ userName }) => {
 
-  // const handleLogout = () => {
-  //   // Handle logout logic here
-  // };
-  const {isLogin,}=useContext(authContext)
-  const name= localStorage.getItem('displayName')
-  const id= localStorage.getItem('token')
-  const email= localStorage.getItem('email')
-  const createAt= localStorage.getItem('creatAt')
+	const {isLogin,}=useContext(authContext)
+	const name= localStorage.getItem('displayName')
+	const id= localStorage.getItem('uid')
+	const email= localStorage.getItem('email')
+	const creatAt= localStorage.getItem('creatAt')
+return (
+	<>
+	<Header />
+	{isLogin ? (
+		// Display user details if logged in and user exists
+		<div className="category">
+		<div style={{ marginLeft: "25%", marginTop: "5%" }}>
+			<a href="/account">
+			<strong>Account</strong>
+			</a>{" "}
+			{">"}{" "}
+			<a href="#">
+			<strong>login & Security</strong>
+			</a>
+			<h1>
+			<strong>Login & Security</strong>
+			</h1>
+		</div>
+		<table id="tableDesi">
+		<tbody>
+			<tr className="trlogin">
+			<td>
+				<pre>
+				<h3>
+					<strong>ID:</strong>
+				</h3>
+				{id}
+				</pre>
+				<hr />
+			</td>
+			<td className="tdStyling ">
+				{/* <button className="butts">Add</button> */}
+			</td>
+			</tr>
 
-//   console.log(displayRes.user)
+			<tr className="trlogin">
+			<td>
+				<pre>
+				<h3>
+					<strong>Name:</strong>
+				</h3>
+				{name}
+				</pre>
+				<hr />
+			</td>
+			<td className="tdStyling ">
+				{/* <button className="butts">Add</button> */}
+			</td>
+			</tr>
 
-  return (
-    <>
-   <Header/>
+			<tr className="trlogin">
+			<td>
+				<pre>
+				<h3>
+					<strong>Email:</strong>
+				</h3>
+				{email}
+				</pre>
+				<hr />
+			</td>
+			<td className="tdStyling">
+				<button className="butts">Add</button>
+			</td>
+			</tr>
 
+			<tr className="trlogin">
+			<td>
+				<pre>
+				<h3>
+					<strong>Password:</strong>
+				</h3>
+				**********
+				</pre>
+				<hr />
+			</td>
+			<td className="tdStyling">
+				<button className="butts">Edit</button>
+			</td>
+			</tr>
 
-{isLogin?(
+			<tr className="trlogin">
+			<td>
+				<pre>
+				<h3>
+					<strong>Primary mobile number:</strong>
+				</h3>
+				+201146223301
+				</pre>
+				<hr />
+			</td>
 
-<div className='parents'>
-<img className="userImg " src={cartImage} alt='user image'style={{width:'200px',marginLeft:"40%"}}/>
-<div class="container">
-<nav>
-
-	
-		<ul className="mcd-menu" style={{marginTop:'20px'}}>
-
-
-			<li>
-				<a href="/">
-					<i class="fa fa-home"></i>
-					<strong><FontAwesomeIcon style={{color:'white',paddingBottom:'2px'}} icon={faHouse} /> Home</strong>
-					{/* <small>sweet home</small> */}
-				</a>
-			</li>
-			<li>
-				<a href="#" class="active">
-					<i class="fa fa-edit"></i>
-					<strong> <FontAwesomeIcon style={{color:'white',paddingBottom:'2px'}}  icon={faUser} />    Account         </strong>
-					<small>special offers</small>
-					{/* <small>special thing </small> */}
-				</a>
-			</li>
-			<li>
-				<a href="/cart">
-					<i class="fa fa-gift"></i>
-					<strong>My Cart </strong>
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<i class="fa fa-globe"></i>
-					<strong>billing Details</strong>
-					<small>sweet home</small>
-				</a>
-			</li>
-			<li>
-				<a href="/orders">
-					<i class="fa fa-comments-o"></i>
-					<strong>Checkout</strong>
-					<small>what they say</small>
-				</a>
-				
-			</li>
-			<li>
-				<a href="">
-					<i class="fa fa-picture-o"></i>
-					<strong>Setting</strong>
-					{/* <small>special order</small> */}
-				</a>
-			</li>
-			
-			
-		</ul>
-	</nav>
-	<div className=' profile'>
-	<div style={{marginBottom: '20px'}}> <FontAwesomeIcon icon={faUser} />   <strong>ID:</strong> 4HSSAD59864S23SAI </div>
-	<div style={{marginBottom: '20px'}}> <FontAwesomeIcon icon={faUser} />   <strong>Name:</strong> {name}</div>
-	<div style={{marginBottom: '20px'}} ><FontAwesomeIcon icon={faEnvelope} />   <strong>Email:</strong> {email}</div>
-	<div style={{marginBottom: '20px'}}> <FontAwesomeIcon icon={faPhone} />   <strong>phoneNumber:</strong>EGY +20  1146223301</div>
-	<div style={{marginBottom: '20px'}}><FontAwesomeIcon icon={faCalendarDays} />   <strong>Account creation:</strong> {createAt}</div>
-	<div > <FontAwesomeIcon icon={faLocationDot} />  <strong>address :</strong> Qena-Qeft</div>
-	</div>
-</div>
-</div>):(<Link to="/signin"></Link>)}
-
-
-
-   
-   <Footer/>
-   </>
-  );
+			<td className="tdStyling">
+				<button className="butts  ">Edit</button>
+			</td>
+			</tr>
+			<tr className="trlogin">
+			<td>
+				<pre>
+				<h3>
+					<strong>creation Date</strong>
+				</h3>
+				{creatAt}
+				</pre>
+			</td>
+			<td className="tdStyling">
+				{/* <button className="butts">Edit</button> */}
+			</td>
+			</tr>
+			</tbody>
+		</table>
+		<button  className='butts' style={{  marginLeft: "65%",marginTop:'5px'
+}}>Done</button>
+		</div>
+	) : (
+		<Link to="/signin"></Link>
+	)}
+	<Footer />
+	</>
+);
 };
 
 export default DashboardHeader;

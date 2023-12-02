@@ -164,7 +164,7 @@ export default function HeaderBottom(props) {
                             
                                     <SideNavContent
                                         title="Help & Settings"
-                                        one={<Link to="/youraccount">Your Account</Link>}
+                                        one={<Link to="/account">Your Account</Link>}
                                         two={<Link to="/help">Help</Link>}
                                         three={<Link to="/about">About Us</Link>}
                                     />
