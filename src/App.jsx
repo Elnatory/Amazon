@@ -4,7 +4,7 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 // import Products from './components/home/Products'
 import  { useState,useContext } from 'react'
-
+import { LanguageProvider } from '../src/Contexts/language'
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -54,6 +54,7 @@ const Layout = () => {
 };
 
 function App() {
+  const [language,setLanguage]= useState('ar')
   const[loading ,setLoading]=useState(false);
    const override = {
     display: 'flex',
@@ -133,13 +134,15 @@ useEffect(() =>{
       </div>
         :(
         
-        <Provider store={store}>
-          {/* bassBooster paypal account client id */}
-        <PayPalScriptProvider options={{"client-id": "AeZfRlbmQtc8Z57hOW7gb-sPUJgnhNfJd3QCnf4OpnZbpAFTCY1ceBnElh_siV0mDNn70pbAKjK2ss1T"}}>
-          <RouterProvider router={router}></RouterProvider>
-          </PayPalScriptProvider>
-        
-        </Provider>
+        <LanguageProvider value={{language,setLanguage}}>
+          <Provider store={store}>
+            {/* bassBooster paypal account client id */}
+          <PayPalScriptProvider options={{"client-id": "AeZfRlbmQtc8Z57hOW7gb-sPUJgnhNfJd3QCnf4OpnZbpAFTCY1ceBnElh_siV0mDNn70pbAKjK2ss1T"}}>
+            <RouterProvider router={router}></RouterProvider>
+            </PayPalScriptProvider>
+          
+          </Provider>
+        </LanguageProvider>
         )
       }
 

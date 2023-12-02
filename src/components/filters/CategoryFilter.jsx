@@ -16,7 +16,7 @@ const CategoriesFilter = ({ categories, products }) => {
       if (selectedCategories.length === 0) {
         return true; // Include all products if no categories are selected
       } else {
-        console.log('Selected Categories:', selectedCategories);
+        // console.log('Selected Categories:', selectedCategories);
         return selectedCategories.includes(product.category); // Filter products based on selected categories
       }
     });

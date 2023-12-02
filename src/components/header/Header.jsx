@@ -14,8 +14,12 @@ import './Search.css';
 import { authContext } from "../../Contexts/isAuth";
 import {logout} from "../../firebase/auth"
 import MenuPopupState from '../../utils/Dropdown';
+import { Localization } from "../../constants/localization";
+import { languageContext } from "../../Contexts/language";
 
 const Header = () => {
+  const {language,setLanguage}=useContext(languageContext);
+  // console.log(language);
 
   const products = useSelector((state) => state.amazonReducer.products);
   const [loading, setLoading] = useState(true);
@@ -63,10 +67,12 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
   //   setLogin(false); 
   //   navigate('/signin');
   // };
-
-
+const changeLanguage = ()=> {
+  setLanguage(language==="en"?"ar":"en");
+  console.log(language);
+}
   return (
-    <div className="sticky top-0 z-50 bg-black">
+    <div className="sticky top-0 z-50 bg-black" >
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
         {/* ===================== Header Image Start here ======================== */}
         <Link to="/">
@@ -79,9 +85,9 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
         <div className="hidden md:inline-flex headerHover">
           <LocationOnOutlinedIcon />
           <p className="flex flex-col text-xs text-lightText font-light">
-            Deliver to{" "}
+            {language==='en'?Localization.header.deliverTo.en:Localization.header.deliverTo.ar}
             <span className="text-sm font-semibold -mt-1 text-whiteText">
-              Egypt
+            {language==='en'?Localization.header.egypt.en:Localization.header.egypt.ar}
             </span>
           </p>
         </div>
@@ -147,11 +153,11 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
         </div>
         {/* ===================== Header Search End here ========================== */}
         {/* ===================== Header Signin Start here ======================== */}
-        <div className="flex flex-col items-start justify-center headerHover">
+        <div className="flex flex-col items-start justify-center headerHover"  onClick={changeLanguage}>
           <p></p>
           <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
             <img src={egyptFlag} alt="Egypt Flag" width="20px" height="20px" />
-            EN{" "}
+            {language==="en"?Localization.header.lang.en:Localization.header.lang.ar}{" "}
             <span>
               <ArrowDropDownOutlinedIcon />
             </span>
@@ -173,7 +179,7 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
           </div>)
         :(<Link to="/signin">
           <div className="flex flex-col items-start justify-center headerHover">
-            <p className="text-xs text-lightText font-light">Hello,sign in </p>
+            <p className="text-xs text-lightText font-light">{language==='en'?Localization.header.helloSing.en:Localization.header.helloSing.ar} </p>
             <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
               Accounts & Lists{" "}
               
@@ -194,10 +200,10 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
         {/* ===================== Header Signin End here ========================== */}
         {/* ===================== Header Orders Start here ======================== */}
         <Link to="/orders">
-          <div className="hidden mdl:flex flex-col items-start justify-center headerHover">
-            <p className="text-xs text-lightText font-light">Returns</p>
+          <div className="hidden mdl:flex flex-col items-start justify-center headerHover" >
+            <p className="text-xs text-lightText font-light">{language==='en'?Localization.header.Returns.en:Localization.header.Returns.ar}</p>
             <p className="text-sm font-semibold -mt-1 text-whiteText">
-              & Orders
+             {language==='en'?Localization.header.Orders.en:Localization.header.Orders.ar}
             </p>
           </div>
         </Link>
@@ -216,7 +222,7 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
             >
               {products.length > 0 ? products.length : 0}
             </span>
-            <p className="text-sm text-white font-bold">Cart</p>
+            <p className="text-sm text-white font-bold">{language==="en"?Localization.header.cart.en:Localization.header.cart.ar}</p>
           </div>
         </Link>
 

@@ -7,9 +7,12 @@ import { getBrandsData } from '../../firebase/getBrands'
 import { getProductsData } from '../../firebase/getProducts'
 import { getCategoriesData } from '../../firebase/getCategory'
 import CustomerReview from '../filters/CustomerReview'
+import { useSelector } from 'react-redux'
 
 const FilterPanel = () => {
   const location = useLocation();
+  const selectedBrands = useSelector((state) => state.brands); // Access selectedBrands from Redux store
+  const selectedCategories = useSelector((state) => state.categories); // Access selectedCategories from Redux store
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query');
   const [searchResults, setSearchResults] = useState([]);

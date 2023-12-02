@@ -16,7 +16,7 @@ const BrandsFilter = ({ brands, products }) => {
       if (selectedBrands.length === 0) {
         return true; // Include all products if no brands are selected
       } else {
-        console.log('Selected Brands:', selectedBrands);
+        // console.log('Selected Brands:', selectedBrands);
         return selectedBrands.includes(product.brand); // Filter products based on selected brands
       }
     });

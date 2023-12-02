@@ -5,12 +5,15 @@ import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 // import { authContext } from "../Contexts/isAuth";
-// import  { useContext } from "react";
+import  { useContext } from "react";
+import { Localization } from '../constants/localization';
+import { languageContext } from '../Contexts/language';
 
 export default function MenuPopupState({ logout, setLogin }) {
   const displayName = localStorage.getItem('displayName'); 
 
-  // const {displayName } = useContext(authContext)
+ const {language}=useContext(languageContext);
+
 
   const navigate = useNavigate(); 
 
@@ -49,7 +52,7 @@ export default function MenuPopupState({ logout, setLogin }) {
       {(popupState) => (
         <React.Fragment>
           <Button variant="contained" style={buttonStyle} {...bindTrigger(popupState)}>
-          <h6 >hello,{displayName}</h6>  
+          <h6 >{language==="en"?Localization.header.hello.en:Localization.header.hello.ar},{displayName}</h6>  
 
           </Button>
           <Menu {...bindMenu(popupState)}>

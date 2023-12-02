@@ -126,7 +126,7 @@ const Cart = () => {
                     Your order qualifies for FREE Shipping Choose this option at checkout. See details....
                   </p>
                   <div>
-                    <p className="font-semibold px-6 py-1 flex items-center justify-between">
+                    <p className="font-semibold px-6 py-1 flex items-center justify-evenly">
                       Subtotal: <span className="text-lg font-bold">EGP {totalAmt}</span>
                     </p>
                   </div>
@@ -135,20 +135,20 @@ const Cart = () => {
                       Proceed to Buy
                     </button>
                   </Link>
-                  <p>
+                  <p className="mt-3">
                   Your order qualifies for FREE Shipping Choose this option at
-                  checkout. See details....
+                  checkout. <span className="text-blue-600 cursor-pointer">See details....</span>
                 </p>
                 </div>
-                <div>
+                {/* <div>
                   <p className="font-semibold px-6 py-1 flex items-center justify-between">
                     Subtotal:{" "}
                     <span className="text-lg font-bold">EGP {totalAmt}</span>
                   </p>
-                </div>
-                <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+                </div> */}
+                {/* <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
                   Proceed to Buy
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

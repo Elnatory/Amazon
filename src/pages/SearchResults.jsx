@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getSearchData } from '../firebase/getSearchResults';
 import SearchResultBox from '../components/serachResultsBox/SearchResultsBox';
 import FilterPanel from '../components/filterPanel/FilterPanel';
-
+import { useSelector } from 'react-redux';
 
 const SearchResults = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const selectedBrands = useSelector((state) => state.brands);
+  const selectedCategories = useSelector((state) => state.categories);
+
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('query');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getSearchData(searchQuery, setSearchResults, setLoading);
-    // console.log('searchResults', searchResults);
-    // console.log('loading');
-  }, [searchQuery])
+  }, [searchQuery]);
+
+  // Filter the products based on selected brands
+  const filteredResults = selectedBrands.length || selectedCategories.length
+    ? searchResults.filter((result) =>
+      selectedBrands.includes(result.brand.name)
+      || selectedCategories.includes(result.category.name)
+    )
+    : searchResults;
 
   return (
     <div>
@@ -24,21 +35,24 @@ const SearchResults = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-
         <div className='container mx-0'>
           <div className='grid grid-cols-12 gap-6'>
             <div className='col-span-4'>
-              <FilterPanel/>
+              <FilterPanel />
             </div>
-            <div className='flex justify-evenly col-span-8'>
-              {searchResults.map((result, index) => (
-                <SearchResultBox key={index} result={result}/>
-                // Customize this based on your actual data structure
+            <div className='flex justify-evenly col-span-8 flex-nowrap'>
+              {filteredResults.map((result, index) => (
+                <div key={index} className="m-4"
+                  onClick={
+                    () => navigate(`/details/${result._id}`)
+                }
+                >
+                  <SearchResultBox result={result} />
+                </div>
               ))}
             </div>
           </div>
         </div>
-
       )}
     </div>
   );

@@ -16,7 +16,7 @@ const CheckOut = () => {
     const products = useSelector((state) => state.amazonReducer.products);
     const navigate = useNavigate();
     const [totalAmt, setTotalAmt] = useState("");
-    const user = localStorage.getItem('user');
+    const userId = localStorage.getItem('user');
 
     useEffect(() => {
         let price = 0;
@@ -29,25 +29,14 @@ const CheckOut = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await getUserAddressData(user, setData, setLoading);
+            await getUserAddressData(userId, setData, setLoading);
         };
-        if (!user) {
+        if (!userId) {
             navigate('/payment');
         }
 
         fetchData();
-    }, [user, navigate, data]);
-    // console.log(data);
-
-    // useEffect(() => {
-    //     const userName = localStorage.getItem('userName');
-    //     const userEmail = localStorage.getItem('email');
-    //     const address = localStorage.getItem('address');
-    //     const city = localStorage.getItem('city');
-    //     const country = localStorage.getItem('country');
-
-
-    // }, [navigate]);
+    }, [userId, navigate, data]);
 
     return (
         <>
@@ -59,8 +48,8 @@ const CheckOut = () => {
                         <h1 className='text-xl font-bold'>Delivery Address</h1>
                     </div>
                     <div className='col-span-10 pr-5 pt-5'>
-                        {data.map((elem) => (
-                            <div className='flex justify-between' key={user}>
+                        {data.map((elem, index) => (
+                            <div className='flex justify-between' key={index}>
                                 <div className='grid grid-cols-12'>
                                     <div className='col-span-6'>
                                         <h1 className='text-lg font-bold'><i>Street  :</i> </h1>

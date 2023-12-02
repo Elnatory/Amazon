@@ -10,11 +10,14 @@ import { bottomHeader, bottomHeader2 } from "../../assets";
 import Slider from "react-slick";
 import { useContext } from "react";
 import { authContext } from "../../Contexts/isAuth";
+import { Localization } from "../../constants/localization";
+import { languageContext } from "../../Contexts/language";
 // import { authContext } from "../../Contexts/isAuth";
 
 export default function HeaderBottom(props) {
   const displayName = localStorage.getItem("displayName"); // Retrieve the stored user name
   const {isLogin}= useContext(authContext)
+  const {language} = useContext(languageContext)
 
   // const {displayName }= useContext(authContext)
 
@@ -57,17 +60,17 @@ export default function HeaderBottom(props) {
               className="flex items-center gap-1 headerHover"
             >
               <MenuIcon />
-              All
+              {language==='en' ? Localization.header.all.en:Localization.header.all.ar}
             </li>
-            <li className="hidden md:inline-flex headerHover">Today's Deals</li>
-            <li className="hidden md:inline-flex headerHover">Prime</li>
-            <li className="hidden md:inline-flex headerHover">Mobiles</li>
-            <li className="hidden md:inline-flex headerHover">Electronics</li>
-            <li className="hidden md:inline-flex headerHover">Music</li>
-            <li className="hidden md:inline-flex headerHover">Fashion</li>
-            <li className="hidden md:inline-flex headerHover">Home</li>
-            <li className="hidden md:inline-flex headerHover">Super Market</li>
-            <li className="hidden md:inline-flex headerHover">Books</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.todaysDeals.en:Localization.header.todaysDeals.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.prime.en:Localization.header.prime.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.mobile.en:Localization.header.mobile.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.electronics.en:Localization.header.electronics.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.music.en:Localization.header.music.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.fashion.en:Localization.header.fashion.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.home.en:Localization.header.home.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.superMarket.en:Localization.header.superMarket.ar}</li>
+            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.books.en:Localization.header.books.ar}</li>
           </ul>
         </div>
         <div
