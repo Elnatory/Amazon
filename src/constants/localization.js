@@ -73,17 +73,103 @@ export const Localization = {
     },
     },
     footer:{
-        getToKnowUs:{
-            en: "Get to Know Us",
-            ar:"تعرف علينا"
-        },
         backToTop:{
             en: "Back to top",
             ar:"العودة للأعلى"
         },
+    },
+    getToKnowUs:{
+        en: "Get to Know Us",
+        ar:"تعرف علينا"
+    },
+    aboutAmazon:{
+        en: "About Amazon",
+        ar:"عن أمازون"
+    },
+    careers:{
+        en: "Careers",
+        ar:"وظائف"
+    },
+    amazonScience:{
+        en: "Amazon Science",
+        ar:"علوم أمازون"
+    },
+    shopWithUs:{
+        en: "Shop with Us",
+        ar:"تسوق معنا"
+    },
+    yourAccount:{
+        en: "Your Account",
+        ar:"حسابك"
+    },
+    yourOrders:{
+        en: "Your Orders",
+        ar:"طلباتك"
+    },
+    yourAddresses:{
+        en: "Your Addresses",
+        ar:"عناوينك"
+    },
+    yourLists:{
+        en: "Your Lists",
+        ar:"قوائمك"
+    },
+    makeMoneyWithUs:{
+        en: "Make Money with Us",
+        ar:"احصل علي المال معنا"
+    },
+    protectAndBuildYourBrand:{
+        en: "Protect and Build Your Brand",
+        ar:"حمي و ابني علامتك التجارية"
+    },
+    advertiseYourBrand:{
+        en: "Advertise Your Brand",
+        ar:"اعلن عن علامتك التجارية"
+    },
+    sellOnAmazon:{
+        en: "Sell on Amazon",
+        ar:"بيع علي أمازون"
+    },
+    sellAppsOnAmazon:{
+        en: "Sell Apps on Amazon",
+        ar:"بيع التطبيقات علي أمازون"
+    },
+    fullfillmentByAmazon:{
+        en: "Fullfillment by Amazon",
+        ar:"الوفاء بالتزامات أمازون"
+    },
+    letUsHelpYou:{
+        en: "Let Us Help You",
+        ar:"دعنا نساعدك"
+    },
+    help:{
+        en: "Help",
+        ar:"مساعدة"
+    },
+    shippingAndDelivery:{
+        en: "Shipping & Delivery",
+        ar:"الشحن و التوصيل"
+    },
+    returnsAndReplacements:{
+        en: "Returns & Replacements",
+        ar:"الإرجاع و الاستبدال"
+    },
+    amazonAppDownload:{
+        en: "Amazon App Download",
+        ar:"تحميل تطبيق أمازون"
+    },
+    country:{
+        en: "Egypt",
+        ar:"مصر"
+    },
+    language:{
+        en: "English",
+        ar:"العربية"
+    },
+    
     }
     
-   }
+    
     
     
     
