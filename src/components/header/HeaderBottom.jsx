@@ -6,18 +6,19 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // import { useSelector } from "react-redux";
 import SideNavContent from "./SideHeader";
-import { bottomHeader, bottomHeader2 } from "../../assets";
+import { bottomHeader, bottomHeader2, sadd } from "../../assets";
 import Slider from "react-slick";
 import { useContext } from "react";
 import { authContext } from "../../Contexts/isAuth";
 import { Localization } from "../../constants/localization";
 import { languageContext } from "../../Contexts/language";
 // import { authContext } from "../../Contexts/isAuth";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function HeaderBottom(props) {
   const displayName = localStorage.getItem("displayName"); // Retrieve the stored user name
   const {isLogin}= useContext(authContext)
-  const {language} = useContext(languageContext)
 
   // const {displayName }= useContext(authContext)
 
@@ -53,8 +54,8 @@ export default function HeaderBottom(props) {
     <>
       <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
         {/* ======================= List Items Start here ======================== */}
-        <div className="flex items-center gap-2 text-sm tracking-wide flex-grow">
-          <ul className="flex items-center gap-2 text-sm tracking-wide">
+        <div className="flex items-center gap-2 text-sm tracking-wide flex-grow ">
+          <ul className="flex items-center gap-2 text-sm tracking-wide ">
             <li
               onClick={() => setSidebar(true)}
               className="flex items-center gap-1 headerHover"
@@ -62,32 +63,34 @@ export default function HeaderBottom(props) {
               <MenuIcon />
               {language==='en' ? Localization.header.all.en:Localization.header.all.ar}
             </li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.todaysDeals.en:Localization.header.todaysDeals.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.prime.en:Localization.header.prime.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.mobile.en:Localization.header.mobile.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.electronics.en:Localization.header.electronics.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.music.en:Localization.header.music.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.fashion.en:Localization.header.fashion.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.home.en:Localization.header.home.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.superMarket.en:Localization.header.superMarket.ar}</li>
-            <li className="hidden md:inline-flex headerHover">{language==="en" ? Localization.header.books.en:Localization.header.books.ar}</li>
+            <li className="hidden md:inline-flex headerHover">Today's Deals</li>
+            <li className="hidden md:inline-flex headerHover">Prime</li>
+            <li className="hidden md:inline-flex headerHover">Mobiles</li>
+            <li className="hidden md:inline-flex headerHover">Electronics</li>
+            <li className="hidden md:inline-flex headerHover">Music</li>
+            <li className="hidden md:inline-flex headerHover">Fashion</li>
+            <li className="hidden md:inline-flex headerHover">Home</li>
+            <li className="hidden md:inline-flex headerHover">Super Market</li>
+            <li className="hidden md:inline-flex headerHover">Books</li>
           </ul>
         </div>
         <div
+        className="omg"
           style={{
             flex: 1,
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
+            
           }}
         >
-          <Slider {...settings}>
+          <Slider className=" w-75" {...settings}>
             <div>
               <img
                 className="headerHover"
                 src={bottomHeader}
                 alt=""
-                width="350"
+                width="300"
               />
             </div>
             <div>
@@ -95,8 +98,11 @@ export default function HeaderBottom(props) {
                 className="headerHover"
                 src={bottomHeader2}
                 alt=""
-                width="350"
+                width="300"
               />
+            </div>
+            <div>
+              <img className="headerHover" src={sadd} alt="" width="350" />
             </div>
           </Slider>
         </div>
@@ -136,35 +142,33 @@ export default function HeaderBottom(props) {
                   )}
                   {/* ============================ Content & Devices Start here ================ */}
                   <SideNavContent
-                    title="Trendings"
-                    one="Best Sellers"
-                    two="New Releases"
-                    three="Movers & Shakers"
-                  />
-                  <SideNavContent
-                    title="Digital Content & Devices"
-                    one="Amazon Music"
-                    two="Kindle E-readers & Books"
-                    three="Amazon Appstore"
-                  />
-                  <SideNavContent
-                    title="Shop By Category"
-                    one="Electronics"
-                    two="Computers"
-                    three="Smart Home"
-                  />
-                  <SideNavContent
-                    title="Programs & Features"
-                    one="Gift Cards"
-                    two="Amazon live"
-                    three="International Shopping"
-                  />
-                  <SideNavContent
-                    title="Help & Settings"
-                    one="Your Account"
-                    two="Customer Service"
-                    three="Contact us"
-                  />
+                                        title="Trendings"
+                                        one={<Link to="/bestsellers"> Best Sellers</Link>}
+
+                                        two={<Link to="/newreleases"> New Releases</Link>}
+                                        three={<Link to="/Movers & Shakers"> Movers & Shakers</Link>}
+
+                                    />
+                                    <SideNavContent
+                                        title="Digital Content & Devices"
+                                        one={<Link to="/catgory/music">Amazon Music</Link>}
+                                        two={<Link to="/catgory/books">Kindle E-readers & Books</Link>}
+                                        three={<Link to="/brands">Amazon Brands</Link>}
+                                    />
+                                    <SideNavContent
+                                        title="Shop By Category"
+                                       
+                                        one={<Link to="/catgory/electronics">Electronics</Link>}
+                                        two={<Link to="/catgory/mobiles">Mobile</Link>}
+                                        three={<Link to="/catgory/men's-fashion">Men's Fashion</Link>}
+                                    />
+                            
+                                    <SideNavContent
+                                        title="Help & Settings"
+                                        one={<Link to="/account">Your Account</Link>}
+                                        two={<Link to="/help">Help</Link>}
+                                        three={<Link to="/about">About Us</Link>}
+                                    />
                   {/* ============================ Content & Devices End here ================ */}
                   <span
                     onClick={() => setSidebar(false)}

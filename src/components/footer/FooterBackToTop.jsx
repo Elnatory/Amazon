@@ -15,7 +15,7 @@ return (
     onMouseOut={() => {}}
     onClick={handleBackToTop}
     >
-    <div className="w-full py-5">
+    <div className="w-full py-4">
         <div className="max-w-5xl mx-auto flex gap-1 items-center justify-center">
         <p className="font-normal text-[13px] cursor-pointer leading-3">
             {language==='en'?Localization.footer.backToTop.en:Localization.footer.backToTop.ar}

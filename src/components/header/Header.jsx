@@ -69,7 +69,6 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
   // };
 const changeLanguage = ()=> {
   setLanguage(language==="en"?"ar":"en");
-  console.log(language);
 }
   return (
     <div className="sticky top-0 z-50 bg-black" >
@@ -153,7 +152,7 @@ const changeLanguage = ()=> {
         </div>
         {/* ===================== Header Search End here ========================== */}
         {/* ===================== Header Signin Start here ======================== */}
-        <div className="flex flex-col items-start justify-center headerHover"  onClick={changeLanguage}>
+        <div className="flex flex-col items-start justify-center headerHover" onClick={changeLanguage}>
           <p></p>
           <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
             <img src={egyptFlag} alt="Egypt Flag" width="20px" height="20px" />
