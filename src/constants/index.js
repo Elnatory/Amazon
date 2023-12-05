@@ -10,7 +10,12 @@ export const allItems = [
   { _id: 108, title: "Deals" },
   { _id: 109, title: "Music" },
   { _id: 110, title: "Electronics" },
+  { _id: 111, title: "Girls' Fashion" },//
+  { _id: 112, title: "Health & Household" },//
   { _id: 113, title: "Home & Kitchen" },
+  { _id: 114, title: "Industrial & Scientific" },//
+  { _id: 115, title: "Kindle Store" },//
+  { _id: 116, title: "Luggage" },//
   { _id: 117, title: "men's-fashion" },
   { _id: 118, title: "Movies & TV" },
   { _id: 119, title: "Music" },

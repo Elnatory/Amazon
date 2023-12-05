@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState,useContext } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
@@ -10,28 +10,25 @@ import { logo, egyptFlag, CartIcon } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 import { Link, useNavigate } from "react-router-dom";
 import { getProductsData } from "../../firebase/getProducts";
-import './Search.css';
 import { authContext } from "../../Contexts/isAuth";
-import {logout} from "../../firebase/auth"
-import MenuPopupState from '../../utils/Dropdown';
+import { logout } from "../../firebase/auth";
+import MenuPopupState from "../../utils/Dropdown";
 import { Localization } from "../../constants/localization";
 import { languageContext } from "../../Contexts/language";
+import './Search.css';
 
 const Header = () => {
-  const {language,setLanguage}=useContext(languageContext);
-  // console.log(language);
-
-  const products = useSelector((state) => state.amazonReducer.products);
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const { language, setLanguage } = useContext(languageContext);
   const [prds, setPrds] = useState([]);
   const [input, setInput] = useState("");
   const navgate = useNavigate();
   const dispatch = useDispatch();
 
-
-  // const dispatch = useDispatch();
-const {isLogin,setLogin,displayName }= useContext(authContext)
-// const navigate = useNavigate();
+  const products = useSelector((state) => state.amazonReducer.products);
+  const [loading, setLoading] = useState(true);
+  const { isLogin, setLogin, displayName } = useContext(authContext);
+  // const navigate = useNavigate();
   const ref = useRef();
   const [showAll, setShowAll] = useState(false);
   useEffect(() => {
@@ -41,38 +38,40 @@ const {isLogin,setLogin,displayName }= useContext(authContext)
       }
     });
   }, [ref, showAll]);
+  useEffect(() => {
+    getProductsData(setPrds, setLoading);
+  });
 
-  useEffect(()=>{
-    getProductsData(setPrds,setLoading);
-  })
-
-  const onTyping= (val)=>{
+  const onTyping = (val) => {
     setInput(val);
     // console.log(input);
+  };
 
-  }
-
-  const handelSearch=(searchTxt)=>{
+  const handelSearch = (searchTxt) => {
     setInput(searchTxt);
     console.log(input);
-    if(searchTxt==='' || searchTxt===undefined || searchTxt===null)return;
+    if (searchTxt === "" || searchTxt === undefined || searchTxt === null)
+      return;
     navgate(`/results?query=${encodeURIComponent(searchTxt)}`);
     // console.log(input);
-    searchTxt='';
+    searchTxt = "";
     setInput("");
-  }
+  };
   // const handleLogout = async () => {
   //   await logout();
   //   localStorage.removeItem('token');
-  //   setLogin(false); 
+  //   setLogin(false);
   //   navigate('/signin');
   // };
-const changeLanguage = ()=> {
-  setLanguage(language==="en"?"ar":"en");
-}
+
+  const changeLanguage = () => {
+    setLanguage(language === "en" ? "ar" : "en");
+    console.log(language);
+  };
+
   return (
-    <div className="sticky top-0 z-50 bg-black" >
-      <div className="w-full bg-amazon_blue text-white px-4 py-3 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
+    <div className="sticky top-0 z-50 bg-black">
+      <div className="w-full bg-amazon_blue text-white px-3 py-2 flex md:justify-between items-center gap-2 md:gap-4 lgl:gap-2 xl:gap-4">
         {/* ===================== Header Image Start here ======================== */}
         <Link to="/">
           <div className="headerHover">
@@ -84,9 +83,15 @@ const changeLanguage = ()=> {
         <div className="hidden md:inline-flex headerHover">
           <LocationOnOutlinedIcon />
           <p className="flex flex-col text-xs text-lightText font-light">
-            {language==='en'?Localization.header.deliverTo.en:Localization.header.deliverTo.ar}
+            {/* Deliver to{" "} */}
+            {language === "en"
+              ? Localization.header.deliverTo.en
+              : Localization.header.deliverTo.ar}
             <span className="text-sm font-semibold -mt-1 text-whiteText">
-            {language==='en'?Localization.header.egypt.en:Localization.header.egypt.ar}
+              {/* Egypt */}
+              {language === "en"
+                ? Localization.header.egypt.en
+                : Localization.header.egypt.ar}
             </span>
           </p>
         </div>
@@ -102,6 +107,7 @@ const changeLanguage = ()=> {
               <ArrowDropDownOutlinedIcon />
             </span>
           </span>
+
           {showAll && (
             <div>
               <ul
@@ -110,8 +116,13 @@ const changeLanguage = ()=> {
               >
                 {allItems.map((item) => (
                   <li
-                    className="text-sm tracking-wide font-titleFont border-b-[1px] border-b-transparent hover:border-b-amazon_blue cursor-pointer duration-200"
+                  className="text-sm tracking-wide font-titleFont border-b-[1px] border-b-transparent hover:border-b-amazon_blue cursor-pointer duration-200"
                     key={item._id}
+                    onClick={() =>
+                      item.title &&
+                      navigate(`/catgory/${item.title.toLocaleLowerCase()}`)
+                    }
+                    // Ensure item.category is defined before navigating
                   >
                     {item.title}
                   </li>
@@ -120,75 +131,88 @@ const changeLanguage = ()=> {
             </div>
           )}
 
-<div className="w-full flex-grow column">
-  <div className="flex w-full flex-grow items-center">
-    <input autoComplete="off"
-      className="h-10 w-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
-      type="search"
-      name="search"
-      id="search"
-      placeholder="Search Amazon.eg"
-      value={input}
-      onChange={(e) => onTyping(e.target.value)}
-    />
-    <span className="w-10 h-10 flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
-      <SearchIcon onClick={() => handelSearch(input)} />
-    </span>
-  </div>
-  <div className="dropDown w-full">
-    {prds
-      .filter((val) => {
-        const searchTxt = input.toLowerCase();
-        const productTitle = val.title.toLowerCase();
-        return searchTxt && productTitle.startsWith(searchTxt) && productTitle !== searchTxt;
-      }).slice(0, 5)
-      .map((item,index) => (
-        <div className="dropDown-row" key={index} onClick={() => handelSearch(item.title)}>
-          {item.title}
-        </div>
-      ))}
-  </div>
-</div>
+          <div className="w-full flex-grow column">
+            <div className="flex w-full flex-grow items-center">
+              <input
+                autoComplete="off"
+                className="h-10 w-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Search Amazon.eg"
+                value={input}
+                onChange={(e) => onTyping(e.target.value)}
+              />
+              <span className="w-12 h-10 flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
+                <SearchIcon onClick={() => handelSearch(input)} />
+              </span>
+            </div>
+            <div className="dropDown w-full">
+              {prds
+                .filter((val) => {
+                  const searchTxt = input.toLowerCase();
+                  const productTitle = val.title.toLowerCase();
+                  return (
+                    searchTxt &&
+                    productTitle.startsWith(searchTxt) &&
+                    productTitle !== searchTxt
+                  );
+                })
+                .slice(0, 5)
+                .map((item, index) => (
+                  <div
+                    className="dropDown-row"
+                    key={index}
+                    onClick={() => handelSearch(item.title)}
+                  >
+                    {item.title}
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
         {/* ===================== Header Search End here ========================== */}
         {/* ===================== Header Signin Start here ======================== */}
-        <div className="flex flex-col items-start justify-center headerHover" onClick={changeLanguage}>
+        <div
+          className="flex flex-col items-start justify-center headerHover"
+          onClick={changeLanguage}
+        >
           <p></p>
           <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
             <img src={egyptFlag} alt="Egypt Flag" width="20px" height="20px" />
-            {language==="en"?Localization.header.lang.en:Localization.header.lang.ar}{" "}
+            {language === "en"
+              ? Localization.header.lang.en
+              : Localization.header.lang.ar}{" "}
             <span>
               <ArrowDropDownOutlinedIcon />
             </span>
           </p>
         </div>
-                    {(isLogin)?(
-                   
+        {isLogin ? (
           <div className="flex flex-col items-start justify-center headerHover">
             <p className="text-xs text-lightText font-light"></p>
-             
-            <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
-              
-              <span>
-              <MenuPopupState logout={logout} setLogin={setLogin}/>
-              </span>
-            </p>
-           
 
-          </div>)
-        :(<Link to="/signin">
-          <div className="flex flex-col items-start justify-center headerHover">
-            <p className="text-xs text-lightText font-light">{language==='en'?Localization.header.helloSing.en:Localization.header.helloSing.ar} </p>
             <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
-              Accounts & Lists{" "}
-              
               <span>
+                <MenuPopupState logout={logout} setLogin={setLogin} />
               </span>
             </p>
           </div>
-        </Link> )}
+        ) : (
+          <Link to="/signin">
+            <div className="flex flex-col items-start justify-center headerHover">
+              <p className="text-xs text-lightText font-light">
+              {language==='en'?Localization.header.helloSing.en:Localization.header.helloSing.ar}
+                {/* Hello,sign in{" "} */}
+              </p>
+              <p className="hidden md:inline-flex text-sm font-semibold -mt-1 text-whiteText">
+                Accounts & Lists <span></span>
+              </p>
+            </div>
+          </Link>
+        )}
 
-{/* 
+        {/* 
 
       
 
@@ -199,10 +223,10 @@ const changeLanguage = ()=> {
         {/* ===================== Header Signin End here ========================== */}
         {/* ===================== Header Orders Start here ======================== */}
         <Link to="/orders">
-          <div className="hidden mdl:flex flex-col items-start justify-center headerHover" >
-            <p className="text-xs text-lightText font-light">{language==='en'?Localization.header.Returns.en:Localization.header.Returns.ar}</p>
-            <p className="text-sm font-semibold -mt-1 text-whiteText">
-             {language==='en'?Localization.header.Orders.en:Localization.header.Orders.ar}
+          <div className="hidden mdl:flex flex-col items-start justify-center headerHover">
+          <p className="text-xs text-lightText font-light">{language==='en'?Localization.header.Returns.en:Localization.header.Returns.ar}</p>
+          <p className="text-sm font-semibold -mt-1 text-whiteText">
+            {language==='en'?Localization.header.Orders.en:Localization.header.Orders.ar}
             </p>
           </div>
         </Link>

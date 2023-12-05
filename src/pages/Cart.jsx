@@ -14,12 +14,11 @@ import Slides from "../components/slides/slides";
 import { useNavigate } from "react-router-dom";
 import { prime1, prime2, primesvg } from "../assets/index";
 
-
 const Cart = () => {
   const products = useSelector((state) => state.amazonReducer.products);
   const dispatch = useDispatch();
   const [totalAmt, setTotalAmt] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     let price = 0;
     products.map((item) => {
@@ -39,7 +38,6 @@ const Cart = () => {
                 <h1 className="text-3xl">Shopping Cart</h1>
                 <h6 className="text-xl self-end">Price</h6>
               </div>
-              <p className="text-sm text-gray-500 border-b-[1px]  border-b-gray-400">Deselected items</p>
               <p className="text-sm text-gray-500 border-b-[1px]  border-b-gray-400">
                 Deselected items
               </p>
@@ -70,7 +68,6 @@ const Cart = () => {
                         <p className="xl:pr-10 text-sm">{item.description}</p>
                         <p className="text-base">
                           Unit Price:{" "}
-                          <span className="font-semibold">EGP {item.price}.00</span>
                           <span className="font-semibold">
                             EGP {item.price}.00
                           </span>
@@ -135,46 +132,29 @@ const Cart = () => {
                   checkout. See details....
                 </p>
                 <div>
-                  <p className="flex gap-2 items-start text-sm">
-                    <span>
-                      <CheckCircleIcon className="bg-white text-green-500 rounded-full" />
-                    </span>
-                    Your order qualifies for FREE Shipping Choose this option at checkout. See details....
-                  </p>
-                  <div>
-                    <p className="font-semibold px-6 py-1 flex items-center justify-evenly">
-                      Subtotal: <span className="text-lg font-bold">EGP {totalAmt}</span>
-                    </p>
-                  </div>
-                  <Link to="/checkout">
-                    <button disabled={products.length === 0} className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
-                      Proceed to Buy
-                    </button>
-                  </Link>
-                  <p className="mt-3">
-                  Your order qualifies for FREE Shipping Choose this option at
-                  checkout. <span className="text-blue-600 cursor-pointer">See details....</span>
-                </p>
-                </div>
-                {/* <div>
                   <p className="font-semibold px-6 py-1 flex items-center justify-between">
                     Subtotal:{" "}
                     <span className="text-lg font-bold">EGP {totalAmt}</span>
                   </p>
-                </div> */}
-                {/* <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
-                  Proceed to Buy
-                </button> */}
+                </div>
+                <Link to="/checkout">
+                  <button
+                    disabled={products.length === 0}
+                    className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3"
+                  >
+                    Proceed to Buy
+                  </button>
+                </Link>
               </div>
               <div className=" h-5 items-center mt-8">
                 <p className="flex mt-12 gap-2 items-start text-sm font-light">
-                Customers who shopped for our website amazon's ® Standard Fit Short S... also shopped for :
+                  Customers who shopped for our website amazon's ® Standard Fit
+                  Short S... also shopped for :
                 </p>
                 <div className="flex mt-12 gap-2 items-start text-sm">
-                    <img src={primesvg} alt="" />
-                  </div>
+                  <img src={primesvg} alt="" />
+                </div>
               </div>
-              
             </div>
           </div>
           <Slides />

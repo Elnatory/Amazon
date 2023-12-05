@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addCategory } from '../../store/slices/categoriesSlice';
-import { removeCategory } from '../../store/slices/categoriesSlice';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCategory } from "../../store/slices/categoriesSlice";
+import { removeCategory } from "../../store/slices/categoriesSlice";
 
 const CategoriesFilter = ({ categories, products }) => {
   const selectedCategories = useSelector((state) => state.categories); // Access selectedCategories from Redux store
@@ -22,8 +22,7 @@ const CategoriesFilter = ({ categories, products }) => {
     });
 
     if (
-      JSON.stringify(filteredResults) !==
-      JSON.stringify(filteredResultsState)
+      JSON.stringify(filteredResults) !== JSON.stringify(filteredResultsState)
     ) {
       setFilteredResultsState(filteredResults);
     }
@@ -48,28 +47,28 @@ const CategoriesFilter = ({ categories, products }) => {
   };
 
   return (
-    <div className='p-4'>
+    <div className="p-4">
       {/* Categories checkboxes */}
-      <p className='text-lg font-bold'>Select Category:</p>
-      <div className='flex flex-col'>
+      <p className="text-lg font-bold">Select Category:</p>
+      <div className="flex flex-col">
         {categories.slice(0, x).map((category) => (
-          <div key={category._id} className='mr-4 mb-2'>
+          <div key={category._id} className="mr-4 mb-2">
             <input
-              type='checkbox'
+              type="checkbox"
               id={category._id}
               value={category.name}
               // checked={selectedCategories.includes(category.name)}
               onChange={() => handleCategoryChange(category.name)}
             />
-            <label htmlFor={category._id} className='ml-2'>
+            <label htmlFor={category._id} className="ml-2">
               {category.name}
             </label>
           </div>
         ))}
 
-        <div className='flex justify-start'>
-          <button onClick={changeX} className='outline-none text-blue-400'>
-            {showMore ? 'Show More...' : 'Show Less...'}
+        <div className="flex justify-start">
+          <button onClick={changeX} className="outline-none text-blue-400">
+            {showMore ? "Show More..." : "Show Less..."}
           </button>
         </div>
       </div>

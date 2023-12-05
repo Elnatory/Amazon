@@ -58,7 +58,6 @@ import abdu6 from './Abdu/brand.jpg'
 
 
 export {
-  amazon,
   notFound,
   logo,
   darkLogo,
@@ -114,4 +113,5 @@ export {
   abdu4,
   abdu5,
   abdu6,
+  amazon
 };

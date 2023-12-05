@@ -11,7 +11,7 @@ const CustomerReview = ({ products, setFilteredResults }) => {
             if (selectedCustomerReview.length === 0) {
                 return true; // Include all products if no ratings are selected
             } else {
-                return selectedCustomerReview.includes(product.ratingsAverage); // Filter products based on selected ratings
+                return selectedCustomerReview.includes(product.ratingsAverage);
             }
         });
 

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState, useRef } from "react";
-import FadeIn from '../../utils/fade';
+import FadeIn from "../../utils/fade";
 
 const Banner = React.lazy(() => import("../../components/home/Banner/Banner"));
 const Products = lazy(() => import("../../components/home/Products"));
@@ -23,16 +23,18 @@ const Loader = () => {
 const Home = () => {
   return (
     <>
-      <React.Suspense fallback={<Loader />}>
+      <div className="homee">
+        <React.Suspense fallback={<Loader />}>
           <Banner />
-      </React.Suspense>
-      <div className="w-full bg-gray-100 -mt-16 lgl:-mt-24 xl:-mt-36 py-20 lg:py-0">
-        <Suspense fallback={<Loader />}>
+        </React.Suspense>
+        <div className="w-full bg-gray-100 -mt-16 lgl:-mt-24 xl:-mt-36 py-20 lg:py-0">
+          <Suspense fallback={<Loader />}>
             <Boxes />
-          <FadeIn>
-            <Products />
-          </FadeIn>
-        </Suspense>
+            <FadeIn>
+              <Products />
+            </FadeIn>
+          </Suspense>
+        </div>
       </div>
     </>
   );
