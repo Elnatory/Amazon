@@ -34,7 +34,6 @@ const PaymentForm = () => {
             console.log('Document written with ID: ', docRef.id);
 
             navigate('/checkout');
-            window.location.href = '/checkout';
         } catch (error) {
             console.error('Error adding document: ', error);
         }

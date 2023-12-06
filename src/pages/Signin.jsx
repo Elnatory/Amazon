@@ -84,6 +84,7 @@ export default function Signin(props) {
           retrievedData.user.metadata.creationTime
         );
         localStorage.setItem("uid", retrievedData.user.uid);
+        console.log(uid);
 
         setLogin(true);
         navigate("/");

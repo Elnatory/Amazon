@@ -145,7 +145,7 @@ export default function HeaderBottom(props) {
             alignItems: "center",
           }}
         >
-          <Slider {...settings}>
+          {/* <Slider {...settings}>
             <div>
               <img
                 className="headerHover"
@@ -165,7 +165,7 @@ export default function HeaderBottom(props) {
             <div>
               <img className="headerHover" src={sadd} alt="" width="350" />
             </div>
-          </Slider>
+          </Slider> */}
         </div>
         {/* ======================= List Items End here ========================== */}
         {/* ======================= SideBar Start here =========================== */}

@@ -16,7 +16,7 @@ const CheckOut = () => {
     const products = useSelector((state) => state.amazonReducer.products);
     const navigate = useNavigate();
     const [totalAmt, setTotalAmt] = useState("");
-    const userId = localStorage.getItem('user');
+    const userId = localStorage.getItem('uid');
 
     useEffect(() => {
         let price = 0;
@@ -31,12 +31,15 @@ const CheckOut = () => {
         const fetchData = async () => {
             await getUserAddressData(userId, setData, setLoading);
         };
-        if (!userId) {
-            navigate('/payment');
-        }
 
         fetchData();
-    }, [userId, navigate, data]);
+    }, [userId]);
+
+    useEffect(() => {
+        if (!loading && data.length === 0) {
+            navigate('/payment');
+        }
+    }, [loading, data, navigate]);
 
     return (
         <>
