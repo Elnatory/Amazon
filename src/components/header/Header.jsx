@@ -15,7 +15,6 @@ import { logout } from "../../firebase/auth";
 import MenuPopupState from "../../utils/Dropdown";
 import { Localization } from "../../constants/localization";
 import { languageContext } from "../../Contexts/language";
-import './Search.css';
 
 const Header = () => {
   const navigate = useNavigate();

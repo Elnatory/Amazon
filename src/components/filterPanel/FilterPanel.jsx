@@ -11,8 +11,8 @@ import { useSelector } from "react-redux";
 
 const FilterPanel = () => {
   const location = useLocation();
-  const selectedBrands = useSelector((state) => state.brands); // Access selectedBrands from Redux store
-  const selectedCategories = useSelector((state) => state.categories); // Access selectedCategories from Redux store
+  const selectedBrands = useSelector((state) => state.brands);
+  const selectedCategories = useSelector((state) => state.categories);
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get("query");
   const [searchResults, setSearchResults] = useState([]);

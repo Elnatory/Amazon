@@ -173,7 +173,7 @@ function App() {
               <PayPalScriptProvider
                 options={{
                   "client-id":
-                    "AeZfRlbmQtc8Z57hOW7gb-sPUJgnhNfJd3QCnf4OpnZbpAFTCY1ceBnElh_siV0mDNn70pbAKjK2ss1T",
+                    "",
                 }}
               >
                 <RouterProvider router={router}></RouterProvider>

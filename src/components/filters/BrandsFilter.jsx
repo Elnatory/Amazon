@@ -4,7 +4,7 @@ import { addBrand } from '../../store/slices/brandsSlice';
 import { removeBrand } from '../../store/slices/brandsSlice';
 
 const BrandsFilter = ({ brands, products }) => {
-  const selectedBrands = useSelector((state) => state.brands); // Access selectedBrands from Redux store
+  const selectedBrands = useSelector((state) => state.brands);
   const dispatch = useDispatch();
 
   const [filteredResultsState, setFilteredResultsState] = useState([]);
@@ -58,7 +58,6 @@ const BrandsFilter = ({ brands, products }) => {
               type='checkbox'
               id={brand._id}
               value={brand.name}
-              // checked={selectedBrands.includes(brand.name)}
               onChange={() => handleBrandChange(brand.name)}
             />
             <label htmlFor={brand._id} className='ml-2'>

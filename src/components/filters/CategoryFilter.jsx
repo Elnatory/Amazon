@@ -4,7 +4,7 @@ import { addCategory } from "../../store/slices/categoriesSlice";
 import { removeCategory } from "../../store/slices/categoriesSlice";
 
 const CategoriesFilter = ({ categories, products }) => {
-  const selectedCategories = useSelector((state) => state.categories); // Access selectedCategories from Redux store
+  const selectedCategories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
   const [filteredResultsState, setFilteredResultsState] = useState([]);
@@ -16,7 +16,6 @@ const CategoriesFilter = ({ categories, products }) => {
       if (selectedCategories.length === 0) {
         return true; // Include all products if no categories are selected
       } else {
-        // console.log('Selected Categories:', selectedCategories);
         return selectedCategories.includes(product.category); // Filter products based on selected categories
       }
     });
@@ -57,7 +56,6 @@ const CategoriesFilter = ({ categories, products }) => {
               type="checkbox"
               id={category._id}
               value={category.name}
-              // checked={selectedCategories.includes(category.name)}
               onChange={() => handleCategoryChange(category.name)}
             />
             <label htmlFor={category._id} className="ml-2">
