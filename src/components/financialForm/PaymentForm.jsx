@@ -18,7 +18,7 @@ const PaymentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const userId = localStorage.getItem('user');
+        const userId = localStorage.getItem('uid');
 
         try {
             const detailsCollectionRef = collection(db, `users/${userId}/details`);
