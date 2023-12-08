@@ -15,6 +15,7 @@ import { logout } from "../../firebase/auth";
 import MenuPopupState from "../../utils/Dropdown";
 import { Localization } from "../../constants/localization";
 import { languageContext } from "../../Contexts/language";
+import './Search.css'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Header = () => {
 
   const handelSearch = (searchTxt) => {
     setInput(searchTxt);
-    console.log(input);
+    // console.log(input);
     if (searchTxt === "" || searchTxt === undefined || searchTxt === null)
       return;
     navgate(`/results?query=${encodeURIComponent(searchTxt)}`);
@@ -149,7 +150,7 @@ const Header = () => {
             <div className="dropDown w-full">
               {prds
                 .filter((val) => {
-                  const searchTxt = input.toLowerCase();
+                  const searchTxt = input.toLowerCase() ;
                   const productTitle = val.title.toLowerCase();
                   return (
                     searchTxt &&
