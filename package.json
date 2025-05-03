@@ -30,6 +30,7 @@
     "framer-motion": "^10.16.5",
     "material-icons": "^1.13.12",
     "material-ui-popup-state": "^5.0.10",
+    "or": "^0.2.0",
     "password-regexp": "^1.0.5",
     "postcss": "^8.4.31",
     "prop-types": "^15.8.1",
