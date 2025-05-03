@@ -38,16 +38,16 @@
 
 .pct-discount {
     margin-top: -10px;
-
-    & span {
-        position: relative;
-        top: -20px;
-        left: -10px;
-        font-size: 13px;
-        background-color: white;
-    }
-
-}
+  }
+  
+  .pct-discount span {
+    position: relative;
+    top: -20px;
+    left: -10px;
+    font-size: 13px;
+    background-color: white;
+  }
+  
 
 .card-border {
     position: absolute;
